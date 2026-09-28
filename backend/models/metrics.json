@@ -1,0 +1,573 @@
+{
+  "dataset_size": 650,
+  "training_samples": 520,
+  "testing_samples": 130,
+  "features_count": 19,
+  "best_model": "Logistic Regression",
+  "active_model": "Logistic Regression",
+  "models": [
+    {
+      "model_name": "Random Forest",
+      "accuracy": 0.7692,
+      "precision": 0.7717,
+      "recall": 0.7692,
+      "f1_score": 0.7317,
+      "confusion_matrix": [
+        [
+          83,
+          2,
+          0
+        ],
+        [
+          18,
+          16,
+          0
+        ],
+        [
+          1,
+          9,
+          1
+        ]
+      ],
+      "classification_report": {
+        "High Performance": {
+          "precision": 0.8137254901960784,
+          "recall": 0.9764705882352941,
+          "f1-score": 0.8877005347593583,
+          "support": 85.0
+        },
+        "Medium Performance": {
+          "precision": 0.5925925925925926,
+          "recall": 0.47058823529411764,
+          "f1-score": 0.5245901639344263,
+          "support": 34.0
+        },
+        "Low Performance": {
+          "precision": 1.0,
+          "recall": 0.09090909090909091,
+          "f1-score": 0.16666666666666666,
+          "support": 11.0
+        },
+        "accuracy": 0.7692307692307693,
+        "macro avg": {
+          "precision": 0.8021060275962236,
+          "recall": 0.5126559714795008,
+          "f1-score": 0.5263191217868172,
+          "support": 130.0
+        },
+        "weighted avg": {
+          "precision": 0.7716524216524216,
+          "recall": 0.7692307692307693,
+          "f1-score": 0.7317226489357637,
+          "support": 130.0
+        }
+      },
+      "feature_importance": [
+        {
+          "feature": "Employee Engagement",
+          "raw_feature": "employee_engagement",
+          "importance": 16.38
+        },
+        {
+          "feature": "Projects Completed",
+          "raw_feature": "projects_completed",
+          "importance": 11.34
+        },
+        {
+          "feature": "Training Hours",
+          "raw_feature": "training_hours",
+          "importance": 8.5
+        },
+        {
+          "feature": "Job Role",
+          "raw_feature": "job_role",
+          "importance": 8.24
+        },
+        {
+          "feature": "Attendance Rate",
+          "raw_feature": "attendance_rate",
+          "importance": 7.98
+        },
+        {
+          "feature": "Absenteeism",
+          "raw_feature": "absenteeism",
+          "importance": 5.96
+        },
+        {
+          "feature": "Overtime Hours",
+          "raw_feature": "overtime_hours",
+          "importance": 5.77
+        },
+        {
+          "feature": "Monthly Income",
+          "raw_feature": "monthly_income",
+          "importance": 5.04
+        },
+        {
+          "feature": "Department",
+          "raw_feature": "department",
+          "importance": 4.06
+        },
+        {
+          "feature": "Age",
+          "raw_feature": "age",
+          "importance": 3.95
+        },
+        {
+          "feature": "Years At Company",
+          "raw_feature": "years_at_company",
+          "importance": 3.65
+        },
+        {
+          "feature": "Job Satisfaction",
+          "raw_feature": "job_satisfaction",
+          "importance": 3.53
+        },
+        {
+          "feature": "Previous Experience",
+          "raw_feature": "previous_experience",
+          "importance": 3.43
+        },
+        {
+          "feature": "Years In Current Role",
+          "raw_feature": "years_in_current_role",
+          "importance": 2.82
+        },
+        {
+          "feature": "Environment Satisfaction",
+          "raw_feature": "environment_satisfaction",
+          "importance": 2.56
+        },
+        {
+          "feature": "Gender",
+          "raw_feature": "gender",
+          "importance": 2.28
+        },
+        {
+          "feature": "Work Life Balance",
+          "raw_feature": "work_life_balance",
+          "importance": 2.26
+        },
+        {
+          "feature": "Job Level",
+          "raw_feature": "job_level",
+          "importance": 1.52
+        },
+        {
+          "feature": "Promotion Last 5 Years",
+          "raw_feature": "promotion_last_5_years",
+          "importance": 0.71
+        }
+      ],
+      "is_active": false
+    },
+    {
+      "model_name": "Logistic Regression",
+      "accuracy": 0.9231,
+      "precision": 0.9212,
+      "recall": 0.9231,
+      "f1_score": 0.9204,
+      "confusion_matrix": [
+        [
+          84,
+          1,
+          0
+        ],
+        [
+          4,
+          29,
+          1
+        ],
+        [
+          0,
+          4,
+          7
+        ]
+      ],
+      "classification_report": {
+        "High Performance": {
+          "precision": 0.9545454545454546,
+          "recall": 0.9882352941176471,
+          "f1-score": 0.9710982658959537,
+          "support": 85.0
+        },
+        "Medium Performance": {
+          "precision": 0.8529411764705882,
+          "recall": 0.8529411764705882,
+          "f1-score": 0.8529411764705882,
+          "support": 34.0
+        },
+        "Low Performance": {
+          "precision": 0.875,
+          "recall": 0.6363636363636364,
+          "f1-score": 0.7368421052631579,
+          "support": 11.0
+        },
+        "accuracy": 0.9230769230769231,
+        "macro avg": {
+          "precision": 0.8941622103386809,
+          "recall": 0.8258467023172905,
+          "f1-score": 0.8536271825432333,
+          "support": 130.0
+        },
+        "weighted avg": {
+          "precision": 0.9212412587412587,
+          "recall": 0.9230769230769231,
+          "f1-score": 0.9203739673773139,
+          "support": 130.0
+        }
+      },
+      "feature_importance": [
+        {
+          "feature": "Job Role",
+          "raw_feature": "job_role",
+          "importance": 31.26
+        },
+        {
+          "feature": "Employee Engagement",
+          "raw_feature": "employee_engagement",
+          "importance": 12.61
+        },
+        {
+          "feature": "Projects Completed",
+          "raw_feature": "projects_completed",
+          "importance": 11.55
+        },
+        {
+          "feature": "Training Hours",
+          "raw_feature": "training_hours",
+          "importance": 8.73
+        },
+        {
+          "feature": "Job Satisfaction",
+          "raw_feature": "job_satisfaction",
+          "importance": 5.96
+        },
+        {
+          "feature": "Absenteeism",
+          "raw_feature": "absenteeism",
+          "importance": 5.63
+        },
+        {
+          "feature": "Department",
+          "raw_feature": "department",
+          "importance": 4.02
+        },
+        {
+          "feature": "Attendance Rate",
+          "raw_feature": "attendance_rate",
+          "importance": 2.98
+        },
+        {
+          "feature": "Overtime Hours",
+          "raw_feature": "overtime_hours",
+          "importance": 2.81
+        },
+        {
+          "feature": "Work Life Balance",
+          "raw_feature": "work_life_balance",
+          "importance": 2.58
+        },
+        {
+          "feature": "Promotion Last 5 Years",
+          "raw_feature": "promotion_last_5_years",
+          "importance": 2.08
+        },
+        {
+          "feature": "Gender",
+          "raw_feature": "gender",
+          "importance": 1.91
+        },
+        {
+          "feature": "Previous Experience",
+          "raw_feature": "previous_experience",
+          "importance": 1.84
+        },
+        {
+          "feature": "Monthly Income",
+          "raw_feature": "monthly_income",
+          "importance": 1.46
+        },
+        {
+          "feature": "Years In Current Role",
+          "raw_feature": "years_in_current_role",
+          "importance": 1.28
+        },
+        {
+          "feature": "Environment Satisfaction",
+          "raw_feature": "environment_satisfaction",
+          "importance": 1.15
+        },
+        {
+          "feature": "Job Level",
+          "raw_feature": "job_level",
+          "importance": 1.1
+        },
+        {
+          "feature": "Years At Company",
+          "raw_feature": "years_at_company",
+          "importance": 0.93
+        },
+        {
+          "feature": "Age",
+          "raw_feature": "age",
+          "importance": 0.12
+        }
+      ],
+      "is_active": true
+    },
+    {
+      "model_name": "Decision Tree",
+      "accuracy": 0.7154,
+      "precision": 0.7018,
+      "recall": 0.7154,
+      "f1_score": 0.7063,
+      "confusion_matrix": [
+        [
+          73,
+          11,
+          1
+        ],
+        [
+          16,
+          13,
+          5
+        ],
+        [
+          1,
+          3,
+          7
+        ]
+      ],
+      "classification_report": {
+        "High Performance": {
+          "precision": 0.8111111111111111,
+          "recall": 0.8588235294117647,
+          "f1-score": 0.8342857142857143,
+          "support": 85.0
+        },
+        "Medium Performance": {
+          "precision": 0.48148148148148145,
+          "recall": 0.38235294117647056,
+          "f1-score": 0.4262295081967213,
+          "support": 34.0
+        },
+        "Low Performance": {
+          "precision": 0.5384615384615384,
+          "recall": 0.6363636363636364,
+          "f1-score": 0.5833333333333334,
+          "support": 11.0
+        },
+        "accuracy": 0.7153846153846154,
+        "macro avg": {
+          "precision": 0.6103513770180437,
+          "recall": 0.6258467023172906,
+          "f1-score": 0.614616185271923,
+          "support": 130.0
+        },
+        "weighted avg": {
+          "precision": 0.701829936445321,
+          "recall": 0.7153846153846154,
+          "f1-score": 0.7063288896895454,
+          "support": 130.0
+        }
+      },
+      "feature_importance": [
+        {
+          "feature": "Employee Engagement",
+          "raw_feature": "employee_engagement",
+          "importance": 26.83
+        },
+        {
+          "feature": "Projects Completed",
+          "raw_feature": "projects_completed",
+          "importance": 17.85
+        },
+        {
+          "feature": "Training Hours",
+          "raw_feature": "training_hours",
+          "importance": 12.16
+        },
+        {
+          "feature": "Attendance Rate",
+          "raw_feature": "attendance_rate",
+          "importance": 11.6
+        },
+        {
+          "feature": "Absenteeism",
+          "raw_feature": "absenteeism",
+          "importance": 6.17
+        },
+        {
+          "feature": "Job Role",
+          "raw_feature": "job_role",
+          "importance": 3.78
+        },
+        {
+          "feature": "Monthly Income",
+          "raw_feature": "monthly_income",
+          "importance": 3.56
+        },
+        {
+          "feature": "Age",
+          "raw_feature": "age",
+          "importance": 3.45
+        },
+        {
+          "feature": "Years At Company",
+          "raw_feature": "years_at_company",
+          "importance": 3.39
+        },
+        {
+          "feature": "Overtime Hours",
+          "raw_feature": "overtime_hours",
+          "importance": 3.1
+        },
+        {
+          "feature": "Gender",
+          "raw_feature": "gender",
+          "importance": 2.39
+        },
+        {
+          "feature": "Work Life Balance",
+          "raw_feature": "work_life_balance",
+          "importance": 2.08
+        },
+        {
+          "feature": "Job Satisfaction",
+          "raw_feature": "job_satisfaction",
+          "importance": 1.74
+        },
+        {
+          "feature": "Previous Experience",
+          "raw_feature": "previous_experience",
+          "importance": 1.17
+        },
+        {
+          "feature": "Environment Satisfaction",
+          "raw_feature": "environment_satisfaction",
+          "importance": 0.73
+        },
+        {
+          "feature": "Years In Current Role",
+          "raw_feature": "years_in_current_role",
+          "importance": 0.0
+        },
+        {
+          "feature": "Job Level",
+          "raw_feature": "job_level",
+          "importance": 0.0
+        },
+        {
+          "feature": "Promotion Last 5 Years",
+          "raw_feature": "promotion_last_5_years",
+          "importance": 0.0
+        },
+        {
+          "feature": "Department",
+          "raw_feature": "department",
+          "importance": 0.0
+        }
+      ],
+      "is_active": false
+    }
+  ],
+  "feature_importances": [
+    {
+      "feature": "Job Role",
+      "raw_feature": "job_role",
+      "importance": 31.26
+    },
+    {
+      "feature": "Employee Engagement",
+      "raw_feature": "employee_engagement",
+      "importance": 12.61
+    },
+    {
+      "feature": "Projects Completed",
+      "raw_feature": "projects_completed",
+      "importance": 11.55
+    },
+    {
+      "feature": "Training Hours",
+      "raw_feature": "training_hours",
+      "importance": 8.73
+    },
+    {
+      "feature": "Job Satisfaction",
+      "raw_feature": "job_satisfaction",
+      "importance": 5.96
+    },
+    {
+      "feature": "Absenteeism",
+      "raw_feature": "absenteeism",
+      "importance": 5.63
+    },
+    {
+      "feature": "Department",
+      "raw_feature": "department",
+      "importance": 4.02
+    },
+    {
+      "feature": "Attendance Rate",
+      "raw_feature": "attendance_rate",
+      "importance": 2.98
+    },
+    {
+      "feature": "Overtime Hours",
+      "raw_feature": "overtime_hours",
+      "importance": 2.81
+    },
+    {
+      "feature": "Work Life Balance",
+      "raw_feature": "work_life_balance",
+      "importance": 2.58
+    },
+    {
+      "feature": "Promotion Last 5 Years",
+      "raw_feature": "promotion_last_5_years",
+      "importance": 2.08
+    },
+    {
+      "feature": "Gender",
+      "raw_feature": "gender",
+      "importance": 1.91
+    },
+    {
+      "feature": "Previous Experience",
+      "raw_feature": "previous_experience",
+      "importance": 1.84
+    },
+    {
+      "feature": "Monthly Income",
+      "raw_feature": "monthly_income",
+      "importance": 1.46
+    },
+    {
+      "feature": "Years In Current Role",
+      "raw_feature": "years_in_current_role",
+      "importance": 1.28
+    },
+    {
+      "feature": "Environment Satisfaction",
+      "raw_feature": "environment_satisfaction",
+      "importance": 1.15
+    },
+    {
+      "feature": "Job Level",
+      "raw_feature": "job_level",
+      "importance": 1.1
+    },
+    {
+      "feature": "Years At Company",
+      "raw_feature": "years_at_company",
+      "importance": 0.93
+    },
+    {
+      "feature": "Age",
+      "raw_feature": "age",
+      "importance": 0.12
+    }
+  ],
+  "trained_at": "2026-09-28T20:01:34.018694"
+}

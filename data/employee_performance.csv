@@ -1,0 +1,651 @@
+employee_id,name,age,gender,department,job_role,years_at_company,years_in_current_role,monthly_income,job_level,job_satisfaction,environment_satisfaction,work_life_balance,training_hours,projects_completed,attendance_rate,overtime_hours,previous_experience,promotion_last_5_years,employee_engagement,absenteeism,performance_group
+EMP-1001,Ethan Davis,36,Male,Engineering,DevOps Engineer,12,2,12885,4,5,1,4,12,2,83.7,14,2,0,1.7,6,Low Performance
+EMP-1002,Abigail Adams,50,Male,Operations,Logistics Coordinator,1,1,10729,3,4,3,3,27,8,99.0,21,8,0,4.7,0,High Performance
+EMP-1003,Emily Hill,51,Non-Binary,Finance,Financial Analyst,13,2,14830,5,3,5,3,81,8,94.5,2,3,0,7.9,0,High Performance
+EMP-1004,Hayden Miller,45,Female,Marketing,SEO Manager,12,6,14129,5,3,1,2,76,9,84.9,24,5,0,9.2,9,High Performance
+EMP-1005,Anthony Anderson,36,Male,Operations,Operations Manager,1,1,12321,4,3,1,2,80,12,85.8,31,13,0,9.1,7,High Performance
+EMP-1006,Avery Taylor,57,Non-Binary,HR,Talent Acquisition,14,7,14441,5,2,2,4,19,3,97.3,9,8,0,8.1,2,High Performance
+EMP-1007,Mia Jones,51,Non-Binary,Marketing,Marketing Lead,18,1,15093,5,1,5,3,106,22,88.1,18,8,0,5.3,8,High Performance
+EMP-1008,Andrew Taylor,28,Non-Binary,Sales,Account Manager,6,3,13223,4,5,5,2,27,13,95.6,34,6,0,9.2,0,High Performance
+EMP-1009,Mia Lee,45,Male,Marketing,Marketing Specialist,8,1,14193,5,5,1,1,101,17,96.5,34,9,0,2.6,2,High Performance
+EMP-1010,Anthony Hernandez,56,Male,Finance,Auditor,10,7,15075,5,3,4,4,23,9,86.0,21,6,1,6.1,8,Medium Performance
+EMP-1011,Hayden Smith,26,Male,Engineering,Software Engineer,3,1,5952,1,2,3,4,35,19,84.4,36,0,0,3.5,7,Medium Performance
+EMP-1012,Amanda Gonzalez,49,Non-Binary,Engineering,Software Engineer,14,7,14656,5,1,1,1,59,12,96.3,6,11,1,3.1,2,Medium Performance
+EMP-1013,Casey Ramirez,37,Female,HR,HR Manager,15,2,13803,5,5,1,1,104,9,85.0,31,2,0,8.7,4,High Performance
+EMP-1014,Devon Harris,51,Female,Engineering,Data Engineer,14,8,14017,5,2,3,2,15,20,95.1,3,9,0,2.0,4,Medium Performance
+EMP-1015,Sophia Allen,54,Male,Sales,Account Manager,6,1,10518,3,1,2,4,23,20,86.4,38,2,1,2.2,8,Low Performance
+EMP-1016,Joseph Torres,35,Female,Sales,Sales Manager,12,6,14188,5,3,4,2,93,22,87.3,20,10,0,9.3,3,High Performance
+EMP-1017,John Flores,56,Male,Sales,Sales Executive,17,5,13971,5,3,1,2,55,11,84.8,34,6,0,6.6,9,Medium Performance
+EMP-1018,Matthew Smith,28,Non-Binary,Operations,Operations Manager,3,1,8922,2,1,5,2,42,11,92.8,45,1,0,7.2,3,Medium Performance
+EMP-1019,Olivia Young,49,Male,Finance,Financial Analyst,2,1,9983,3,2,3,2,102,16,91.8,27,8,0,2.4,6,High Performance
+EMP-1020,Avery Wright,57,Non-Binary,Engineering,DevOps Engineer,14,3,13785,5,3,3,1,53,8,94.1,42,4,1,8.0,3,High Performance
+EMP-1021,Andrew Mitchell,33,Male,HR,Talent Acquisition,1,1,8608,2,3,4,2,42,7,96.0,6,6,0,1.8,3,Medium Performance
+EMP-1022,Hayden Gonzalez,36,Female,Marketing,SEO Manager,1,1,7916,2,3,3,1,106,10,88.3,32,3,0,9.6,7,High Performance
+EMP-1023,Michael Johnson,38,Male,Engineering,DevOps Engineer,4,4,7807,2,3,4,1,57,20,85.4,2,1,0,1.5,8,Medium Performance
+EMP-1024,Amelia Campbell,49,Female,Operations,Supply Chain Analyst,11,6,12858,4,1,3,3,93,15,87.8,44,2,0,2.6,6,Medium Performance
+EMP-1025,Joshua Harris,58,Non-Binary,Operations,Supply Chain Analyst,13,1,14322,5,3,2,4,108,20,92.8,20,9,0,5.2,2,High Performance
+EMP-1026,Olivia Walker,27,Non-Binary,Operations,Supply Chain Analyst,5,5,7786,2,1,2,3,36,8,84.6,2,2,1,5.4,4,Medium Performance
+EMP-1027,John Clark,46,Non-Binary,Operations,Supply Chain Analyst,13,4,14002,5,1,1,4,36,7,96.3,44,15,0,1.9,0,Low Performance
+EMP-1028,Riley Robinson,55,Non-Binary,HR,People Ops Specialist,15,7,15401,5,5,4,2,103,17,90.0,15,10,0,3.8,6,High Performance
+EMP-1029,Daniel Green,26,Female,HR,HR Manager,2,2,7787,2,3,5,1,25,6,86.1,44,2,0,3.3,7,Low Performance
+EMP-1030,Amanda Perez,25,Female,Sales,BDR,4,4,8953,2,5,1,4,69,2,98.8,19,1,0,8.6,1,High Performance
+EMP-1031,Ava Mitchell,36,Female,Operations,Supply Chain Analyst,7,4,9359,3,4,3,4,100,7,97.0,8,4,0,5.9,2,High Performance
+EMP-1032,Joseph Torres,49,Male,Operations,Operations Lead,15,3,13802,5,3,4,3,35,16,87.8,24,4,0,9.4,6,High Performance
+EMP-1033,Finley Garcia,56,Non-Binary,Marketing,Marketing Specialist,12,4,12831,4,1,1,1,39,8,96.9,39,1,1,2.5,4,Low Performance
+EMP-1034,Riley Torres,38,Non-Binary,HR,People Ops Specialist,6,5,14943,5,1,2,3,21,20,82.5,19,11,0,9.0,8,High Performance
+EMP-1035,James Rivera,37,Non-Binary,HR,HR Specialist,10,2,13130,4,5,1,3,76,15,93.8,4,3,0,4.3,3,High Performance
+EMP-1036,Daniel Miller,51,Non-Binary,Marketing,SEO Manager,14,3,15202,5,5,3,4,67,15,96.7,37,4,0,8.6,0,High Performance
+EMP-1037,Harper Lewis,46,Non-Binary,HR,People Ops Specialist,1,1,11042,3,3,2,4,35,13,96.2,21,10,0,6.4,2,High Performance
+EMP-1038,Anthony Smith,37,Male,Sales,Account Manager,16,4,15114,5,4,4,4,109,2,83.7,14,13,0,3.5,10,Low Performance
+EMP-1039,Joseph White,57,Female,Marketing,SEO Manager,12,8,14254,5,3,3,2,23,8,87.6,34,10,0,7.2,4,Medium Performance
+EMP-1040,Rowan Mitchell,55,Non-Binary,Marketing,SEO Manager,4,2,12106,4,2,3,2,46,2,94.6,8,9,0,9.6,4,High Performance
+EMP-1041,Quinn Hall,22,Male,HR,People Ops Specialist,1,1,5802,1,3,2,1,40,17,84.0,4,0,0,2.1,9,Medium Performance
+EMP-1042,Amelia Brown,41,Non-Binary,HR,Talent Acquisition,8,2,10442,3,4,5,2,107,18,88.8,28,2,0,6.4,5,High Performance
+EMP-1043,Skyler Torres,28,Non-Binary,Sales,Sales Executive,2,1,9841,3,1,2,2,30,19,83.3,0,6,0,7.2,8,High Performance
+EMP-1044,Quinn Williams,40,Non-Binary,HR,HR Manager,3,3,14178,5,3,5,2,62,5,91.7,41,14,1,3.7,2,Medium Performance
+EMP-1045,Sam Brown,58,Non-Binary,HR,HR Manager,15,2,14659,5,3,4,3,72,19,90.8,5,9,0,8.9,7,High Performance
+EMP-1046,Sarah Hill,36,Male,Finance,Financial Analyst,14,1,15266,5,3,5,1,105,7,90.4,41,10,0,3.8,6,Medium Performance
+EMP-1047,Robert Green,44,Female,Marketing,Marketing Specialist,11,6,15072,5,1,2,3,60,17,87.1,25,13,0,6.1,6,High Performance
+EMP-1048,Chris Lee,47,Male,Finance,Finance Manager,18,8,14546,5,1,2,3,87,17,93.1,3,0,1,6.1,3,High Performance
+EMP-1049,Jennifer Hall,37,Male,Marketing,Marketing Specialist,10,1,12631,4,4,1,2,115,5,90.2,7,5,0,2.8,7,Medium Performance
+EMP-1050,Quinn Allen,52,Female,Operations,Operations Manager,8,8,14828,5,2,4,2,84,18,95.3,8,15,0,3.8,3,High Performance
+EMP-1051,Michael Allen,41,Female,Finance,Financial Analyst,5,4,14803,5,4,3,3,78,19,88.7,20,15,0,9.6,4,High Performance
+EMP-1052,Isabella Harris,42,Male,HR,People Ops Specialist,13,7,15059,5,2,4,1,24,18,99.2,21,15,0,8.8,1,High Performance
+EMP-1053,Pat King,31,Non-Binary,Marketing,Marketing Specialist,3,1,10261,3,3,3,4,91,4,97.2,43,6,0,4.7,1,High Performance
+EMP-1054,Ethan Rivera,26,Non-Binary,Marketing,Marketing Specialist,3,1,8629,2,1,4,1,105,22,94.5,6,1,0,7.3,0,High Performance
+EMP-1055,Taylor Lee,45,Female,Engineering,DevOps Engineer,5,2,14787,5,4,5,2,29,7,83.4,24,13,0,3.5,9,Low Performance
+EMP-1056,Avery Anderson,38,Female,Marketing,SEO Manager,15,5,12887,4,5,2,1,64,13,99.6,19,0,0,5.0,0,High Performance
+EMP-1057,John Martin,28,Female,HR,People Ops Specialist,4,3,8277,2,3,3,1,114,14,86.9,36,1,0,8.0,3,High Performance
+EMP-1058,Mia Mitchell,44,Male,Marketing,SEO Manager,7,5,12013,4,2,1,1,47,16,82.6,23,7,0,2.2,7,Low Performance
+EMP-1059,Sarah Mitchell,30,Male,Marketing,Content Strategist,6,5,12527,4,3,2,3,113,17,99.2,18,8,0,4.3,0,High Performance
+EMP-1060,John Jones,47,Non-Binary,HR,Talent Acquisition,3,2,11528,4,3,5,1,66,13,94.0,43,11,0,4.7,5,High Performance
+EMP-1061,David Miller,23,Female,Operations,Supply Chain Analyst,1,1,6201,1,4,3,4,22,6,82.8,2,1,0,5.6,5,Medium Performance
+EMP-1062,Emerson Wright,45,Female,HR,People Ops Specialist,5,4,15041,5,1,4,4,43,3,94.3,13,13,0,9.4,2,High Performance
+EMP-1063,Pat Baker,47,Male,Finance,Finance Manager,7,1,13443,4,4,1,2,90,22,92.6,1,8,1,4.3,2,High Performance
+EMP-1064,Isabella Wilson,35,Male,Engineering,QA Engineer,14,4,14372,5,2,5,1,43,6,99.6,34,13,0,2.9,3,Low Performance
+EMP-1065,Jordan Rodriguez,42,Male,Engineering,DevOps Engineer,6,3,7207,2,2,4,1,103,4,90.5,23,0,0,2.4,6,Medium Performance
+EMP-1066,Hayden Flores,51,Female,Engineering,QA Engineer,2,2,6635,1,4,4,1,70,16,83.3,5,0,0,2.7,6,High Performance
+EMP-1067,Harper Flores,55,Female,Operations,Operations Manager,15,7,13903,5,1,5,2,63,16,97.8,26,9,0,5.3,2,High Performance
+EMP-1068,Andrew Miller,38,Female,Finance,Auditor,5,4,13837,5,1,1,1,63,5,95.3,23,11,0,6.1,4,Medium Performance
+EMP-1069,Anthony Scott,44,Female,Finance,Financial Analyst,2,2,12729,4,3,3,1,81,18,85.8,42,13,0,8.5,6,High Performance
+EMP-1070,Anthony White,36,Non-Binary,Engineering,DevOps Engineer,7,7,14848,5,5,5,1,85,10,82.5,17,12,0,4.1,7,Medium Performance
+EMP-1071,Emily Smith,47,Non-Binary,HR,Talent Acquisition,5,1,7287,2,5,2,4,61,16,88.1,23,2,0,4.2,7,High Performance
+EMP-1072,Mia Garcia,25,Male,Engineering,Senior Developer,3,2,6255,1,4,4,4,61,10,85.8,32,0,1,5.1,6,High Performance
+EMP-1073,Amelia Baker,41,Non-Binary,Sales,BDR,8,7,10527,3,1,1,2,46,8,95.7,16,1,0,2.5,3,Medium Performance
+EMP-1074,Ella Ramirez,56,Female,HR,Talent Acquisition,17,6,13847,5,4,1,4,10,16,98.4,20,7,0,6.3,4,High Performance
+EMP-1075,Ethan Clark,23,Female,Finance,Financial Analyst,1,1,6603,1,3,1,4,116,5,86.3,37,1,0,2.2,5,Low Performance
+EMP-1076,Ella Perez,26,Male,HR,HR Manager,1,1,8955,2,3,3,2,38,5,84.6,12,4,0,2.8,9,Low Performance
+EMP-1077,Sam Lopez,58,Female,Operations,Logistics Coordinator,11,6,14009,5,4,1,4,64,22,87.4,17,14,0,4.4,3,High Performance
+EMP-1078,Skyler Robinson,45,Male,Marketing,Marketing Specialist,3,3,13269,4,1,5,4,67,20,91.9,2,9,0,8.2,6,High Performance
+EMP-1079,Reese Lee,31,Non-Binary,Sales,BDR,8,2,10960,3,3,1,2,13,9,94.6,28,0,0,6.6,2,High Performance
+EMP-1080,David Jackson,25,Female,Marketing,Marketing Lead,1,1,5093,1,5,4,3,40,21,97.5,21,2,0,7.0,1,High Performance
+EMP-1081,Skyler Adams,27,Male,Operations,Logistics Coordinator,5,4,8417,2,3,2,1,90,15,91.1,1,2,0,3.0,3,High Performance
+EMP-1082,Michael Roberts,30,Male,Marketing,Content Strategist,2,2,8829,2,1,5,1,92,12,97.6,39,2,0,4.6,0,High Performance
+EMP-1083,Dakota Hall,50,Non-Binary,Sales,Account Manager,14,6,12885,4,2,4,3,104,16,86.2,15,1,0,8.2,7,High Performance
+EMP-1084,Reese White,40,Female,Operations,Logistics Coordinator,17,7,15678,5,2,2,2,119,10,82.9,30,12,0,6.1,5,High Performance
+EMP-1085,Abigail King,32,Male,Engineering,DevOps Engineer,8,3,13201,4,4,1,2,112,16,97.7,1,4,0,4.8,1,High Performance
+EMP-1086,Emerson Harris,23,Male,Engineering,DevOps Engineer,1,1,6520,1,2,2,1,44,17,94.4,8,1,0,5.4,4,High Performance
+EMP-1087,Alex Garcia,31,Male,Engineering,DevOps Engineer,10,7,13927,5,3,2,3,23,3,86.2,40,8,0,5.3,4,Medium Performance
+EMP-1088,Daniel Hill,54,Non-Binary,Sales,Sales Executive,5,3,12379,4,1,5,3,38,20,89.4,42,7,0,5.8,4,High Performance
+EMP-1089,Sam King,52,Female,Sales,Sales Executive,13,6,12019,4,1,3,1,52,9,95.0,40,1,1,6.3,2,Medium Performance
+EMP-1090,Casey Williams,33,Non-Binary,Finance,Finance Manager,8,8,14993,5,2,2,1,99,16,82.7,12,10,1,3.2,5,High Performance
+EMP-1091,Sarah Martin,52,Non-Binary,Sales,BDR,2,1,9885,3,3,1,3,42,5,96.2,27,8,0,7.7,3,High Performance
+EMP-1092,Michael Lopez,55,Female,Marketing,Marketing Lead,3,3,10169,3,1,4,2,77,11,87.7,5,8,0,4.0,6,Medium Performance
+EMP-1093,Mia Rivera,50,Non-Binary,Marketing,Content Strategist,15,1,15188,5,3,5,4,43,22,99.4,3,11,1,6.8,0,High Performance
+EMP-1094,Olivia Mitchell,31,Male,Operations,Supply Chain Analyst,8,1,13958,5,1,2,3,54,14,98.9,2,9,0,7.1,0,High Performance
+EMP-1095,David Lewis,55,Male,Engineering,QA Engineer,13,6,15030,5,3,2,1,11,7,90.9,24,11,0,2.5,4,Low Performance
+EMP-1096,Abigail Lewis,53,Non-Binary,HR,HR Manager,4,2,11046,3,1,4,2,99,16,99.8,43,6,0,9.7,3,High Performance
+EMP-1097,Emily Rivera,40,Non-Binary,Engineering,QA Engineer,6,6,12953,4,2,3,2,23,8,96.1,15,9,0,1.7,4,Low Performance
+EMP-1098,Isabella White,27,Non-Binary,Marketing,Content Strategist,3,2,6368,1,4,5,4,106,15,96.7,4,0,1,4.1,0,High Performance
+EMP-1099,Jennifer Robinson,57,Male,Operations,Operations Manager,5,4,10329,3,1,1,2,46,7,84.9,45,5,1,9.4,8,Medium Performance
+EMP-1100,Quinn Garcia,57,Non-Binary,Finance,Accountant,5,3,12758,4,5,1,2,83,20,84.7,42,8,0,9.0,6,High Performance
+EMP-1101,Isabella Williams,58,Male,Engineering,Software Engineer,7,7,12671,4,4,5,1,71,22,91.7,41,8,0,5.5,6,High Performance
+EMP-1102,James Martin,25,Non-Binary,Marketing,Marketing Specialist,4,4,8091,2,4,2,3,85,6,87.6,45,1,0,9.7,5,High Performance
+EMP-1103,James Rodriguez,37,Female,Finance,Financial Analyst,4,3,14620,5,2,2,1,14,11,98.8,39,14,0,9.5,0,High Performance
+EMP-1104,Sarah Torres,32,Male,Operations,Operations Manager,9,8,14721,5,3,4,1,19,14,91.0,15,7,1,4.4,2,High Performance
+EMP-1105,Quinn Young,56,Female,Sales,BDR,4,4,7374,2,3,3,4,54,3,89.1,36,0,0,4.5,4,Medium Performance
+EMP-1106,Sam Harris,39,Non-Binary,Sales,BDR,5,1,10106,3,3,3,3,104,6,85.5,32,3,0,1.8,4,Medium Performance
+EMP-1107,Casey Rivera,51,Non-Binary,Finance,Auditor,17,3,14371,5,5,3,2,58,21,95.2,19,4,0,5.7,4,High Performance
+EMP-1108,Ava Young,23,Female,Operations,Operations Manager,2,1,5753,1,5,3,1,84,17,86.7,41,1,0,7.9,7,High Performance
+EMP-1109,Hayden Campbell,32,Female,Engineering,QA Engineer,11,7,14002,5,2,1,1,32,2,89.9,26,8,1,7.2,5,Medium Performance
+EMP-1110,Olivia Roberts,25,Non-Binary,Sales,BDR,2,2,6256,1,4,5,4,48,7,90.2,34,1,0,4.4,7,Medium Performance
+EMP-1111,Amelia Adams,52,Non-Binary,Operations,Operations Manager,8,5,12642,4,3,2,3,106,11,94.5,44,6,0,4.1,2,High Performance
+EMP-1112,Anthony Campbell,58,Male,Finance,Finance Manager,13,6,15655,5,2,3,1,44,4,88.2,28,12,0,7.7,4,Medium Performance
+EMP-1113,Reese Wright,28,Male,Finance,Finance Manager,6,5,9790,3,2,1,2,89,9,82.9,26,4,0,5.4,10,Medium Performance
+EMP-1114,Hanna Rodriguez,48,Male,Engineering,QA Engineer,16,4,15248,5,3,3,3,90,3,98.2,5,15,0,3.4,4,High Performance
+EMP-1115,Andrew Williams,24,Male,HR,People Ops Specialist,2,1,6818,1,3,1,1,46,20,92.7,21,1,0,9.7,5,High Performance
+EMP-1116,Matthew Young,34,Female,HR,People Ops Specialist,2,2,11832,4,4,3,2,9,12,96.1,36,12,0,3.1,4,Medium Performance
+EMP-1117,Ethan Sanchez,47,Male,Marketing,SEO Manager,6,2,10277,3,3,2,1,41,14,86.2,17,3,0,4.0,9,Medium Performance
+EMP-1118,Isabella Smith,37,Non-Binary,Finance,Finance Manager,4,4,7728,2,2,4,3,96,5,93.4,18,1,0,3.3,2,Medium Performance
+EMP-1119,Sophia Martinez,57,Female,Marketing,SEO Manager,18,4,15260,5,2,5,1,75,16,91.4,23,15,1,6.2,1,High Performance
+EMP-1120,Anthony Allen,42,Male,HR,Talent Acquisition,4,2,15168,5,5,4,1,73,16,96.4,29,14,1,4.9,3,High Performance
+EMP-1121,Morgan Scott,23,Non-Binary,Marketing,SEO Manager,2,1,6427,1,2,5,1,13,15,88.1,4,1,0,2.0,3,Medium Performance
+EMP-1122,Sophia Williams,30,Male,Finance,Auditor,6,4,12418,4,4,4,1,95,19,84.4,22,6,1,9.7,7,High Performance
+EMP-1123,Matthew Rodriguez,23,Male,Operations,Supply Chain Analyst,2,2,5989,1,4,2,2,66,13,84.8,12,1,0,7.5,4,High Performance
+EMP-1124,Taylor Nelson,35,Male,Marketing,Marketing Specialist,2,1,5814,1,5,1,2,102,3,89.2,14,1,0,7.8,2,High Performance
+EMP-1125,Casey Allen,58,Non-Binary,Finance,Accountant,11,4,14318,5,2,5,2,60,11,86.9,35,10,0,8.8,4,High Performance
+EMP-1126,Ethan Baker,44,Male,Marketing,Marketing Lead,17,6,15126,5,4,4,2,46,14,85.3,34,12,0,8.5,6,High Performance
+EMP-1127,Abigail Martinez,48,Non-Binary,Marketing,Marketing Specialist,18,3,14495,5,2,3,2,50,22,83.4,28,13,0,2.3,10,Medium Performance
+EMP-1128,Reese Brown,24,Non-Binary,Finance,Auditor,1,1,5881,1,2,3,3,9,8,98.7,7,0,0,7.8,0,High Performance
+EMP-1129,Christopher Hill,37,Female,Operations,Supply Chain Analyst,10,7,14654,5,5,3,3,41,13,91.1,31,10,0,8.2,7,High Performance
+EMP-1130,Sophia Carter,42,Female,Finance,Accountant,2,1,13018,4,2,1,3,78,20,92.3,26,13,0,3.1,2,High Performance
+EMP-1131,Jessica Torres,43,Non-Binary,HR,People Ops Specialist,16,8,14643,5,2,3,2,25,19,90.7,34,8,0,9.4,6,High Performance
+EMP-1132,Taylor Jones,48,Male,Operations,Operations Lead,8,2,12948,4,2,1,2,72,16,88.6,39,4,0,9.3,6,High Performance
+EMP-1133,Joshua Young,57,Non-Binary,Engineering,Software Engineer,1,1,12584,4,3,5,3,10,18,96.5,43,13,0,9.3,0,High Performance
+EMP-1134,Pat Miller,34,Male,Sales,Account Manager,9,5,15369,5,3,3,4,18,13,99.1,29,9,0,9.7,0,High Performance
+EMP-1135,Skyler Baker,47,Male,Engineering,Software Engineer,13,8,13814,5,1,2,1,71,15,93.5,21,12,0,8.6,1,High Performance
+EMP-1136,Matthew Williams,58,Non-Binary,HR,Talent Acquisition,9,1,15592,5,1,3,1,30,12,82.3,13,15,0,7.7,10,Medium Performance
+EMP-1137,James Jones,37,Non-Binary,Finance,Accountant,11,7,15247,5,2,1,3,14,5,89.8,4,12,0,7.9,6,Medium Performance
+EMP-1138,James Roberts,39,Non-Binary,Finance,Financial Analyst,16,4,14428,5,5,4,4,31,20,93.8,5,14,0,4.0,1,High Performance
+EMP-1139,Abigail Jones,46,Male,Engineering,DevOps Engineer,13,6,14438,5,1,1,1,47,16,88.4,17,4,1,2.2,6,Medium Performance
+EMP-1140,Jennifer Scott,23,Male,Sales,BDR,2,1,6122,1,5,3,4,9,11,89.4,5,0,0,6.1,3,High Performance
+EMP-1141,Isabella King,30,Male,HR,People Ops Specialist,5,3,10309,3,2,1,2,63,10,89.5,30,4,0,4.5,3,Medium Performance
+EMP-1142,Andrew Green,28,Female,Marketing,Content Strategist,3,1,9043,2,4,3,4,110,12,89.8,27,1,0,8.6,6,High Performance
+EMP-1143,Casey Martin,42,Female,Finance,Accountant,13,6,14296,5,4,5,2,49,14,87.0,25,5,0,9.2,4,High Performance
+EMP-1144,Joseph Wright,51,Non-Binary,HR,HR Specialist,15,5,15402,5,1,4,4,25,22,87.4,16,6,0,7.4,6,High Performance
+EMP-1145,Sam Lewis,47,Non-Binary,Sales,BDR,18,1,15319,5,3,5,1,21,9,93.7,22,13,1,6.6,5,High Performance
+EMP-1146,Charlotte Baker,49,Female,Operations,Logistics Coordinator,1,1,7629,2,2,5,2,65,13,89.0,43,3,0,5.7,4,High Performance
+EMP-1147,Jordan Walker,27,Female,Engineering,DevOps Engineer,6,2,7813,2,3,3,4,108,8,91.3,22,0,0,5.1,6,High Performance
+EMP-1148,Jennifer Lee,29,Male,Engineering,DevOps Engineer,6,6,7323,2,2,2,2,78,7,87.9,27,0,0,3.4,6,Low Performance
+EMP-1149,Ethan Lopez,23,Female,HR,People Ops Specialist,2,2,5696,1,1,2,2,43,4,92.3,34,0,0,4.2,4,Low Performance
+EMP-1150,Riley Taylor,42,Non-Binary,Operations,Logistics Coordinator,13,2,14412,5,3,4,2,112,11,98.4,37,12,1,2.6,0,High Performance
+EMP-1151,Emerson Martin,31,Female,Engineering,Senior Developer,7,4,12721,4,2,5,4,62,7,90.7,34,8,0,6.9,3,High Performance
+EMP-1152,Anthony Hernandez,33,Male,Marketing,SEO Manager,8,1,13272,4,3,1,4,25,8,96.5,35,5,0,5.6,4,Medium Performance
+EMP-1153,Daniel Clark,32,Female,Operations,Logistics Coordinator,10,1,10929,3,2,3,1,43,9,91.6,10,1,0,6.2,4,Medium Performance
+EMP-1154,Anthony Allen,39,Male,Engineering,QA Engineer,18,1,15256,5,4,5,2,62,5,95.1,41,11,0,4.0,0,Medium Performance
+EMP-1155,Jennifer Taylor,29,Female,Finance,Financial Analyst,4,3,8863,2,5,4,2,86,6,96.0,13,3,0,6.2,4,High Performance
+EMP-1156,Harper Hill,40,Female,Sales,Account Manager,9,2,13977,5,4,1,3,118,22,84.3,8,9,1,7.4,5,High Performance
+EMP-1157,William Baker,58,Male,Marketing,Marketing Lead,14,7,14625,5,1,1,4,73,10,94.4,23,8,0,5.6,4,High Performance
+EMP-1158,Alex Roberts,51,Non-Binary,Operations,Operations Lead,3,3,12314,4,2,4,2,71,10,87.7,18,11,0,6.3,7,High Performance
+EMP-1159,Daniel Perez,28,Male,Operations,Operations Lead,7,7,12441,4,1,1,2,64,16,82.0,27,5,1,7.2,6,High Performance
+EMP-1160,Charlotte Martin,45,Male,HR,HR Manager,3,2,10660,3,2,1,4,88,11,94.9,14,8,0,2.3,0,High Performance
+EMP-1161,Alex Wilson,36,Male,Marketing,Marketing Specialist,11,8,13719,5,1,3,1,118,15,94.4,30,8,1,4.7,5,High Performance
+EMP-1162,Pat Miller,30,Female,Finance,Finance Manager,3,3,10686,3,2,1,1,86,22,84.9,22,6,0,6.7,5,High Performance
+EMP-1163,Amanda Flores,27,Male,Operations,Logistics Coordinator,2,1,6107,1,4,3,4,48,6,86.4,41,0,0,6.1,7,Medium Performance
+EMP-1164,Andrew Hill,41,Non-Binary,Finance,Financial Analyst,17,4,15231,5,4,3,1,108,9,90.8,7,6,1,6.8,2,High Performance
+EMP-1165,Matthew Smith,46,Male,Finance,Finance Manager,12,3,15262,5,4,1,1,83,4,82.2,13,13,1,2.0,8,Medium Performance
+EMP-1166,Olivia Jackson,47,Female,Operations,Logistics Coordinator,18,3,14268,5,1,3,1,73,8,99.3,9,2,0,4.7,3,Medium Performance
+EMP-1167,William Adams,49,Female,Operations,Operations Lead,2,1,9476,3,4,1,4,86,21,83.0,42,7,0,7.6,5,High Performance
+EMP-1168,Alex Rivera,53,Male,HR,HR Specialist,17,5,14041,5,3,2,3,101,5,95.7,1,11,0,5.1,4,High Performance
+EMP-1169,Sam Taylor,51,Female,Operations,Operations Lead,2,2,13259,4,5,2,3,28,10,95.8,36,11,0,2.5,5,Medium Performance
+EMP-1170,Olivia Smith,24,Male,Engineering,Software Engineer,2,2,6784,1,2,2,1,78,22,89.5,20,1,0,9.1,4,High Performance
+EMP-1171,Harper Jones,54,Male,Sales,Sales Manager,6,2,8747,2,5,1,4,16,16,97.4,19,1,0,6.1,0,High Performance
+EMP-1172,David Gonzalez,37,Non-Binary,Finance,Finance Manager,12,8,15282,5,2,5,2,27,2,98.6,1,14,1,4.4,4,Low Performance
+EMP-1173,Alex Perez,41,Non-Binary,Engineering,Data Engineer,7,5,9787,3,4,4,1,26,10,83.7,14,3,0,5.8,10,Medium Performance
+EMP-1174,David Robinson,28,Non-Binary,Operations,Operations Lead,2,2,7253,2,5,5,1,63,6,86.2,16,4,0,9.2,7,High Performance
+EMP-1175,Christopher Mitchell,39,Female,Finance,Finance Manager,3,1,9578,3,5,1,2,21,7,90.0,20,7,0,5.9,3,High Performance
+EMP-1176,Jennifer Martin,27,Male,Marketing,SEO Manager,6,3,8792,2,5,1,2,114,12,84.6,45,1,1,4.5,8,High Performance
+EMP-1177,Morgan Baker,23,Male,Finance,Finance Manager,2,1,5093,1,4,1,2,23,2,83.1,14,1,0,8.3,7,Medium Performance
+EMP-1178,Amelia Green,38,Non-Binary,Operations,Operations Lead,1,1,5304,1,4,2,1,116,12,84.2,29,2,0,9.2,7,High Performance
+EMP-1179,Andrew Sanchez,49,Female,Marketing,Marketing Specialist,12,4,15560,5,2,3,3,65,6,82.6,39,5,0,6.9,8,Medium Performance
+EMP-1180,Amanda Scott,39,Male,Marketing,Marketing Specialist,5,4,14108,5,5,2,1,56,13,90.5,31,12,0,6.2,4,High Performance
+EMP-1181,Jessica Moore,36,Female,HR,HR Specialist,15,5,11619,4,4,5,3,106,20,99.8,10,0,1,7.0,0,High Performance
+EMP-1182,Ava Mitchell,46,Non-Binary,Engineering,Senior Developer,6,2,14184,5,5,3,3,83,2,94.5,22,11,0,6.2,4,High Performance
+EMP-1183,Reese Young,53,Male,Sales,Sales Manager,3,1,7576,2,5,2,1,75,17,82.0,39,1,1,2.6,10,Medium Performance
+EMP-1184,Dakota Lee,31,Male,Engineering,Software Engineer,9,6,11267,3,1,3,4,83,5,88.0,20,1,1,2.8,6,Medium Performance
+EMP-1185,Ethan Young,57,Male,Operations,Operations Manager,8,3,14474,5,3,3,2,30,2,98.9,36,11,0,9.8,2,High Performance
+EMP-1186,Taylor Lopez,36,Non-Binary,Sales,Sales Manager,10,2,15618,5,4,2,3,103,4,86.2,20,10,1,8.8,4,High Performance
+EMP-1187,Abigail Nelson,22,Female,Operations,Operations Manager,1,1,6319,1,1,3,3,108,5,94.8,3,0,0,7.6,1,High Performance
+EMP-1188,Amanda Young,46,Non-Binary,Marketing,SEO Manager,16,4,14033,5,4,1,1,45,2,87.7,6,3,1,2.9,6,Low Performance
+EMP-1189,Devon Campbell,43,Male,Engineering,QA Engineer,1,1,15630,5,2,5,4,28,3,83.8,13,15,0,4.9,8,Low Performance
+EMP-1190,Andrew Campbell,40,Non-Binary,Sales,Sales Manager,8,2,13801,5,4,5,4,27,3,88.4,27,9,1,8.3,8,Medium Performance
+EMP-1191,Mia Walker,35,Male,HR,HR Specialist,11,5,11667,4,4,1,3,108,14,90.4,42,2,0,6.8,5,High Performance
+EMP-1192,Dakota White,50,Male,Marketing,SEO Manager,9,8,10252,3,3,2,3,80,3,84.7,44,1,0,2.2,6,Low Performance
+EMP-1193,Ava Clark,25,Non-Binary,Sales,Account Manager,4,4,8272,2,2,4,3,18,14,98.1,45,3,1,6.2,3,High Performance
+EMP-1194,Isabella Baker,50,Male,Sales,Account Manager,6,2,10955,3,2,2,1,62,4,99.6,27,5,1,8.3,0,High Performance
+EMP-1195,Mia Taylor,46,Male,Finance,Financial Analyst,18,6,15454,5,3,5,4,119,2,96.0,39,12,0,8.0,0,High Performance
+EMP-1196,Amanda Martinez,58,Male,HR,HR Specialist,10,6,13297,4,4,3,4,91,17,92.2,30,3,1,3.8,2,High Performance
+EMP-1197,Andrew Hill,47,Male,Operations,Logistics Coordinator,8,1,15227,5,4,3,3,10,12,96.5,19,10,0,8.5,4,High Performance
+EMP-1198,Amelia Miller,50,Female,HR,Talent Acquisition,9,7,14938,5,1,2,4,35,15,95.2,33,10,0,8.3,4,High Performance
+EMP-1199,Devon Jones,55,Male,Finance,Auditor,6,2,8892,2,2,1,2,12,16,82.9,23,0,0,3.8,8,Low Performance
+EMP-1200,Olivia Sanchez,23,Non-Binary,Operations,Operations Lead,2,2,6116,1,4,2,4,83,19,88.2,10,0,0,3.6,8,High Performance
+EMP-1201,Chris Jackson,32,Male,Engineering,Data Engineer,4,2,12825,4,2,2,3,91,15,91.1,43,9,1,9.1,7,High Performance
+EMP-1202,Dakota Hill,41,Female,Engineering,Senior Developer,14,7,15444,5,3,4,3,35,16,87.4,33,8,0,4.8,3,High Performance
+EMP-1203,Alex Allen,40,Non-Binary,Operations,Operations Manager,4,4,11630,4,3,3,3,118,10,86.6,45,9,0,6.9,4,High Performance
+EMP-1204,Avery King,47,Non-Binary,HR,HR Specialist,5,1,12842,4,4,3,3,61,14,88.9,2,10,0,9.8,3,High Performance
+EMP-1205,Michael Campbell,56,Non-Binary,Operations,Supply Chain Analyst,12,5,15431,5,2,5,2,45,5,90.4,16,15,0,6.1,3,Medium Performance
+EMP-1206,Amelia Perez,44,Male,Operations,Operations Lead,10,7,15314,5,3,3,3,82,11,90.3,7,7,0,8.7,6,High Performance
+EMP-1207,Joseph Flores,54,Male,Engineering,Data Engineer,13,5,14546,5,1,2,2,33,12,89.3,36,3,0,9.7,3,High Performance
+EMP-1208,Sarah Rivera,43,Female,HR,HR Specialist,11,1,13709,5,4,3,2,105,7,92.3,10,5,0,7.8,1,High Performance
+EMP-1209,Casey Flores,49,Female,Marketing,Marketing Lead,13,1,13777,5,5,2,3,9,12,95.5,33,15,1,7.1,5,High Performance
+EMP-1210,Andrew Thomas,30,Female,HR,HR Manager,7,5,10505,3,3,2,1,113,3,87.3,18,1,0,5.8,7,High Performance
+EMP-1211,Michael Ramirez,53,Female,Operations,Supply Chain Analyst,7,2,15641,5,4,1,2,36,6,85.8,1,11,0,2.9,6,Low Performance
+EMP-1212,Abigail Adams,38,Non-Binary,Engineering,Data Engineer,2,1,6238,1,1,1,1,61,16,88.8,35,1,0,7.3,3,High Performance
+EMP-1213,Christopher Baker,48,Female,Operations,Operations Lead,17,5,14975,5,5,2,4,114,5,91.1,39,3,1,2.4,2,High Performance
+EMP-1214,Daniel Gonzalez,55,Female,Sales,Account Manager,12,7,14304,5,2,1,4,34,17,87.9,0,6,1,2.2,3,High Performance
+EMP-1215,Isabella Nelson,54,Male,Marketing,Content Strategist,4,3,8419,2,2,4,3,41,16,82.9,11,2,0,8.6,7,High Performance
+EMP-1216,Amelia Lee,24,Male,Marketing,Marketing Specialist,1,1,5573,1,3,4,3,120,4,88.6,21,0,0,4.8,6,High Performance
+EMP-1217,Harper Harris,32,Female,Operations,Logistics Coordinator,3,3,8587,2,1,2,1,61,20,90.6,36,1,0,3.0,5,Medium Performance
+EMP-1218,Hanna Thompson,30,Non-Binary,Sales,Sales Executive,8,2,13317,4,4,4,1,16,10,93.7,0,7,0,7.1,6,Medium Performance
+EMP-1219,Isabella Campbell,43,Non-Binary,Sales,Account Manager,14,4,14686,5,3,4,2,115,19,97.9,39,3,1,6.8,0,High Performance
+EMP-1220,Olivia Walker,53,Male,Marketing,Content Strategist,8,6,15686,5,3,1,2,78,22,88.7,15,10,1,5.2,7,High Performance
+EMP-1221,Jennifer Garcia,29,Female,Marketing,Marketing Lead,1,1,10126,3,4,1,1,113,4,96.1,39,7,0,8.9,4,High Performance
+EMP-1222,Rowan Adams,45,Female,Operations,Logistics Coordinator,8,8,9979,3,5,5,4,99,13,94.7,7,1,1,7.0,0,High Performance
+EMP-1223,Michael Thompson,55,Non-Binary,Operations,Operations Manager,4,1,13336,4,2,4,2,113,15,83.9,39,11,1,2.5,7,High Performance
+EMP-1224,Rowan Robinson,48,Male,HR,HR Manager,4,4,8036,2,5,5,2,71,2,91.4,3,1,0,5.1,5,Medium Performance
+EMP-1225,Sophia Allen,30,Non-Binary,HR,Talent Acquisition,7,6,10529,3,5,3,4,61,21,98.3,15,1,0,9.5,1,High Performance
+EMP-1226,Jennifer Rodriguez,54,Non-Binary,HR,People Ops Specialist,18,6,15157,5,5,2,2,34,21,94.7,43,9,0,7.1,5,High Performance
+EMP-1227,Charlotte Lopez,29,Non-Binary,Sales,Sales Manager,8,7,12880,4,5,3,4,111,2,91.3,1,5,0,1.9,1,High Performance
+EMP-1228,Reese Moore,38,Non-Binary,HR,HR Manager,2,2,7517,2,5,1,3,112,16,83.8,43,4,0,8.7,9,High Performance
+EMP-1229,Charlotte Scott,40,Non-Binary,Marketing,Content Strategist,13,7,12353,4,3,5,1,9,10,85.6,28,1,0,9.1,9,Medium Performance
+EMP-1230,Abigail Adams,34,Non-Binary,Finance,Accountant,8,3,12898,4,1,2,2,102,18,84.1,2,4,0,6.1,5,High Performance
+EMP-1231,Devon Nguyen,51,Female,Finance,Financial Analyst,2,1,9001,2,3,5,1,107,22,93.0,42,4,0,8.1,5,High Performance
+EMP-1232,Emily Jones,36,Non-Binary,Operations,Operations Manager,9,2,10910,3,5,2,4,77,19,89.2,22,2,1,3.3,4,High Performance
+EMP-1233,Michael White,55,Non-Binary,Finance,Accountant,18,1,13934,5,3,4,2,90,21,98.4,15,15,0,7.2,1,High Performance
+EMP-1234,Jessica Davis,40,Non-Binary,Marketing,SEO Manager,17,6,14753,5,5,4,4,13,11,98.0,12,0,0,2.2,0,High Performance
+EMP-1235,Devon Roberts,26,Non-Binary,Sales,Sales Executive,2,2,6611,1,1,2,4,90,4,95.3,9,1,0,7.5,0,High Performance
+EMP-1236,Chris Jones,57,Female,Engineering,Senior Developer,8,5,10134,3,4,4,4,63,12,82.3,43,2,1,1.5,10,Medium Performance
+EMP-1237,Andrew Jones,26,Non-Binary,Operations,Operations Lead,5,1,7693,2,3,5,1,44,16,88.8,42,2,1,2.8,3,Medium Performance
+EMP-1238,Casey Mitchell,31,Non-Binary,Marketing,SEO Manager,6,1,10433,3,5,2,1,13,2,92.2,25,4,0,9.4,3,High Performance
+EMP-1239,Rowan Mitchell,48,Male,Operations,Operations Manager,6,2,9752,3,5,3,2,22,7,93.9,36,4,0,8.6,4,High Performance
+EMP-1240,John Adams,26,Female,Sales,Sales Executive,1,1,6386,1,5,4,3,53,6,93.9,15,2,0,6.6,1,High Performance
+EMP-1241,Sarah Young,41,Non-Binary,Marketing,SEO Manager,12,6,15663,5,4,2,1,48,9,96.0,45,4,0,5.1,2,Medium Performance
+EMP-1242,Casey Baker,51,Female,Operations,Operations Manager,12,5,14697,5,5,1,2,90,21,83.5,17,14,0,2.7,9,High Performance
+EMP-1243,Reese Taylor,26,Non-Binary,Operations,Operations Lead,5,1,8764,2,5,5,4,106,20,85.8,2,0,0,6.0,8,High Performance
+EMP-1244,Sophia Adams,36,Female,HR,HR Manager,13,5,13974,5,4,5,1,58,13,90.9,42,14,1,9.5,6,High Performance
+EMP-1245,Amelia Hernandez,32,Female,Sales,Account Manager,10,3,13007,4,4,3,1,36,17,86.1,16,2,0,1.9,5,Medium Performance
+EMP-1246,Matthew White,24,Female,Marketing,Marketing Lead,3,2,5111,1,5,3,3,82,19,92.1,24,0,0,4.5,6,High Performance
+EMP-1247,Sam King,55,Male,Finance,Auditor,12,6,14697,5,4,5,1,72,6,89.8,14,12,1,6.8,3,High Performance
+EMP-1248,Avery Lopez,29,Non-Binary,HR,HR Manager,7,7,9976,3,1,4,4,69,8,92.5,41,3,0,1.7,1,Medium Performance
+EMP-1249,Casey Torres,54,Male,Sales,Account Manager,5,1,7440,2,3,2,4,84,20,93.3,42,1,0,9.4,2,High Performance
+EMP-1250,Jennifer Hill,36,Male,Marketing,Marketing Lead,7,5,13992,5,5,2,3,29,12,98.4,38,13,0,3.4,2,High Performance
+EMP-1251,Casey Miller,54,Non-Binary,Engineering,Senior Developer,5,5,13897,5,2,4,1,120,19,91.0,7,13,1,7.0,6,High Performance
+EMP-1252,Ava Smith,48,Non-Binary,Operations,Logistics Coordinator,2,2,11969,4,4,4,3,83,20,83.7,8,11,0,7.9,5,High Performance
+EMP-1253,Quinn Hill,34,Female,Sales,BDR,12,1,12683,4,5,1,1,56,22,85.7,20,0,0,2.4,7,High Performance
+EMP-1254,Charlotte Nguyen,49,Non-Binary,Finance,Finance Manager,9,7,15246,5,2,4,4,30,13,92.0,30,11,0,4.0,3,High Performance
+EMP-1255,Hanna Rivera,29,Non-Binary,Marketing,Content Strategist,8,3,9505,3,2,5,4,108,12,96.3,39,3,0,7.4,0,High Performance
+EMP-1256,Jessica Green,52,Male,Engineering,Software Engineer,3,1,14238,5,2,3,1,85,3,94.9,25,13,0,5.8,5,Medium Performance
+EMP-1257,Mia Brown,22,Female,HR,People Ops Specialist,1,1,4968,1,5,5,2,86,7,94.0,23,0,0,1.5,1,High Performance
+EMP-1258,Chris Moore,47,Non-Binary,Marketing,SEO Manager,7,5,13731,5,1,1,3,100,19,98.3,22,12,0,8.3,0,High Performance
+EMP-1259,Mia Gonzalez,22,Non-Binary,Marketing,Marketing Lead,1,1,5936,1,1,5,1,72,11,88.1,7,0,0,9.4,7,High Performance
+EMP-1260,Isabella Taylor,58,Female,Operations,Logistics Coordinator,8,6,15668,5,4,4,1,69,5,86.6,24,15,0,9.8,8,High Performance
+EMP-1261,Christopher Anderson,55,Female,Finance,Auditor,9,4,9888,3,1,4,3,17,19,98.6,30,0,0,3.3,3,Medium Performance
+EMP-1262,Harper Lopez,34,Female,Operations,Supply Chain Analyst,12,4,13287,4,3,2,2,33,9,96.9,22,3,1,2.4,0,Medium Performance
+EMP-1263,Amelia Nelson,24,Non-Binary,Marketing,Marketing Specialist,2,2,5908,1,5,3,4,31,18,87.0,14,1,0,2.6,7,Medium Performance
+EMP-1264,Robert Walker,44,Non-Binary,Sales,Sales Executive,6,4,15699,5,1,5,4,48,2,82.2,13,12,0,2.3,7,Low Performance
+EMP-1265,Andrew Taylor,39,Male,HR,HR Manager,11,6,14076,5,4,4,2,61,13,88.5,25,15,0,3.0,4,High Performance
+EMP-1266,Isabella Baker,39,Non-Binary,HR,HR Specialist,18,7,15453,5,4,2,2,110,6,90.4,0,7,1,5.6,7,High Performance
+EMP-1267,Matthew Wright,41,Female,Operations,Operations Manager,18,1,14515,5,1,2,1,35,10,90.5,40,8,1,7.7,4,High Performance
+EMP-1268,David White,23,Female,Sales,Sales Manager,1,1,6676,1,5,2,2,107,11,88.3,43,1,0,7.9,6,High Performance
+EMP-1269,Chris Harris,31,Female,Sales,Sales Manager,6,4,10592,3,5,5,4,116,4,83.4,21,2,1,4.1,7,High Performance
+EMP-1270,Abigail Moore,50,Female,Sales,BDR,17,8,14547,5,2,2,1,24,9,93.8,44,11,0,3.2,3,Low Performance
+EMP-1271,Pat Miller,25,Non-Binary,Engineering,Data Engineer,4,1,7312,2,3,5,2,18,22,98.6,24,0,0,3.6,1,High Performance
+EMP-1272,Jennifer Green,32,Non-Binary,HR,Talent Acquisition,1,1,6662,1,3,4,4,119,19,98.6,35,0,0,9.5,4,High Performance
+EMP-1273,Ava Lopez,58,Non-Binary,Sales,BDR,17,5,15561,5,3,4,2,111,4,89.9,23,13,0,2.8,2,High Performance
+EMP-1274,Alex King,52,Female,HR,HR Manager,16,8,14313,5,1,4,3,84,9,96.2,35,0,0,4.9,4,Medium Performance
+EMP-1275,Robert Sanchez,46,Non-Binary,HR,Talent Acquisition,8,5,13862,5,4,2,3,44,22,95.2,17,12,0,8.6,1,High Performance
+EMP-1276,Casey Jackson,50,Non-Binary,Engineering,Data Engineer,16,4,14356,5,1,2,1,76,2,85.3,6,8,0,2.5,7,Low Performance
+EMP-1277,Andrew Smith,22,Male,HR,HR Specialist,1,1,5760,1,3,4,3,67,3,87.9,9,0,0,7.9,3,High Performance
+EMP-1278,Ava Walker,46,Female,HR,Talent Acquisition,4,2,7888,2,4,2,1,33,16,95.1,6,0,0,9.7,3,High Performance
+EMP-1279,Jessica Baker,24,Male,Finance,Finance Manager,3,3,7350,2,3,4,3,33,13,97.8,42,2,1,2.4,4,Medium Performance
+EMP-1280,Robert Lee,29,Female,Engineering,Senior Developer,4,1,11284,3,1,5,4,96,21,84.8,5,6,1,5.6,9,High Performance
+EMP-1281,Andrew Perez,44,Male,Operations,Operations Lead,18,2,13957,5,4,2,3,79,22,95.5,28,4,0,1.7,3,High Performance
+EMP-1282,Emily Campbell,53,Male,HR,HR Manager,18,5,14811,5,4,2,2,77,13,87.8,29,14,0,8.4,7,High Performance
+EMP-1283,Devon Jones,40,Female,Sales,Account Manager,18,6,14629,5,1,5,4,101,7,97.7,39,8,0,7.9,0,High Performance
+EMP-1284,Sarah Campbell,34,Female,Engineering,QA Engineer,11,8,15268,5,5,2,3,49,15,93.4,7,8,1,7.0,1,High Performance
+EMP-1285,Casey Lopez,53,Male,Engineering,Senior Developer,4,1,10469,3,4,4,3,14,13,85.9,45,6,1,9.2,5,High Performance
+EMP-1286,Charlotte Young,25,Non-Binary,Engineering,Data Engineer,4,3,8726,2,1,5,3,75,3,95.1,19,2,1,3.3,4,Medium Performance
+EMP-1287,Pat Miller,46,Non-Binary,Operations,Supply Chain Analyst,7,5,12845,4,2,5,2,79,19,89.4,6,6,0,6.3,7,High Performance
+EMP-1288,John Hall,32,Male,Operations,Logistics Coordinator,9,7,10333,3,3,2,4,53,12,91.8,20,2,0,4.9,6,High Performance
+EMP-1289,Robert Campbell,56,Non-Binary,Finance,Accountant,13,5,14437,5,4,4,4,8,3,99.5,38,6,1,2.6,0,Medium Performance
+EMP-1290,Alex Martin,23,Female,HR,Talent Acquisition,1,1,4977,1,4,3,2,25,10,88.5,37,1,0,3.6,5,Medium Performance
+EMP-1291,Chris Torres,26,Non-Binary,Marketing,Content Strategist,4,2,8099,2,5,1,3,12,20,88.8,3,2,0,4.3,5,High Performance
+EMP-1292,Amanda Davis,46,Non-Binary,HR,HR Specialist,10,1,9953,3,5,5,2,49,18,94.4,9,1,1,7.6,3,High Performance
+EMP-1293,Jennifer Carter,49,Male,Sales,Sales Executive,13,3,13970,5,3,1,4,81,3,91.8,16,9,1,5.7,6,High Performance
+EMP-1294,Casey Carter,34,Non-Binary,HR,People Ops Specialist,7,6,12670,4,2,5,2,39,4,86.7,27,7,0,9.2,3,High Performance
+EMP-1295,Riley Nelson,44,Female,Marketing,Marketing Lead,11,6,14916,5,1,3,2,52,21,96.6,28,6,0,5.2,0,High Performance
+EMP-1296,Reese Baker,27,Non-Binary,Finance,Accountant,6,1,7597,2,5,2,3,9,12,94.3,7,0,0,5.4,2,High Performance
+EMP-1297,Rowan Mitchell,56,Male,Sales,Account Manager,18,8,14975,5,2,1,4,82,18,82.8,10,8,1,3.2,10,High Performance
+EMP-1298,Andrew Moore,22,Non-Binary,Engineering,Data Engineer,1,1,6257,1,3,1,1,45,22,88.9,24,0,0,7.4,4,High Performance
+EMP-1299,Daniel Hill,34,Male,Sales,Sales Executive,8,1,13781,5,2,5,3,50,17,89.0,10,8,1,7.2,4,High Performance
+EMP-1300,Ethan Martin,38,Male,HR,HR Manager,1,1,11961,4,2,3,4,92,6,83.6,24,12,0,7.1,10,Medium Performance
+EMP-1301,Amelia Anderson,31,Non-Binary,Marketing,Content Strategist,5,5,9974,3,4,5,2,34,22,84.5,34,6,0,3.2,5,High Performance
+EMP-1302,Skyler Hall,31,Female,Operations,Supply Chain Analyst,3,2,11638,4,5,5,1,31,12,96.9,9,9,0,7.9,2,High Performance
+EMP-1303,Amanda Martin,34,Male,Marketing,SEO Manager,3,1,7153,2,5,5,3,85,20,92.9,38,1,1,7.2,3,High Performance
+EMP-1304,Chris Hall,52,Non-Binary,Marketing,Content Strategist,6,4,14706,5,4,2,2,32,9,82.6,0,11,0,9.4,6,High Performance
+EMP-1305,Ella Nelson,33,Male,HR,Talent Acquisition,10,8,15108,5,3,4,2,62,14,95.8,38,7,0,4.7,2,High Performance
+EMP-1306,James Flores,28,Non-Binary,Operations,Operations Lead,4,1,8897,2,2,5,4,102,3,91.9,33,3,0,9.5,2,High Performance
+EMP-1307,Quinn Lewis,51,Female,Marketing,SEO Manager,14,5,14955,5,1,5,2,67,22,90.0,32,5,1,8.0,7,High Performance
+EMP-1308,Ava Rodriguez,50,Female,Marketing,Marketing Lead,6,4,8308,2,2,4,1,40,12,94.3,45,0,0,7.5,0,High Performance
+EMP-1309,Chris Davis,45,Non-Binary,Operations,Logistics Coordinator,17,7,15188,5,5,5,2,56,19,88.8,10,2,0,6.2,7,High Performance
+EMP-1310,Avery Hernandez,25,Non-Binary,HR,Talent Acquisition,3,2,8595,2,4,3,2,23,6,99.1,0,3,0,3.6,1,Medium Performance
+EMP-1311,Daniel Young,53,Non-Binary,Sales,Sales Executive,7,5,12850,4,4,4,4,64,4,92.7,0,7,1,6.0,5,High Performance
+EMP-1312,Ethan Scott,31,Male,HR,HR Specialist,6,1,7397,2,1,5,3,50,4,82.9,26,0,0,2.8,7,Low Performance
+EMP-1313,Andrew Nelson,45,Female,Operations,Supply Chain Analyst,3,2,7761,2,3,4,1,105,15,97.0,4,1,0,2.6,4,High Performance
+EMP-1314,Harper Perez,35,Non-Binary,Sales,BDR,4,1,11723,4,5,5,1,69,21,98.6,45,11,0,6.6,1,High Performance
+EMP-1315,Finley King,58,Male,Sales,Sales Manager,17,8,14708,5,2,5,2,98,11,99.4,0,15,1,5.4,0,High Performance
+EMP-1316,Ella Wilson,24,Female,Sales,BDR,2,1,4923,1,2,3,3,109,4,87.5,32,1,0,7.9,3,High Performance
+EMP-1317,Amelia Perez,58,Non-Binary,Finance,Auditor,6,2,7776,2,3,4,4,110,3,93.5,30,0,1,5.3,5,High Performance
+EMP-1318,Michael Robinson,41,Non-Binary,Marketing,Marketing Specialist,18,1,14126,5,5,3,3,16,6,87.0,1,10,0,4.6,7,Medium Performance
+EMP-1319,Devon Torres,29,Male,Sales,BDR,6,6,9364,3,3,4,1,71,9,88.6,19,4,1,4.0,3,High Performance
+EMP-1320,David Williams,54,Female,HR,HR Specialist,16,3,14089,5,3,4,3,107,12,84.6,6,0,0,9.3,9,High Performance
+EMP-1321,Casey Wilson,46,Female,Operations,Operations Lead,1,1,9009,2,1,5,1,50,16,97.8,6,3,0,7.0,1,High Performance
+EMP-1322,Jordan Torres,34,Female,Finance,Accountant,5,3,10390,3,3,4,1,42,6,84.8,7,3,1,6.7,8,Medium Performance
+EMP-1323,Pat Wilson,42,Non-Binary,Sales,Sales Manager,5,3,12675,4,2,2,1,47,21,97.9,34,8,0,2.6,2,High Performance
+EMP-1324,Amelia Brown,27,Male,Engineering,Data Engineer,4,2,8543,2,5,5,4,86,13,87.6,12,3,0,7.1,7,High Performance
+EMP-1325,Chris Carter,51,Male,Marketing,Content Strategist,15,5,15101,5,4,4,2,36,6,97.3,39,3,0,4.5,0,Medium Performance
+EMP-1326,Christopher Nelson,53,Female,Finance,Finance Manager,3,2,5131,1,3,4,4,116,7,87.0,22,0,0,2.6,3,High Performance
+EMP-1327,James Rivera,26,Non-Binary,Engineering,DevOps Engineer,5,4,7920,2,5,4,2,87,9,91.8,30,2,0,4.3,6,High Performance
+EMP-1328,Joseph Ramirez,37,Non-Binary,Marketing,SEO Manager,3,3,11206,3,5,4,1,83,21,90.2,35,5,1,5.2,4,High Performance
+EMP-1329,James Jones,46,Non-Binary,Sales,Sales Executive,16,1,13885,5,2,2,1,104,6,93.8,28,10,0,4.7,4,High Performance
+EMP-1330,Jennifer Gonzalez,58,Female,HR,HR Manager,14,6,13882,5,5,1,4,116,6,97.2,3,9,0,6.1,0,High Performance
+EMP-1331,Alex Rivera,40,Male,Sales,Sales Manager,8,7,10738,3,5,4,3,99,14,89.2,27,0,0,7.0,5,High Performance
+EMP-1332,Casey Gonzalez,48,Female,Sales,BDR,10,3,11775,4,1,1,1,26,17,93.7,8,4,1,6.8,4,High Performance
+EMP-1333,John Hall,33,Non-Binary,Sales,BDR,9,7,14830,5,4,4,3,36,7,89.6,0,7,0,8.5,3,High Performance
+EMP-1334,Abigail Allen,58,Non-Binary,Finance,Auditor,2,1,12663,4,4,3,1,82,17,99.1,5,11,0,7.6,0,High Performance
+EMP-1335,John King,27,Non-Binary,Engineering,QA Engineer,4,1,8500,2,5,5,3,86,3,98.1,34,1,0,5.4,3,High Performance
+EMP-1336,Sophia Torres,44,Female,Operations,Operations Manager,10,3,13772,5,5,3,3,15,22,90.4,10,9,0,6.9,4,High Performance
+EMP-1337,Ella Flores,27,Female,Engineering,DevOps Engineer,5,1,8843,2,3,3,2,86,10,86.9,16,1,1,2.4,4,Medium Performance
+EMP-1338,Joseph Mitchell,33,Female,HR,People Ops Specialist,12,4,14693,5,2,5,1,51,4,99.2,38,4,0,2.8,1,Low Performance
+EMP-1339,William Clark,50,Non-Binary,Marketing,Content Strategist,7,5,13003,4,3,1,3,104,5,82.9,29,5,0,4.0,10,Medium Performance
+EMP-1340,William Wright,46,Non-Binary,HR,People Ops Specialist,9,3,14786,5,4,1,3,110,16,88.8,20,15,0,7.2,2,High Performance
+EMP-1341,Pat Wright,39,Female,Operations,Operations Manager,9,5,15343,5,1,3,4,67,9,95.1,37,10,0,5.8,5,Medium Performance
+EMP-1342,Christopher Lopez,22,Non-Binary,Finance,Financial Analyst,1,1,5100,1,5,1,4,52,9,94.9,16,0,0,1.7,0,High Performance
+EMP-1343,Morgan Hill,29,Non-Binary,Operations,Supply Chain Analyst,2,1,5669,1,5,2,1,97,7,86.5,29,1,0,2.1,6,Medium Performance
+EMP-1344,Harper Roberts,32,Female,Marketing,SEO Manager,5,1,7883,2,4,3,1,41,10,85.2,4,1,0,9.2,8,High Performance
+EMP-1345,James Lopez,31,Male,Operations,Logistics Coordinator,7,2,12757,4,1,4,3,21,3,83.3,36,8,0,8.0,5,Low Performance
+EMP-1346,Daniel Martinez,46,Male,Operations,Operations Lead,5,3,13352,4,4,5,1,73,17,90.5,25,8,0,8.0,2,High Performance
+EMP-1347,Ava Anderson,52,Non-Binary,Engineering,Data Engineer,18,6,14382,5,3,4,1,88,22,83.6,34,3,0,4.3,8,High Performance
+EMP-1348,William Roberts,57,Male,Finance,Accountant,13,4,12112,4,4,1,3,70,4,97.8,28,1,0,2.7,0,Medium Performance
+EMP-1349,Jordan Campbell,46,Female,Sales,Account Manager,18,5,14723,5,5,4,1,12,12,83.0,2,2,0,3.3,10,Low Performance
+EMP-1350,Joshua King,36,Non-Binary,Marketing,Content Strategist,2,1,15206,5,2,4,1,68,21,82.8,44,14,0,1.6,10,Low Performance
+EMP-1351,Morgan Martin,32,Non-Binary,Engineering,Data Engineer,2,1,9533,3,4,5,2,16,8,89.6,43,9,0,2.5,7,Low Performance
+EMP-1352,Isabella Wright,24,Male,HR,HR Manager,1,1,5029,1,1,3,2,104,15,85.0,23,2,0,5.1,8,High Performance
+EMP-1353,Taylor Rodriguez,32,Female,Engineering,QA Engineer,8,2,9313,3,1,2,1,98,22,92.6,18,0,0,8.2,4,High Performance
+EMP-1354,Christopher Rodriguez,39,Non-Binary,HR,Talent Acquisition,14,4,15621,5,2,5,1,84,7,94.8,39,14,0,6.7,2,High Performance
+EMP-1355,Emily Clark,34,Male,Engineering,QA Engineer,9,2,10567,3,3,5,2,67,22,93.7,17,1,1,2.4,2,High Performance
+EMP-1356,Amelia Walker,24,Male,Marketing,Content Strategist,3,2,5483,1,2,4,3,50,21,96.3,29,0,1,7.6,3,High Performance
+EMP-1357,Dakota Hernandez,29,Non-Binary,Engineering,Data Engineer,4,4,8313,2,5,3,4,33,12,86.1,7,1,0,2.3,9,Medium Performance
+EMP-1358,Amanda Gonzalez,52,Male,Marketing,Content Strategist,2,2,13996,5,2,5,4,30,14,88.6,29,15,0,6.7,5,High Performance
+EMP-1359,Reese Perez,58,Non-Binary,HR,HR Specialist,9,3,9527,3,4,4,4,29,12,85.9,18,1,0,8.1,9,High Performance
+EMP-1360,Andrew Hernandez,48,Male,Sales,Account Manager,7,5,14669,5,4,3,1,101,15,95.1,15,15,1,5.1,1,High Performance
+EMP-1361,Joseph Martinez,24,Female,Sales,Sales Executive,2,1,5771,1,5,4,4,111,5,90.1,15,0,0,7.8,7,High Performance
+EMP-1362,Andrew Clark,40,Female,HR,Talent Acquisition,3,1,10282,3,3,2,4,117,20,95.3,1,7,0,5.3,1,High Performance
+EMP-1363,Abigail Sanchez,51,Non-Binary,HR,HR Manager,3,2,6729,1,3,5,1,45,15,95.4,44,0,0,6.0,1,High Performance
+EMP-1364,Amelia Garcia,25,Non-Binary,Sales,Sales Manager,1,1,5684,1,3,4,1,54,13,85.1,35,2,0,6.2,5,High Performance
+EMP-1365,Casey Perez,52,Non-Binary,HR,HR Specialist,8,6,12222,4,3,5,4,43,3,83.1,22,6,0,5.7,5,Medium Performance
+EMP-1366,Sophia Rivera,45,Female,Sales,Sales Manager,7,4,9478,3,1,4,2,44,4,83.9,17,2,1,2.7,5,Low Performance
+EMP-1367,Rowan King,48,Female,Operations,Operations Lead,16,6,14560,5,4,1,3,32,4,82.4,14,4,0,5.8,7,Medium Performance
+EMP-1368,Amanda Nguyen,55,Female,Finance,Finance Manager,15,5,14861,5,2,3,2,109,10,86.0,23,14,0,7.9,4,High Performance
+EMP-1369,Avery Thompson,32,Male,Finance,Auditor,5,2,13493,4,2,2,2,38,5,82.7,20,8,0,5.2,7,Low Performance
+EMP-1370,Dakota Wilson,42,Non-Binary,Sales,Sales Executive,5,3,14618,5,5,2,3,23,2,89.2,31,11,0,9.4,4,High Performance
+EMP-1371,Avery Smith,40,Non-Binary,Operations,Operations Manager,10,3,15337,5,5,4,3,96,5,95.0,2,15,1,6.1,2,High Performance
+EMP-1372,Jordan Sanchez,44,Female,Sales,Account Manager,11,1,12745,4,2,5,2,108,10,85.5,5,2,0,5.2,9,High Performance
+EMP-1373,Chris Allen,42,Female,Marketing,Content Strategist,12,7,11802,4,4,3,4,55,2,87.1,22,1,0,5.2,7,Medium Performance
+EMP-1374,Chris Wilson,48,Non-Binary,Operations,Logistics Coordinator,10,3,15350,5,4,4,2,114,20,92.6,9,14,1,5.4,5,High Performance
+EMP-1375,Michael Jones,22,Male,Sales,BDR,1,1,5258,1,5,4,2,33,7,96.8,18,0,0,1.9,1,High Performance
+EMP-1376,Joseph Martin,23,Male,Marketing,Marketing Lead,1,1,5514,1,4,1,3,61,7,90.8,44,0,0,1.7,4,Low Performance
+EMP-1377,Daniel Jones,52,Non-Binary,Sales,Sales Manager,9,8,15695,5,1,3,1,116,10,84.9,3,13,1,5.3,9,High Performance
+EMP-1378,Casey Thompson,45,Female,HR,HR Specialist,12,1,14293,5,3,5,1,73,8,95.6,11,13,0,6.5,1,High Performance
+EMP-1379,Ava Lee,45,Female,Finance,Finance Manager,18,6,15386,5,2,1,2,74,11,88.6,31,3,0,9.1,4,High Performance
+EMP-1380,Pat Wilson,57,Male,HR,Talent Acquisition,14,8,15576,5,1,1,2,10,17,88.2,44,3,0,8.3,7,Medium Performance
+EMP-1381,Matthew Carter,41,Non-Binary,Finance,Accountant,4,2,7363,2,2,2,3,24,8,84.3,5,0,0,7.8,4,Medium Performance
+EMP-1382,Sam Johnson,34,Male,Marketing,Marketing Lead,1,1,5860,1,1,3,1,16,11,93.9,6,1,0,9.1,1,High Performance
+EMP-1383,Joseph Gonzalez,27,Male,HR,HR Manager,6,3,9043,2,5,3,3,28,18,95.9,39,1,1,6.2,0,High Performance
+EMP-1384,Joseph Carter,34,Male,Engineering,QA Engineer,3,3,7108,2,1,2,4,54,20,85.3,43,4,0,3.0,6,Medium Performance
+EMP-1385,Jessica Ramirez,29,Female,HR,Talent Acquisition,2,2,7325,2,5,2,4,105,13,94.5,35,5,0,2.2,3,High Performance
+EMP-1386,Riley Harris,41,Non-Binary,Finance,Auditor,8,7,14295,5,4,2,1,115,17,98.7,23,14,1,9.8,2,High Performance
+EMP-1387,Amelia Miller,27,Non-Binary,Marketing,Marketing Lead,2,2,5720,1,5,1,2,16,13,99.4,21,0,0,8.5,1,High Performance
+EMP-1388,Riley Anderson,39,Female,Marketing,Marketing Lead,12,8,15065,5,5,4,4,73,10,84.6,29,12,1,3.6,7,High Performance
+EMP-1389,Hayden Green,25,Male,HR,HR Specialist,4,1,9090,2,2,4,3,27,11,93.1,6,0,0,7.0,5,High Performance
+EMP-1390,Hanna Young,53,Female,Marketing,Content Strategist,17,5,14810,5,3,5,1,105,3,99.6,7,15,0,4.1,1,High Performance
+EMP-1391,Jennifer Robinson,57,Male,Engineering,Software Engineer,6,4,12382,4,2,3,4,70,5,92.1,31,9,0,7.2,5,Medium Performance
+EMP-1392,Sophia Walker,25,Non-Binary,Sales,Account Manager,3,2,8310,2,4,5,3,106,11,87.7,1,3,0,2.6,5,High Performance
+EMP-1393,Emily Mitchell,43,Non-Binary,Sales,Sales Executive,4,4,14406,5,3,4,3,15,9,86.4,41,12,0,2.2,8,Low Performance
+EMP-1394,Sam Martin,23,Male,Engineering,DevOps Engineer,1,1,6247,1,4,5,4,42,2,94.4,37,1,0,4.1,4,Medium Performance
+EMP-1395,Jessica Lee,28,Female,Sales,Sales Executive,6,2,9988,3,4,5,3,29,21,87.3,27,5,1,6.8,3,High Performance
+EMP-1396,Ava Wilson,41,Male,Finance,Finance Manager,8,2,15169,5,5,1,3,42,4,92.1,33,12,0,3.2,1,Medium Performance
+EMP-1397,Charlotte Martin,56,Female,Sales,Sales Manager,7,4,14523,5,3,5,4,93,19,85.2,1,10,0,5.8,5,High Performance
+EMP-1398,Isabella Young,56,Female,HR,People Ops Specialist,2,1,12246,4,4,2,2,27,11,97.0,26,13,0,8.4,0,High Performance
+EMP-1399,Ethan Wilson,32,Female,Marketing,SEO Manager,11,4,12331,4,2,1,2,32,2,86.4,19,4,0,6.1,6,Low Performance
+EMP-1400,Robert Adams,39,Male,Engineering,Senior Developer,1,1,8717,2,3,5,2,90,3,99.2,31,4,0,2.0,0,Medium Performance
+EMP-1401,Sarah Hill,45,Female,Finance,Financial Analyst,13,3,11983,4,1,5,1,74,20,98.9,33,2,0,8.8,0,High Performance
+EMP-1402,Mia Davis,46,Non-Binary,Finance,Finance Manager,14,4,13995,5,1,2,2,43,16,89.3,37,7,1,5.9,7,Medium Performance
+EMP-1403,Riley Lee,37,Female,Sales,BDR,5,3,12473,4,3,3,1,90,21,82.6,42,8,0,2.0,10,Medium Performance
+EMP-1404,Emerson Taylor,45,Female,Sales,BDR,18,4,15456,5,4,4,1,58,10,87.4,15,3,0,8.6,4,High Performance
+EMP-1405,Jennifer Green,39,Male,Finance,Auditor,16,8,15209,5,4,3,4,120,5,96.7,44,2,0,2.1,2,High Performance
+EMP-1406,Mia Campbell,23,Female,Sales,Sales Manager,1,1,6520,1,2,1,4,33,22,87.4,36,0,0,2.8,7,Medium Performance
+EMP-1407,Abigail Roberts,48,Non-Binary,Operations,Supply Chain Analyst,15,8,15488,5,2,3,2,95,20,96.7,18,10,1,4.9,0,High Performance
+EMP-1408,James Harris,23,Male,Sales,Account Manager,1,1,5306,1,3,2,1,59,21,89.6,16,0,0,9.5,3,High Performance
+EMP-1409,Isabella Davis,51,Female,Engineering,QA Engineer,4,2,15161,5,2,2,3,44,17,88.8,27,15,0,6.5,4,High Performance
+EMP-1410,Andrew Baker,48,Male,HR,People Ops Specialist,1,1,9099,2,3,2,4,39,13,92.4,41,4,0,1.6,2,Medium Performance
+EMP-1411,Sarah Hall,46,Non-Binary,Marketing,Content Strategist,9,2,13895,5,5,1,1,50,9,90.4,22,13,0,9.3,6,High Performance
+EMP-1412,Abigail Mitchell,54,Female,Engineering,Software Engineer,10,7,15074,5,3,2,1,82,7,86.6,32,12,0,4.3,6,Medium Performance
+EMP-1413,Casey Garcia,38,Male,Finance,Auditor,11,1,11761,4,4,3,3,63,11,98.1,16,3,0,7.8,1,High Performance
+EMP-1414,Matthew Lee,53,Female,Marketing,Content Strategist,18,8,13808,5,2,2,1,37,7,82.6,16,4,1,5.4,5,Medium Performance
+EMP-1415,Daniel Williams,57,Non-Binary,Marketing,SEO Manager,15,8,13930,5,2,1,3,19,8,97.5,11,15,0,7.7,1,High Performance
+EMP-1416,Isabella Nelson,22,Non-Binary,Sales,Account Manager,1,1,5404,1,4,1,3,11,11,94.1,43,0,0,4.6,0,Medium Performance
+EMP-1417,Sarah Martinez,52,Female,Engineering,Software Engineer,9,1,14374,5,1,5,4,49,20,84.3,3,14,0,3.8,4,High Performance
+EMP-1418,Ella Jones,47,Male,Sales,BDR,6,2,13476,4,4,1,1,117,8,84.9,25,8,0,7.7,9,High Performance
+EMP-1419,Avery Davis,41,Female,Finance,Auditor,12,2,15404,5,3,5,2,70,16,97.8,30,4,0,6.5,0,High Performance
+EMP-1420,William Ramirez,49,Female,Finance,Accountant,2,2,9093,2,4,2,2,71,18,93.2,33,2,0,5.4,1,High Performance
+EMP-1421,Sophia Martin,41,Non-Binary,HR,Talent Acquisition,17,7,14305,5,5,1,1,13,18,83.9,27,7,0,5.4,9,High Performance
+EMP-1422,Isabella Taylor,27,Non-Binary,Finance,Finance Manager,1,1,8616,2,4,2,2,115,14,82.8,26,4,0,4.0,9,High Performance
+EMP-1423,Andrew Robinson,38,Non-Binary,Operations,Logistics Coordinator,6,2,14079,5,1,5,3,119,5,89.7,1,10,1,2.5,3,Medium Performance
+EMP-1424,Charlotte Walker,53,Non-Binary,Marketing,Marketing Lead,12,7,15347,5,3,1,2,25,2,85.4,1,9,0,3.1,4,Low Performance
+EMP-1425,Rowan Walker,37,Non-Binary,Operations,Supply Chain Analyst,7,1,14316,5,4,2,4,62,2,84.1,9,13,0,5.2,7,Medium Performance
+EMP-1426,Sophia Johnson,40,Male,Marketing,Content Strategist,2,2,11516,4,1,4,4,116,17,95.1,38,12,0,9.8,0,High Performance
+EMP-1427,Daniel Sanchez,25,Male,Marketing,Marketing Lead,4,3,8233,2,1,3,4,68,5,90.8,41,0,0,7.3,2,Medium Performance
+EMP-1428,Devon Jackson,44,Female,Operations,Supply Chain Analyst,8,4,14903,5,3,5,4,24,11,94.9,24,14,0,8.4,5,High Performance
+EMP-1429,Charlotte Mitchell,35,Male,Finance,Auditor,12,2,15066,5,4,2,2,33,7,92.8,6,4,0,9.3,4,High Performance
+EMP-1430,Skyler Thomas,44,Male,HR,HR Specialist,12,3,14057,5,5,1,1,51,15,84.0,14,8,1,3.4,6,Medium Performance
+EMP-1431,Michael Thompson,31,Female,Engineering,QA Engineer,10,2,15146,5,1,4,4,115,5,99.3,39,8,0,8.6,0,High Performance
+EMP-1432,Anthony Williams,29,Male,Sales,Sales Executive,6,2,10791,3,3,4,4,101,5,84.7,23,3,0,2.6,5,Medium Performance
+EMP-1433,Jennifer Clark,43,Female,Engineering,Senior Developer,17,3,13874,5,3,3,4,54,22,93.8,9,9,0,5.9,1,High Performance
+EMP-1434,Casey Ramirez,55,Female,Marketing,Marketing Lead,1,1,11798,4,1,5,1,18,12,87.6,10,11,0,4.8,3,Medium Performance
+EMP-1435,Joshua Adams,55,Non-Binary,HR,HR Specialist,14,7,15514,5,5,3,3,52,2,96.7,33,9,0,2.7,2,Medium Performance
+EMP-1436,Jennifer Adams,44,Non-Binary,HR,People Ops Specialist,7,3,13872,5,1,5,3,57,6,91.3,34,12,0,2.3,5,Low Performance
+EMP-1437,Skyler King,23,Male,Finance,Accountant,1,1,6387,1,4,5,1,101,3,97.0,16,1,0,4.4,0,High Performance
+EMP-1438,William Adams,58,Female,Engineering,Data Engineer,15,6,11983,4,5,5,2,52,11,87.1,45,0,0,2.7,6,Medium Performance
+EMP-1439,Matthew Mitchell,55,Female,HR,HR Specialist,12,8,13900,5,2,4,4,18,4,83.1,8,6,0,5.2,7,Low Performance
+EMP-1440,Amelia King,53,Female,Marketing,Marketing Lead,15,8,15198,5,4,2,2,72,6,90.6,29,13,1,7.3,6,High Performance
+EMP-1441,Riley Hall,24,Female,HR,People Ops Specialist,1,1,6787,1,1,5,4,22,5,88.6,18,2,0,2.8,5,Low Performance
+EMP-1442,Skyler White,23,Female,Finance,Finance Manager,1,1,4999,1,3,3,2,31,17,82.0,35,0,0,8.7,8,High Performance
+EMP-1443,Sophia Torres,46,Female,Finance,Auditor,5,2,14733,5,4,4,4,27,12,83.6,39,15,0,4.9,6,Medium Performance
+EMP-1444,James Perez,50,Non-Binary,Sales,Sales Executive,3,1,10748,3,1,5,3,79,22,84.2,35,8,1,9.4,8,High Performance
+EMP-1445,Isabella Carter,34,Non-Binary,Engineering,QA Engineer,8,1,13946,5,5,2,1,43,8,86.4,45,12,0,6.3,3,Medium Performance
+EMP-1446,Ava Hill,24,Non-Binary,Finance,Auditor,1,1,5795,1,2,4,1,118,18,87.6,16,1,0,9.6,7,High Performance
+EMP-1447,Devon Jackson,27,Female,HR,Talent Acquisition,3,2,8489,2,2,1,3,31,2,94.7,19,1,0,4.2,3,Medium Performance
+EMP-1448,Sarah Taylor,34,Male,Marketing,Marketing Specialist,13,4,14709,5,5,5,4,22,10,83.1,29,3,0,2.0,5,Medium Performance
+EMP-1449,Amanda Green,57,Female,HR,HR Specialist,8,3,9923,3,5,4,4,18,22,90.9,9,3,0,9.7,3,High Performance
+EMP-1450,Ava Ramirez,22,Male,Sales,BDR,1,1,4901,1,1,4,3,84,10,96.9,24,0,0,8.5,0,High Performance
+EMP-1451,Joseph Allen,56,Male,Finance,Financial Analyst,10,2,12309,4,1,2,3,120,15,85.8,32,2,0,4.1,9,Medium Performance
+EMP-1452,Michael Green,37,Female,Finance,Auditor,11,4,14641,5,5,3,1,96,6,93.5,0,10,0,1.5,1,High Performance
+EMP-1453,Amelia Lopez,56,Female,Marketing,Marketing Lead,3,3,7163,2,4,1,3,112,14,96.7,22,2,0,8.5,4,High Performance
+EMP-1454,Alex Davis,50,Male,Marketing,SEO Manager,8,1,10853,3,3,3,2,19,21,93.1,45,0,1,9.6,3,High Performance
+EMP-1455,Taylor Moore,34,Male,Marketing,Content Strategist,7,1,15481,5,3,5,4,29,19,85.4,36,10,0,6.5,5,High Performance
+EMP-1456,Sam Nguyen,38,Male,HR,HR Specialist,17,5,14092,5,1,5,3,95,19,97.7,0,7,0,6.8,4,High Performance
+EMP-1457,Morgan Lee,29,Female,Marketing,Marketing Lead,8,6,12559,4,1,2,1,43,15,91.5,20,7,1,3.1,1,High Performance
+EMP-1458,Isabella Johnson,49,Non-Binary,Operations,Supply Chain Analyst,8,4,9636,3,3,3,1,88,22,83.7,30,2,0,1.7,10,Medium Performance
+EMP-1459,Michael Taylor,37,Female,HR,HR Specialist,2,2,12564,4,2,1,4,105,5,93.1,37,10,0,9.6,1,High Performance
+EMP-1460,Jessica Lee,25,Male,Operations,Operations Lead,1,1,8350,2,4,1,1,94,3,92.0,18,3,0,4.8,5,Medium Performance
+EMP-1461,William Clark,46,Female,HR,HR Specialist,14,2,14395,5,1,4,3,83,8,83.9,0,14,0,2.1,5,Medium Performance
+EMP-1462,Isabella Rodriguez,48,Female,Operations,Operations Manager,15,3,14197,5,2,1,1,24,11,92.4,32,15,0,7.8,3,Medium Performance
+EMP-1463,Joseph Wright,41,Female,HR,Talent Acquisition,10,6,15687,5,1,5,2,15,9,91.0,35,10,0,5.0,3,Low Performance
+EMP-1464,Reese Green,34,Female,HR,HR Specialist,8,8,14928,5,3,5,3,86,11,89.5,10,10,1,8.8,2,High Performance
+EMP-1465,Daniel Anderson,36,Non-Binary,Engineering,Senior Developer,10,4,14189,5,4,3,4,34,14,85.3,0,7,0,2.1,4,Medium Performance
+EMP-1466,Anthony Davis,34,Female,HR,HR Manager,10,6,13789,5,1,2,2,44,7,85.9,16,10,0,4.3,8,Low Performance
+EMP-1467,Emerson Lopez,38,Male,HR,HR Specialist,1,1,7876,2,1,3,2,47,16,86.3,23,3,0,9.3,7,High Performance
+EMP-1468,Robert Rivera,30,Male,Engineering,Software Engineer,4,4,8522,2,3,3,4,89,9,98.4,39,3,0,8.6,1,High Performance
+EMP-1469,Avery Lee,39,Non-Binary,HR,HR Specialist,17,8,14128,5,1,4,1,29,18,88.9,41,4,0,4.6,6,Medium Performance
+EMP-1470,John Lopez,52,Non-Binary,Finance,Finance Manager,16,5,14890,5,4,5,1,34,9,97.9,28,15,0,4.8,1,High Performance
+EMP-1471,Robert Harris,38,Female,Sales,Account Manager,5,1,7704,2,4,5,3,37,20,82.7,32,2,0,5.0,8,High Performance
+EMP-1472,Robert Clark,39,Female,Finance,Auditor,1,1,12404,4,2,3,1,53,4,87.2,32,12,0,6.8,5,Low Performance
+EMP-1473,Hayden Miller,24,Female,Engineering,Software Engineer,1,1,5302,1,3,3,3,103,10,85.4,38,2,0,9.8,9,High Performance
+EMP-1474,Ella Wright,40,Female,Finance,Financial Analyst,13,7,15383,5,5,1,4,91,18,99.6,9,11,0,3.4,3,High Performance
+EMP-1475,Ella Wilson,57,Non-Binary,Marketing,Content Strategist,15,6,15321,5,1,3,2,62,15,85.7,28,14,0,1.7,5,Medium Performance
+EMP-1476,Isabella Rodriguez,44,Female,Finance,Financial Analyst,8,7,14571,5,4,5,3,49,20,82.4,2,10,0,2.8,7,High Performance
+EMP-1477,Isabella Green,35,Female,Sales,BDR,2,2,9685,3,4,1,3,80,16,93.4,19,6,0,2.4,5,High Performance
+EMP-1478,Dakota Williams,33,Male,Operations,Logistics Coordinator,2,2,7681,2,2,2,3,92,18,83.2,3,3,0,1.6,7,Medium Performance
+EMP-1479,Amanda Sanchez,56,Male,HR,HR Specialist,16,2,14496,5,2,2,2,47,15,96.6,42,13,0,6.5,1,High Performance
+EMP-1480,Joseph Gonzalez,34,Female,Sales,BDR,3,2,5031,1,4,5,2,75,12,98.2,31,0,0,6.3,4,High Performance
+EMP-1481,Chris Jackson,41,Female,Operations,Logistics Coordinator,6,4,14210,5,2,5,4,66,14,98.2,11,12,0,2.3,4,High Performance
+EMP-1482,Taylor Thomas,56,Non-Binary,HR,HR Manager,3,3,12987,4,2,4,4,105,19,84.2,23,9,1,2.4,6,High Performance
+EMP-1483,Amanda Lewis,54,Male,HR,HR Manager,15,1,13849,5,4,4,3,103,14,97.2,25,1,1,3.6,4,High Performance
+EMP-1484,Casey Lee,51,Female,Operations,Logistics Coordinator,3,3,8445,2,2,4,2,68,10,97.0,10,2,0,6.5,0,High Performance
+EMP-1485,Quinn Davis,26,Male,Sales,BDR,3,1,5802,1,3,2,2,99,3,97.9,34,0,1,7.3,4,High Performance
+EMP-1486,Matthew Adams,41,Female,Operations,Operations Lead,2,1,13799,5,4,2,2,55,9,85.6,1,14,0,9.7,6,High Performance
+EMP-1487,Reese Baker,28,Male,Operations,Operations Lead,7,7,12860,4,2,2,1,61,18,83.9,20,6,0,6.7,8,High Performance
+EMP-1488,Rowan Wright,36,Male,Marketing,Marketing Lead,2,2,7762,2,2,1,4,91,12,82.2,13,3,0,2.0,7,Medium Performance
+EMP-1489,Charlotte Flores,35,Male,Finance,Financial Analyst,5,5,10323,3,1,5,2,40,5,92.7,40,6,0,7.1,6,Medium Performance
+EMP-1490,Casey Perez,52,Non-Binary,HR,HR Manager,11,1,12746,4,5,4,4,73,22,95.2,32,2,0,9.7,1,High Performance
+EMP-1491,Jordan Flores,49,Male,Engineering,DevOps Engineer,3,1,9581,3,3,4,3,33,6,88.7,41,7,1,9.2,7,High Performance
+EMP-1492,Jennifer Mitchell,42,Female,Finance,Accountant,17,7,15027,5,3,1,2,116,12,88.1,13,1,0,9.0,8,High Performance
+EMP-1493,Emerson Baker,46,Non-Binary,Operations,Supply Chain Analyst,6,4,14989,5,1,1,4,16,8,82.9,9,10,0,2.5,6,Low Performance
+EMP-1494,Joseph Scott,27,Non-Binary,HR,Talent Acquisition,6,4,9937,3,2,2,2,62,7,92.8,19,3,0,5.2,6,Medium Performance
+EMP-1495,Reese Moore,47,Female,Marketing,Marketing Specialist,6,4,14603,5,4,5,4,105,6,96.6,30,12,1,4.7,0,High Performance
+EMP-1496,William Martin,33,Non-Binary,Sales,Account Manager,7,4,9926,3,4,3,4,79,21,90.6,21,4,1,5.4,3,High Performance
+EMP-1497,Reese Smith,45,Non-Binary,Engineering,QA Engineer,13,7,15625,5,4,3,4,70,11,93.4,37,15,1,8.8,1,High Performance
+EMP-1498,Jessica Torres,38,Female,HR,Talent Acquisition,17,8,15000,5,3,1,4,62,9,86.3,2,11,0,4.5,8,Medium Performance
+EMP-1499,Amelia Johnson,51,Female,Operations,Supply Chain Analyst,9,4,12733,4,5,2,1,22,4,93.5,24,4,0,6.4,1,Medium Performance
+EMP-1500,Matthew Gonzalez,38,Female,Marketing,Content Strategist,17,7,14900,5,3,4,1,21,22,92.2,22,9,0,3.7,2,High Performance
+EMP-1501,Ella Sanchez,32,Male,Operations,Operations Manager,1,1,9443,3,4,5,4,91,11,95.0,10,7,0,3.0,1,High Performance
+EMP-1502,Reese Young,58,Female,HR,HR Specialist,6,2,11620,4,2,2,3,119,15,89.8,39,6,1,6.8,2,High Performance
+EMP-1503,Quinn Garcia,26,Female,Marketing,Marketing Specialist,1,1,5878,1,4,1,1,15,10,95.4,0,2,0,8.1,0,High Performance
+EMP-1504,Pat Wilson,55,Female,Sales,Sales Executive,16,8,15250,5,3,5,4,51,13,94.1,21,8,0,8.3,2,High Performance
+EMP-1505,Joshua Sanchez,43,Female,Marketing,Marketing Specialist,1,1,8882,2,4,2,1,85,5,97.5,17,3,0,7.7,0,High Performance
+EMP-1506,David Lewis,48,Non-Binary,Sales,BDR,1,1,7134,2,3,1,3,94,16,86.2,31,6,0,6.6,4,High Performance
+EMP-1507,Emily Ramirez,46,Non-Binary,Marketing,Marketing Specialist,7,6,13993,5,5,5,1,24,17,96.2,19,9,0,9.8,3,High Performance
+EMP-1508,Devon Lewis,56,Non-Binary,Engineering,Data Engineer,8,4,11849,4,1,1,4,99,2,84.9,20,7,0,7.9,5,Medium Performance
+EMP-1509,Andrew Taylor,29,Non-Binary,Operations,Logistics Coordinator,8,2,10929,3,3,2,1,90,12,88.7,45,2,0,7.5,8,High Performance
+EMP-1510,Charlotte Scott,38,Male,Marketing,Content Strategist,10,2,11728,4,1,3,2,103,5,92.2,8,3,0,9.4,5,High Performance
+EMP-1511,Ella Smith,56,Non-Binary,Finance,Financial Analyst,13,7,14354,5,3,2,2,21,14,82.2,29,6,0,8.3,7,High Performance
+EMP-1512,Hayden Young,40,Male,Operations,Logistics Coordinator,2,2,7732,2,5,1,3,116,20,90.5,13,4,0,7.3,5,High Performance
+EMP-1513,Morgan Perez,36,Non-Binary,HR,Talent Acquisition,12,1,15590,5,2,4,4,46,7,99.6,35,11,0,5.0,1,Medium Performance
+EMP-1514,Emily Carter,55,Male,Marketing,Marketing Lead,10,4,15135,5,5,4,1,24,12,95.4,37,9,0,1.9,5,Low Performance
+EMP-1515,Skyler Robinson,30,Non-Binary,Operations,Supply Chain Analyst,8,5,13337,4,2,2,2,110,8,95.1,0,7,0,8.6,0,High Performance
+EMP-1516,Amelia Martinez,32,Non-Binary,Marketing,Marketing Lead,2,2,6895,1,4,2,1,23,18,93.6,37,0,0,2.7,6,Medium Performance
+EMP-1517,James Thomas,47,Male,Engineering,Software Engineer,10,3,15036,5,4,1,4,118,22,88.8,40,15,0,4.5,2,High Performance
+EMP-1518,Riley Garcia,54,Non-Binary,Engineering,Data Engineer,1,1,9860,3,1,5,2,57,17,99.8,44,7,0,6.2,0,High Performance
+EMP-1519,Sarah Jones,23,Female,Operations,Supply Chain Analyst,2,1,5962,1,5,5,1,104,8,99.2,7,1,0,6.5,0,High Performance
+EMP-1520,Alex Scott,24,Male,Marketing,SEO Manager,3,1,6236,1,2,1,3,116,3,83.5,7,0,0,4.5,9,Medium Performance
+EMP-1521,Devon Ramirez,41,Male,Operations,Operations Lead,17,5,15049,5,5,4,2,81,17,94.4,33,1,0,9.8,4,High Performance
+EMP-1522,Ava Allen,24,Non-Binary,HR,HR Specialist,1,1,5190,1,3,2,2,85,19,85.8,22,0,0,7.6,7,High Performance
+EMP-1523,Sam Scott,32,Female,Finance,Finance Manager,8,2,13434,4,3,4,2,76,8,83.3,17,6,0,7.3,6,High Performance
+EMP-1524,Abigail White,31,Female,Sales,Account Manager,7,4,11553,4,5,2,1,42,5,91.5,43,5,0,2.0,6,Low Performance
+EMP-1525,Chris White,36,Male,Finance,Finance Manager,1,1,7872,2,2,4,1,108,5,85.1,19,4,0,8.2,4,High Performance
+EMP-1526,Matthew Thompson,39,Non-Binary,Operations,Operations Manager,2,1,7751,2,4,2,3,111,19,91.8,25,3,0,2.6,1,High Performance
+EMP-1527,Amelia Allen,30,Non-Binary,Operations,Supply Chain Analyst,7,5,10806,3,3,1,3,98,9,94.1,26,2,0,3.0,2,High Performance
+EMP-1528,John Allen,55,Female,Finance,Finance Manager,10,2,15640,5,3,4,3,116,4,93.3,4,7,0,9.3,2,High Performance
+EMP-1529,Isabella Brown,53,Non-Binary,Engineering,DevOps Engineer,14,3,12482,4,4,5,1,59,2,93.0,0,0,0,7.3,6,Medium Performance
+EMP-1530,Emily Thomas,50,Non-Binary,Operations,Operations Lead,17,4,14058,5,1,3,2,73,13,99.0,27,5,0,2.9,0,High Performance
+EMP-1531,Michael Baker,41,Female,HR,HR Specialist,10,5,14136,5,1,5,4,35,11,98.5,41,15,0,8.9,2,High Performance
+EMP-1532,Andrew Young,51,Male,Engineering,DevOps Engineer,10,6,13919,5,1,3,2,59,13,82.2,27,10,0,2.2,9,Low Performance
+EMP-1533,Avery Clark,31,Male,Engineering,Data Engineer,4,4,10109,3,3,3,3,62,7,91.5,17,4,1,5.1,4,High Performance
+EMP-1534,Devon Rodriguez,44,Male,Finance,Auditor,4,2,9883,3,1,2,4,61,12,98.0,10,6,0,9.4,4,High Performance
+EMP-1535,Harper Davis,53,Non-Binary,Marketing,Marketing Lead,11,7,12527,4,4,2,1,21,2,84.2,22,4,0,7.9,5,Medium Performance
+EMP-1536,Morgan Baker,22,Non-Binary,Finance,Auditor,1,1,5477,1,4,1,4,39,21,84.7,32,0,0,3.8,4,High Performance
+EMP-1537,Finley Hall,52,Male,HR,People Ops Specialist,17,3,14086,5,5,2,2,23,6,89.1,17,3,0,9.2,5,High Performance
+EMP-1538,Jordan Flores,46,Male,HR,HR Specialist,17,5,15133,5,2,2,3,62,17,83.1,27,13,0,4.0,7,Medium Performance
+EMP-1539,David Moore,42,Male,Finance,Auditor,6,1,7101,2,1,3,2,44,17,87.0,38,1,1,3.0,6,Medium Performance
+EMP-1540,David Perez,22,Male,Finance,Financial Analyst,1,1,6418,1,3,5,3,38,22,86.9,37,0,0,8.9,4,High Performance
+EMP-1541,Ethan Mitchell,34,Male,Sales,Sales Executive,12,8,13395,4,1,1,3,46,17,99.6,12,3,0,2.8,0,High Performance
+EMP-1542,Reese Clark,44,Non-Binary,Sales,Sales Manager,15,2,15565,5,4,1,4,61,18,98.6,32,11,0,2.9,1,High Performance
+EMP-1543,Christopher Rodriguez,25,Non-Binary,Finance,Financial Analyst,4,4,8502,2,5,5,1,29,16,95.4,24,1,0,4.7,4,High Performance
+EMP-1544,Harper Wilson,58,Male,HR,HR Specialist,1,1,8131,2,5,3,3,117,9,87.3,17,6,0,2.9,3,High Performance
+EMP-1545,Ava Thomas,31,Non-Binary,Finance,Financial Analyst,3,2,8888,2,1,2,2,76,5,82.0,22,4,0,9.6,7,Medium Performance
+EMP-1546,Chris Rivera,30,Non-Binary,Sales,Sales Manager,5,3,9417,3,1,3,2,101,10,85.1,1,6,0,9.6,8,High Performance
+EMP-1547,Pat Campbell,38,Non-Binary,Operations,Logistics Coordinator,15,4,14364,5,3,2,4,27,16,86.1,27,6,0,9.0,4,High Performance
+EMP-1548,Daniel Lopez,34,Male,Marketing,Content Strategist,8,3,15026,5,3,1,3,28,7,96.6,43,9,0,2.1,0,Medium Performance
+EMP-1549,Robert Thomas,55,Male,Marketing,Marketing Lead,1,1,7873,2,4,1,1,113,2,95.6,41,4,0,2.6,0,Medium Performance
+EMP-1550,Harper Martinez,28,Male,Operations,Operations Lead,6,3,11046,3,1,2,2,69,20,97.9,10,4,0,5.5,0,High Performance
+EMP-1551,Morgan Wright,56,Non-Binary,Operations,Operations Manager,1,1,7310,2,5,3,1,73,15,84.5,14,3,0,5.0,5,High Performance
+EMP-1552,Emily Adams,46,Non-Binary,Finance,Accountant,16,3,13925,5,2,1,3,53,4,93.0,7,3,0,9.2,1,High Performance
+EMP-1553,Taylor Hill,55,Female,HR,Talent Acquisition,6,6,14570,5,2,3,3,52,5,86.8,31,10,0,9.2,8,Medium Performance
+EMP-1554,Sam Smith,31,Female,HR,Talent Acquisition,8,8,13168,4,1,1,4,101,10,84.6,20,6,0,3.0,7,Medium Performance
+EMP-1555,Emily Lee,48,Female,Marketing,Marketing Lead,5,2,12284,4,4,5,4,76,19,90.8,34,10,0,4.7,6,High Performance
+EMP-1556,Abigail Clark,27,Non-Binary,Sales,Account Manager,3,1,7516,2,1,3,4,25,5,83.1,22,1,0,8.5,6,Medium Performance
+EMP-1557,Quinn Robinson,35,Male,HR,People Ops Specialist,4,1,15229,5,2,1,2,56,2,94.4,27,13,0,7.3,5,Medium Performance
+EMP-1558,Joseph Jones,31,Male,Marketing,Content Strategist,3,1,9801,3,1,1,4,27,7,90.4,8,5,0,7.3,4,Medium Performance
+EMP-1559,Sophia Clark,22,Female,Operations,Operations Manager,1,1,5022,1,1,5,2,72,7,82.2,27,0,0,8.8,9,Medium Performance
+EMP-1560,Abigail Taylor,36,Non-Binary,Sales,Sales Manager,15,3,14256,5,1,5,4,24,8,89.1,3,6,1,3.0,7,Low Performance
+EMP-1561,Anthony Hill,42,Female,Engineering,Data Engineer,13,3,13811,5,3,4,2,42,5,83.9,23,12,0,8.5,4,High Performance
+EMP-1562,Emerson Jackson,35,Male,HR,HR Specialist,1,1,9684,3,5,2,1,38,10,83.5,36,9,0,6.2,8,Medium Performance
+EMP-1563,Taylor Brown,22,Female,Finance,Financial Analyst,1,1,5924,1,2,3,4,100,13,99.3,44,0,0,4.2,3,High Performance
+EMP-1564,Olivia Miller,46,Male,Sales,Account Manager,2,2,14030,5,2,4,1,88,4,99.0,14,15,0,8.2,3,High Performance
+EMP-1565,Avery Roberts,55,Non-Binary,Operations,Supply Chain Analyst,15,3,14394,5,3,3,4,13,14,86.3,39,10,0,9.5,7,High Performance
+EMP-1566,Ethan Young,41,Male,Engineering,Software Engineer,16,2,14631,5,3,2,3,28,4,87.0,23,2,0,2.1,8,Low Performance
+EMP-1567,Hanna Robinson,50,Female,Finance,Auditor,4,4,9381,3,3,3,4,60,21,98.3,8,4,0,5.8,3,High Performance
+EMP-1568,Sarah White,50,Non-Binary,Engineering,Data Engineer,2,1,10817,3,2,5,1,27,5,87.2,10,8,0,8.6,4,Medium Performance
+EMP-1569,Jessica Robinson,51,Female,Operations,Operations Lead,18,8,13923,5,1,2,1,58,15,85.6,21,14,1,4.3,8,Medium Performance
+EMP-1570,Daniel Wilson,39,Male,Operations,Logistics Coordinator,2,1,15642,5,4,2,2,48,20,82.6,38,14,0,2.0,7,Medium Performance
+EMP-1571,Robert Walker,23,Male,HR,HR Specialist,2,2,6201,1,2,1,2,16,10,89.2,19,1,0,5.2,5,Medium Performance
+EMP-1572,Matthew Wilson,25,Male,Operations,Operations Manager,4,3,9072,2,3,2,2,52,15,90.6,34,0,0,2.8,7,Medium Performance
+EMP-1573,Robert Thompson,57,Male,Operations,Logistics Coordinator,3,3,10667,3,5,5,2,49,12,82.3,29,6,0,5.6,7,High Performance
+EMP-1574,Riley Baker,22,Non-Binary,Marketing,SEO Manager,1,1,6208,1,5,1,1,35,8,89.5,34,0,0,6.5,3,High Performance
+EMP-1575,Emily Wilson,45,Female,HR,HR Specialist,10,5,10328,3,1,4,4,60,15,88.3,34,0,0,9.6,5,High Performance
+EMP-1576,Riley Lopez,33,Female,Marketing,Marketing Lead,10,3,14811,5,4,4,3,116,15,93.3,44,8,0,9.2,1,High Performance
+EMP-1577,Chris Miller,48,Non-Binary,Engineering,Software Engineer,16,2,14997,5,4,5,1,93,11,97.2,13,3,1,5.3,2,High Performance
+EMP-1578,Riley Gonzalez,51,Female,Marketing,Marketing Specialist,13,1,15624,5,3,2,3,42,10,87.5,26,13,0,1.5,6,Medium Performance
+EMP-1579,Taylor Smith,55,Female,Engineering,Senior Developer,11,3,15664,5,5,4,2,79,14,85.4,41,10,0,1.9,8,Medium Performance
+EMP-1580,Robert Rodriguez,33,Non-Binary,Operations,Logistics Coordinator,6,5,11824,4,4,2,1,98,6,91.0,40,6,0,4.8,7,Medium Performance
+EMP-1581,Finley Scott,27,Male,HR,HR Manager,1,1,4923,1,5,2,1,87,19,98.4,5,0,0,1.7,4,High Performance
+EMP-1582,Casey Robinson,37,Male,Operations,Operations Manager,10,4,14796,5,2,4,3,92,3,86.9,9,7,0,6.8,7,Medium Performance
+EMP-1583,Pat Davis,31,Male,Marketing,Marketing Specialist,5,2,9490,3,1,4,3,115,8,89.0,31,4,0,4.9,5,High Performance
+EMP-1584,Ethan Jones,42,Female,HR,People Ops Specialist,6,2,14311,5,1,2,1,23,12,99.7,30,14,0,6.5,0,High Performance
+EMP-1585,Devon King,34,Male,Operations,Operations Manager,1,1,10360,3,5,2,2,118,13,84.0,13,9,0,2.7,4,High Performance
+EMP-1586,Andrew Hall,52,Female,HR,HR Manager,3,2,10750,3,5,3,4,103,17,89.8,25,6,0,3.6,3,High Performance
+EMP-1587,Amelia Rivera,41,Male,Finance,Auditor,7,6,12499,4,4,4,4,84,10,96.5,39,5,1,4.7,0,High Performance
+EMP-1588,Isabella Thompson,32,Female,Finance,Financial Analyst,9,5,10501,3,4,3,3,58,2,84.0,20,0,0,3.0,5,Low Performance
+EMP-1589,Sam Wilson,31,Female,Operations,Operations Manager,2,1,7752,2,1,3,2,67,20,96.2,14,5,0,4.7,4,High Performance
+EMP-1590,Rowan King,39,Non-Binary,HR,HR Specialist,14,7,14350,5,3,2,2,14,17,90.9,17,2,0,2.5,3,Medium Performance
+EMP-1591,Mia Lee,58,Male,Sales,BDR,10,1,10618,3,5,1,4,44,6,97.0,25,0,1,5.9,3,High Performance
+EMP-1592,Taylor Perez,52,Male,Operations,Operations Lead,14,5,14262,5,3,3,4,18,19,95.8,31,3,0,4.8,5,High Performance
+EMP-1593,John Young,28,Female,Operations,Operations Lead,2,1,6590,1,1,2,1,49,15,86.0,5,0,0,9.0,6,High Performance
+EMP-1594,Ava Smith,24,Female,Operations,Operations Lead,1,1,5053,1,3,3,4,42,7,98.5,37,0,0,2.5,0,Medium Performance
+EMP-1595,William Nguyen,29,Non-Binary,Marketing,Marketing Lead,8,8,11299,3,3,3,4,36,4,86.7,18,3,0,4.4,4,Medium Performance
+EMP-1596,Joshua Adams,26,Non-Binary,Operations,Supply Chain Analyst,4,1,7535,2,1,2,4,112,14,85.3,6,0,0,8.3,8,High Performance
+EMP-1597,Olivia Lee,31,Non-Binary,Finance,Auditor,2,1,9748,3,3,4,4,119,21,91.1,25,8,0,3.8,3,High Performance
+EMP-1598,Amelia Martin,51,Male,Sales,Sales Executive,4,2,7133,2,4,2,3,11,17,93.8,28,3,0,2.5,4,Medium Performance
+EMP-1599,Chris Thompson,47,Male,Marketing,Content Strategist,17,6,13808,5,4,3,3,20,3,93.5,27,13,1,3.1,2,Medium Performance
+EMP-1600,Mia Moore,49,Non-Binary,Sales,BDR,2,1,9063,2,1,2,1,14,3,92.2,15,3,0,2.3,2,Low Performance
+EMP-1601,Andrew Hall,47,Female,Operations,Logistics Coordinator,8,5,10314,3,2,2,2,52,22,87.1,38,3,0,1.5,4,Medium Performance
+EMP-1602,Olivia Hall,41,Non-Binary,Sales,BDR,6,3,12895,4,1,2,2,50,16,84.5,0,7,0,5.1,4,Medium Performance
+EMP-1603,Dakota Taylor,22,Non-Binary,Engineering,Senior Developer,1,1,5900,1,2,4,1,13,2,92.1,18,0,0,5.9,2,Medium Performance
+EMP-1604,William Martinez,43,Female,Engineering,Software Engineer,16,6,14817,5,3,4,3,54,16,82.2,22,14,0,4.3,9,High Performance
+EMP-1605,Hanna Nelson,39,Male,Sales,BDR,5,4,8853,2,2,2,3,71,2,86.3,44,0,0,4.5,8,Low Performance
+EMP-1606,Chris Gonzalez,56,Female,Marketing,Marketing Specialist,17,3,14243,5,3,3,4,83,15,98.8,17,14,0,1.8,2,High Performance
+EMP-1607,Christopher Perez,51,Female,Sales,Sales Executive,10,2,15685,5,1,4,2,67,6,91.3,18,11,0,7.0,3,Medium Performance
+EMP-1608,Daniel Jackson,51,Male,Engineering,DevOps Engineer,7,3,10990,3,5,1,1,70,11,82.1,22,1,0,1.5,7,Medium Performance
+EMP-1609,Casey Thompson,39,Male,Finance,Accountant,7,4,10498,3,1,3,2,12,17,98.6,15,4,0,6.8,2,High Performance
+EMP-1610,James Miller,41,Non-Binary,Finance,Finance Manager,14,6,15347,5,5,2,2,40,6,89.4,12,5,0,2.2,6,Medium Performance
+EMP-1611,Ethan Robinson,49,Female,Sales,Account Manager,5,5,10205,3,3,5,3,67,13,89.6,26,3,0,5.3,6,High Performance
+EMP-1612,Jordan Roberts,41,Male,Marketing,Marketing Specialist,17,6,13960,5,5,5,3,14,14,84.2,42,7,1,8.2,8,High Performance
+EMP-1613,John Brown,28,Female,Engineering,Software Engineer,5,1,8783,2,3,5,4,96,12,97.4,7,2,0,7.1,4,High Performance
+EMP-1614,Abigail Brown,31,Non-Binary,Operations,Supply Chain Analyst,8,3,14157,5,2,3,3,100,2,96.3,39,8,0,2.5,0,Medium Performance
+EMP-1615,Avery Hill,37,Male,Engineering,QA Engineer,4,4,9350,3,5,4,4,15,5,87.3,30,6,0,8.3,7,High Performance
+EMP-1616,Finley Flores,29,Non-Binary,Operations,Logistics Coordinator,3,3,9344,3,2,2,2,29,18,95.2,34,6,1,5.5,2,High Performance
+EMP-1617,Joshua Miller,39,Female,Sales,BDR,13,2,14650,5,4,4,2,11,11,90.1,36,12,0,6.3,2,High Performance
+EMP-1618,Charlotte Adams,44,Male,Operations,Logistics Coordinator,15,8,14267,5,1,2,3,72,18,85.8,45,4,0,5.8,5,High Performance
+EMP-1619,Charlotte Martinez,30,Female,Finance,Finance Manager,5,4,9439,3,4,4,4,85,7,92.3,32,4,0,5.9,2,High Performance
+EMP-1620,Christopher Lee,47,Non-Binary,Sales,Sales Manager,2,1,8844,2,2,2,1,93,5,90.9,43,2,0,7.8,7,Medium Performance
+EMP-1621,Emerson Miller,26,Female,HR,People Ops Specialist,5,3,7334,2,1,1,4,105,13,92.8,1,0,0,4.2,6,High Performance
+EMP-1622,Jennifer Harris,38,Male,HR,Talent Acquisition,15,5,14161,5,2,2,4,112,18,96.4,12,15,1,1.7,4,High Performance
+EMP-1623,Pat Wilson,45,Male,Engineering,Senior Developer,18,2,14397,5,2,5,4,32,8,92.2,30,13,0,4.5,5,Medium Performance
+EMP-1624,Casey Jones,46,Non-Binary,Marketing,Marketing Lead,3,1,8702,2,5,3,1,23,17,86.1,38,2,0,1.7,6,Medium Performance
+EMP-1625,Finley Harris,32,Male,Operations,Operations Manager,2,1,8847,2,5,5,3,59,21,83.0,44,4,0,6.3,7,High Performance
+EMP-1626,Charlotte Johnson,38,Female,Engineering,DevOps Engineer,11,1,13985,5,2,5,3,104,3,86.2,4,6,0,6.2,8,Medium Performance
+EMP-1627,Christopher Carter,48,Male,Engineering,DevOps Engineer,18,8,15638,5,2,3,1,21,3,90.8,14,2,0,5.1,4,Low Performance
+EMP-1628,Hayden Johnson,56,Male,Engineering,Software Engineer,1,1,11606,4,4,4,2,63,15,91.8,7,12,0,8.9,3,High Performance
+EMP-1629,Emily Gonzalez,37,Male,Finance,Auditor,3,3,9320,3,2,4,1,110,2,97.5,15,7,0,2.1,0,Medium Performance
+EMP-1630,Jennifer Lopez,44,Female,Finance,Financial Analyst,10,3,14941,5,4,4,1,92,4,83.4,34,7,1,7.4,7,High Performance
+EMP-1631,Hayden Lewis,57,Female,Operations,Operations Manager,8,5,14353,5,5,5,1,14,13,98.0,45,9,0,5.5,0,High Performance
+EMP-1632,Rowan Rodriguez,57,Female,Sales,Account Manager,4,3,10784,3,2,1,2,97,16,93.6,29,6,0,1.7,1,High Performance
+EMP-1633,Harper Moore,27,Female,Sales,BDR,3,3,5686,1,4,1,4,57,16,82.8,13,0,0,7.0,9,High Performance
+EMP-1634,Morgan Nelson,44,Non-Binary,Finance,Financial Analyst,11,5,10959,3,5,2,1,51,21,89.7,27,0,0,9.2,2,High Performance
+EMP-1635,Pat Scott,51,Non-Binary,Marketing,SEO Manager,17,5,14032,5,4,4,2,24,2,87.0,43,13,0,2.2,4,Low Performance
+EMP-1636,Hanna Wright,47,Non-Binary,Finance,Finance Manager,9,6,9850,3,3,5,1,23,11,92.1,20,1,0,8.5,4,High Performance
+EMP-1637,John Johnson,24,Female,Marketing,Marketing Specialist,2,1,5736,1,1,5,1,43,21,91.8,4,1,0,3.6,3,High Performance
+EMP-1638,Finley Young,33,Non-Binary,HR,Talent Acquisition,10,1,11976,4,1,1,2,95,18,97.3,37,2,0,6.1,0,High Performance
+EMP-1639,Morgan Rivera,44,Male,Finance,Finance Manager,8,6,9523,3,1,5,4,22,18,83.4,13,1,0,4.6,10,Medium Performance
+EMP-1640,Amanda Jones,31,Female,Operations,Logistics Coordinator,6,5,8714,2,3,3,4,91,13,90.4,18,0,0,2.8,2,High Performance
+EMP-1641,Quinn Martinez,35,Male,Sales,Sales Executive,6,5,15165,5,5,5,3,35,14,96.8,2,12,0,2.7,4,High Performance
+EMP-1642,Chris Jones,29,Non-Binary,HR,People Ops Specialist,8,8,9949,3,3,2,3,39,12,86.3,23,0,1,4.1,3,High Performance
+EMP-1643,Christopher Thomas,27,Female,Marketing,Marketing Lead,5,5,7256,2,3,4,2,65,15,86.1,8,2,0,3.5,7,Medium Performance
+EMP-1644,Amelia Nguyen,38,Non-Binary,Operations,Supply Chain Analyst,11,6,13941,5,1,4,4,72,6,92.3,40,9,0,3.1,2,Low Performance
+EMP-1645,John Smith,38,Female,HR,HR Specialist,4,2,15480,5,1,4,1,96,7,99.6,8,15,0,5.9,1,High Performance
+EMP-1646,Robert Thompson,57,Non-Binary,HR,People Ops Specialist,10,2,14389,5,3,5,1,100,3,83.3,22,7,0,9.1,10,Medium Performance
+EMP-1647,Jennifer Mitchell,30,Female,Marketing,SEO Manager,9,2,9611,3,1,5,3,94,22,90.1,20,2,0,5.7,6,High Performance
+EMP-1648,Harper Roberts,53,Female,Engineering,Senior Developer,2,2,12084,4,3,4,3,104,7,99.0,2,10,0,7.6,3,High Performance
+EMP-1649,Rowan Ramirez,42,Non-Binary,Sales,Sales Manager,12,5,11839,4,1,3,3,70,16,86.0,10,3,0,9.1,8,High Performance
+EMP-1650,William Miller,28,Male,HR,HR Manager,5,5,8645,2,2,1,1,77,19,96.2,0,1,0,8.3,2,High Performance
