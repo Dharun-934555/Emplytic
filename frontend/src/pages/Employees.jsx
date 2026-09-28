@@ -1,19 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import {
   Search,
-  Filter,
   UserPlus,
   ChevronRight,
-  Sparkles,
-  Award,
-  TrendingUp,
-  AlertTriangle,
   X,
-  Check,
   Building2,
-  Briefcase
+  Briefcase,
+  AlertCircle
 } from 'lucide-react';
-import { api } from '../services/api';
+import { api, getErrorMessage } from '../services/api';
 
 export default function Employees({ onSelectEmployee, setCurrentTab }) {
   const [employees, setEmployees] = useState([]);
@@ -25,7 +20,8 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
   const [showAddModal, setShowAddModal] = useState(false);
 
   // New employee form state
-  const [formData, setFormData] = useState({
+  const defaultForm = {
+    employee_id: '',
     name: '',
     age: 30,
     gender: 'Female',
@@ -33,21 +29,24 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
     job_role: 'Software Engineer',
     years_at_company: 3,
     years_in_current_role: 2,
-    monthly_income: 8000,
+    monthly_income: 8500,
     job_level: 2,
     job_satisfaction: 4,
     environment_satisfaction: 4,
     work_life_balance: 3,
-    training_hours: 40,
-    projects_completed: 10,
-    attendance_rate: 96.0,
-    overtime_hours: 5,
+    training_hours: 45,
+    projects_completed: 12,
+    attendance_rate: 96.5,
+    overtime_hours: 6,
     previous_experience: 3,
     promotion_last_5_years: 0,
     employee_engagement: 8.0,
     absenteeism: 2
-  });
+  };
+
+  const [formData, setFormData] = useState(defaultForm);
   const [saving, setSaving] = useState(false);
+  const [modalError, setModalError] = useState('');
 
   useEffect(() => {
     fetchEmployees();
@@ -73,13 +72,15 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
 
   const handleAddEmployee = async (e) => {
     e.preventDefault();
+    setModalError('');
     setSaving(true);
     try {
       await api.createEmployee(formData);
       setShowAddModal(false);
+      setFormData(defaultForm);
       fetchEmployees();
     } catch (err) {
-      alert(`Error creating employee: ${err.message}`);
+      setModalError(getErrorMessage(err));
     } finally {
       setSaving(false);
     }
@@ -111,7 +112,7 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
   };
 
   return (
-    <div className="space-y-6 animate-fade-in pb-12">
+    <div className="space-y-6 animate-fade-in pb-12 relative">
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -125,10 +126,13 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
 
         <div className="flex items-center space-x-3">
           <button
-            onClick={() => setShowAddModal(true)}
-            className="px-4 py-2.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs tracking-wider uppercase flex items-center space-x-2 shadow-sm transition-all"
+            onClick={() => {
+              setModalError('');
+              setShowAddModal(true);
+            }}
+            className="px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs tracking-wider uppercase flex items-center space-x-2 shadow-lg shadow-amber-500/20 transition-all hover:scale-105 cursor-pointer"
           >
-            <UserPlus className="w-4 h-4" />
+            <UserPlus className="w-4 h-4 stroke-[2.5]" />
             <span>Add New Employee</span>
           </button>
         </div>
@@ -290,42 +294,80 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
         )}
       </div>
 
-      {/* Add Employee Modal */}
+      {/* Add Employee Modal with High Z-Index & Clean Styling */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm">
-          <div className="bg-white rounded-3xl p-8 max-w-2xl w-full shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto animate-fade-in">
-            <div className="flex items-center justify-between pb-4 border-b border-slate-100">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto">
+          <div className="relative bg-white rounded-3xl p-8 max-w-2xl w-full shadow-2xl border border-slate-200 my-8 max-h-[85vh] overflow-y-auto animate-fade-in z-[201]">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between pb-4 border-b border-slate-100 sticky top-0 bg-white z-10">
               <div>
-                <h3 className="text-xl font-bold text-slate-900">Add New Employee</h3>
-                <p className="text-xs text-slate-500">Fill in employee details for instant AI performance classification</p>
+                <h3 className="text-xl font-extrabold text-slate-900">Add New Employee</h3>
+                <p className="text-xs text-slate-500">Fill in staff information for PostgreSQL storage & AI performance classification</p>
               </div>
               <button
                 onClick={() => setShowAddModal(false)}
-                className="p-2 rounded-xl text-slate-400 hover:bg-slate-100"
+                className="p-2 rounded-xl text-slate-400 hover:bg-slate-100 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
+            {modalError && (
+              <div className="mt-4 p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center space-x-2">
+                <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
+                <span>{modalError}</span>
+              </div>
+            )}
+
+            {/* Modal Form */}
             <form onSubmit={handleAddEmployee} className="space-y-4 pt-4 text-xs">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Employee ID */}
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Full Name</label>
+                  <label className="font-bold text-slate-700 block mb-1">Employee ID (Optional)</label>
+                  <input
+                    type="text"
+                    value={formData.employee_id}
+                    onChange={(e) => setFormData({ ...formData, employee_id: e.target.value })}
+                    placeholder="Auto-generated if blank (e.g. EMP-1651)"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Name */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Full Name *</label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200"
                     placeholder="e.g. Rachel Adams"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
+
+                {/* Age */}
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Gender</label>
+                  <label className="font-bold text-slate-700 block mb-1">Age *</label>
+                  <input
+                    type="number"
+                    required
+                    min="18"
+                    max="75"
+                    value={formData.age}
+                    onChange={(e) => setFormData({ ...formData, age: parseInt(e.target.value) || 18 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Gender */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Gender *</label>
                   <select
                     value={formData.gender}
                     onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   >
                     <option value="Female">Female</option>
                     <option value="Male">Male</option>
@@ -333,12 +375,13 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
                   </select>
                 </div>
 
+                {/* Department */}
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Department</label>
+                  <label className="font-bold text-slate-700 block mb-1">Department *</label>
                   <select
                     value={formData.department}
                     onChange={(e) => setFormData({ ...formData, department: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   >
                     <option value="Engineering">Engineering</option>
                     <option value="HR">HR</option>
@@ -349,77 +392,108 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
                   </select>
                 </div>
 
+                {/* Job Role */}
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Job Role</label>
+                  <label className="font-bold text-slate-700 block mb-1">Job Role *</label>
                   <input
                     type="text"
                     required
                     value={formData.job_role}
                     onChange={(e) => setFormData({ ...formData, job_role: e.target.value })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200"
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
 
+                {/* Monthly Income */}
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Monthly Income ($)</label>
+                  <label className="font-bold text-slate-700 block mb-1">Monthly Income ($) *</label>
                   <input
                     type="number"
+                    required
                     value={formData.monthly_income}
-                    onChange={(e) => setFormData({ ...formData, monthly_income: parseFloat(e.target.value) })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200"
+                    onChange={(e) => setFormData({ ...formData, monthly_income: parseFloat(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
 
+                {/* Years at Company */}
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Years at Company</label>
+                  <label className="font-bold text-slate-700 block mb-1">Years at Company *</label>
                   <input
                     type="number"
+                    required
                     value={formData.years_at_company}
-                    onChange={(e) => setFormData({ ...formData, years_at_company: parseInt(e.target.value) })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200"
+                    onChange={(e) => setFormData({ ...formData, years_at_company: parseInt(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
 
+                {/* Years in Current Role */}
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Job Satisfaction (1-5)</label>
+                  <label className="font-bold text-slate-700 block mb-1">Years in Current Role *</label>
+                  <input
+                    type="number"
+                    required
+                    value={formData.years_in_current_role}
+                    onChange={(e) => setFormData({ ...formData, years_in_current_role: parseInt(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Job Satisfaction */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Job Satisfaction (1-5) *</label>
                   <input
                     type="number"
                     min="1"
                     max="5"
                     value={formData.job_satisfaction}
-                    onChange={(e) => setFormData({ ...formData, job_satisfaction: parseInt(e.target.value) })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200"
+                    onChange={(e) => setFormData({ ...formData, job_satisfaction: parseInt(e.target.value) || 1 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
 
+                {/* Attendance Rate */}
                 <div>
-                  <label className="font-bold text-slate-700 block mb-1">Attendance Rate (%)</label>
+                  <label className="font-bold text-slate-700 block mb-1">Attendance Rate (%) *</label>
                   <input
                     type="number"
                     step="0.1"
                     min="0"
                     max="100"
                     value={formData.attendance_rate}
-                    onChange={(e) => setFormData({ ...formData, attendance_rate: parseFloat(e.target.value) })}
-                    className="w-full px-3.5 py-2 rounded-xl border border-slate-200"
+                    onChange={(e) => setFormData({ ...formData, attendance_rate: parseFloat(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Training Hours */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Training Hours *</label>
+                  <input
+                    type="number"
+                    value={formData.training_hours}
+                    onChange={(e) => setFormData({ ...formData, training_hours: parseInt(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
               </div>
 
-              <div className="pt-4 flex justify-end space-x-3 border-t border-slate-100">
+              {/* Action Buttons */}
+              <div className="pt-4 flex justify-end space-x-3 border-t border-slate-100 sticky bottom-0 bg-white py-2">
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
-                  className="px-4 py-2 rounded-xl text-slate-600 font-semibold hover:bg-slate-100"
+                  className="px-5 py-2.5 rounded-xl text-slate-600 font-bold hover:bg-slate-100 transition-colors"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
                   disabled={saving}
-                  className="px-6 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold shadow-md"
+                  className="px-7 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold uppercase tracking-wider shadow-md transition-all hover:scale-105"
                 >
-                  {saving ? 'Processing...' : 'Save & Classify'}
+                  {saving ? 'Saving Employee...' : 'Save & Classify'}
                 </button>
               </div>
             </form>
