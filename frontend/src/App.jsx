@@ -5,7 +5,6 @@ import Dashboard from './pages/Dashboard';
 import Employees from './pages/Employees';
 import EmployeeDetails from './pages/EmployeeDetails';
 import MLPrediction from './pages/MLPrediction';
-import MLModel from './pages/MLModel';
 import Analytics from './pages/Analytics';
 import Insights from './pages/Insights';
 import Reports from './pages/Reports';
@@ -55,11 +54,6 @@ function AppContent() {
         return {
           title: 'Performance Prediction',
           subtitle: 'Predict employee performance using Machine Learning.'
-        };
-      case 'model':
-        return {
-          title: 'ML Model & Dataset Management',
-          subtitle: 'Train, evaluate, and manage historical datasets and Scikit-learn models'
         };
       case 'insights':
         return {
@@ -129,7 +123,6 @@ function AppContent() {
 
           {currentTab === 'analytics' && <Analytics />}
           {currentTab === 'prediction' && <MLPrediction />}
-          {currentTab === 'model' && <MLModel />}
           {currentTab === 'insights' && <Insights />}
           {currentTab === 'reports' && <Reports />}
           {currentTab === 'settings' && <Settings />}

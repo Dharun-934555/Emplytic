@@ -4,7 +4,6 @@ import {
   Users,
   BarChart3,
   BrainCircuit,
-  Cpu,
   Sparkles,
   FileSpreadsheet,
   Settings,
@@ -22,7 +21,6 @@ export default function Sidebar({ currentTab, setCurrentTab, mobileOpen, setMobi
     { id: 'employees', label: 'Employees', icon: Users },
     { id: 'analytics', label: 'Performance Analysis', icon: BarChart3 },
     { id: 'prediction', label: 'ML Prediction', icon: BrainCircuit, badge: 'AI' },
-    { id: 'model', label: 'ML Model', icon: Cpu },
     { id: 'insights', label: 'Insights', icon: Sparkles },
     { id: 'reports', label: 'Reports', icon: FileSpreadsheet },
   ];
