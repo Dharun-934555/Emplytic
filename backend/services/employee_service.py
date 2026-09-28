@@ -44,10 +44,16 @@ def get_employee_by_id(db: Session, employee_id: str) -> Optional[models.Employe
     ).first()
 
 def create_employee(db: Session, emp_data: schemas.EmployeeCreate, user_id: Optional[int] = None) -> models.Employee:
-    # Auto-generate employee_id if missing
-    if not emp_data.employee_id:
-        count = db.query(models.Employee).count()
-        emp_data.employee_id = f"EMP-{1000 + count + 1}"
+    # Auto-generate unique employee_id if missing or empty
+    if not emp_data.employee_id or not str(emp_data.employee_id).strip():
+        max_id = db.query(models.Employee).count()
+        candidate_id = f"EMP-{1000 + max_id + 1}"
+        while db.query(models.Employee).filter(models.Employee.employee_id == candidate_id).first():
+            max_id += 1
+            candidate_id = f"EMP-{1000 + max_id + 1}"
+        emp_data.employee_id = candidate_id
+    else:
+        emp_data.employee_id = str(emp_data.employee_id).strip()
 
     input_dict = emp_data.model_dump()
     

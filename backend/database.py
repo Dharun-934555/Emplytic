@@ -3,8 +3,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# Database configuration: PostgreSQL / SQLite fallback
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./emplytic.db")
+# Ensure absolute DB path for SQLite so root and backend scripts connect to the SAME file
+ABS_DB_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "emplytic.db"))
+DATABASE_URL = os.getenv("DATABASE_URL", f"sqlite:///{ABS_DB_PATH}")
 
 # Optional MongoDB Atlas configuration
 MONGODB_URL = os.getenv(

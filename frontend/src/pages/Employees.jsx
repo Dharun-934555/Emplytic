@@ -6,7 +6,8 @@ import {
   X,
   Building2,
   Briefcase,
-  AlertCircle
+  AlertCircle,
+  CheckCircle2
 } from 'lucide-react';
 import { api, getErrorMessage } from '../services/api';
 
@@ -47,6 +48,7 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
   const [formData, setFormData] = useState(defaultForm);
   const [saving, setSaving] = useState(false);
   const [modalError, setModalError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     fetchEmployees();
@@ -73,12 +75,28 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
   const handleAddEmployee = async (e) => {
     e.preventDefault();
     setModalError('');
+    setSuccessMessage('');
+
+    if (!formData.name || !formData.name.trim()) {
+      setModalError('Please enter the employee full name.');
+      return;
+    }
+
     setSaving(true);
     try {
-      await api.createEmployee(formData);
-      setShowAddModal(false);
+      const payload = { ...formData };
+      if (!payload.employee_id || !payload.employee_id.trim()) {
+        delete payload.employee_id;
+      }
+      
+      const created = await api.createEmployee(payload);
+      setSuccessMessage(`Employee ${created.name} (${created.employee_id}) created successfully! Classified as ${created.performance_group}.`);
       setFormData(defaultForm);
       fetchEmployees();
+      setTimeout(() => {
+        setShowAddModal(false);
+        setSuccessMessage('');
+      }, 1500);
     } catch (err) {
       setModalError(getErrorMessage(err));
     } finally {
@@ -128,6 +146,7 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
           <button
             onClick={() => {
               setModalError('');
+              setSuccessMessage('');
               setShowAddModal(true);
             }}
             className="px-5 py-3 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs tracking-wider uppercase flex items-center space-x-2 shadow-lg shadow-amber-500/20 transition-all hover:scale-105 cursor-pointer"
@@ -319,6 +338,13 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
               </div>
             )}
 
+            {successMessage && (
+              <div className="mt-4 p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center space-x-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>{successMessage}</span>
+              </div>
+            )}
+
             {/* Modal Form */}
             <form onSubmit={handleAddEmployee} className="space-y-4 pt-4 text-xs">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -329,7 +355,7 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
                     type="text"
                     value={formData.employee_id}
                     onChange={(e) => setFormData({ ...formData, employee_id: e.target.value })}
-                    placeholder="Auto-generated if blank (e.g. EMP-1651)"
+                    placeholder="Auto-generated if blank (e.g. EMP-1653)"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
