@@ -1,5 +1,5 @@
 import React from 'react';
-import { Settings as SettingsIcon, ShieldCheck, Database, Key, Server, Cpu, Check } from 'lucide-react';
+import { Settings as SettingsIcon, ShieldCheck, Database, Cpu, Check, Mail, User, Shield } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 
 export default function Settings() {
@@ -13,10 +13,10 @@ export default function Settings() {
           <span>System Settings</span>
         </div>
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 font-sans">
-          Settings & Configuration
+          Settings & System Preferences
         </h2>
         <p className="text-xs font-medium text-slate-500">
-          Manage system preferences, AI model parameters, and database connections.
+          Manage user credentials, AI parameters, and database state.
         </p>
       </div>
 
@@ -28,20 +28,35 @@ export default function Settings() {
             <span>Authenticated User Context</span>
           </h3>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs">
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Full Name</span>
-              <span className="text-sm font-extrabold text-slate-900">{user?.full_name || 'Sarah Jenkins'}</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 text-xs">
+            {/* Full Name */}
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
+                Full Name
+              </span>
+              <span className="text-sm font-extrabold text-slate-900 truncate">
+                {user?.name || 'Dharunya Sri S'}
+              </span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100">
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block">Email Address</span>
-              <span className="text-sm font-extrabold text-slate-900">{user?.email || 'hr@emplytic.ai'}</span>
+            {/* Email Address */}
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex flex-col justify-between overflow-hidden">
+              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
+                Email Address
+              </span>
+              <span className="text-xs font-extrabold text-slate-900 break-all truncate" title={user?.email}>
+                {user?.email || 'example@gmail.com'}
+              </span>
             </div>
 
-            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30">
-              <span className="text-[10px] font-bold text-amber-800 uppercase tracking-widest block">Role Authorization</span>
-              <span className="text-sm font-extrabold text-amber-900">{user?.role || 'HR Manager'}</span>
+            {/* Role Authorization */}
+            <div className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex flex-col justify-between">
+              <span className="text-[10px] font-bold text-amber-800 uppercase tracking-widest block mb-1">
+                Role Authorization
+              </span>
+              <span className="text-sm font-extrabold text-amber-900">
+                {user?.role || 'HR Manager'}
+              </span>
             </div>
           </div>
         </div>
@@ -91,7 +106,7 @@ export default function Settings() {
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between">
               <div>
                 <span className="font-bold text-slate-800 block">PostgreSQL / SQLAlchemy Database</span>
-                <span className="text-slate-500 font-mono text-[11px]">Tables: users, employees, predictions, model_metrics, training_records</span>
+                <span className="text-slate-500 font-mono text-[11px]">Tables: users, employees, predictions, notifications, model_metrics</span>
               </div>
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[11px]">
                 <Check className="w-3 h-3 mr-1" /> Connected
