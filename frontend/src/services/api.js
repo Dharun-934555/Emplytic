@@ -223,5 +223,21 @@ export const api = {
   // Reports
   downloadReport: (reportType) => {
     window.open(`${API_BASE}/reports/download/${reportType}`, '_blank');
+  },
+
+  generateCustomReport: async (payload) => {
+    const res = await fetch(`${API_BASE}/reports/generate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+      body: JSON.stringify(payload)
+    });
+    const blob = await res.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${(payload.title || 'Custom_HR_Report').replace(/\s+/g, '_')}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
   }
 };

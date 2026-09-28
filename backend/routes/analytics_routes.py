@@ -1,7 +1,7 @@
-from fastapi import APIRouter, Depends, Query, HTTPException
+from fastapi import APIRouter, Depends, Query, HTTPException, Body
 from fastapi.responses import StreamingResponse
 from sqlalchemy.orm import Session
-from typing import Optional
+from typing import Optional, List, Dict, Any
 import io
 import pandas as pd
 from database import get_db
@@ -28,6 +28,56 @@ def get_analytics_data(
 @router.get("/insights")
 def get_ai_insights(db: Session = Depends(get_db)):
     return analytics_service.get_insights(db)
+
+@router.post("/reports/generate")
+def generate_custom_report(payload: Dict[str, Any] = Body(...), db: Session = Depends(get_db)):
+    report_title = payload.get("title", "Custom_HR_Report")
+    dept = payload.get("department", "All")
+    group = payload.get("performance_group", "All")
+    included_metrics = payload.get("metrics", ["employee_id", "name", "department", "job_role", "performance_group", "monthly_income", "attendance_rate", "job_satisfaction"])
+
+    query = db.query(models.Employee)
+
+    if dept and dept != "All":
+        query = query.filter(models.Employee.department == dept)
+    if group and group != "All":
+        query = query.filter(models.Employee.performance_group == group)
+
+    employees = query.all()
+
+    data = []
+    for e in employees:
+        row = {}
+        if "employee_id" in included_metrics: row["Employee ID"] = e.employee_id
+        if "name" in included_metrics: row["Name"] = e.name
+        if "department" in included_metrics: row["Department"] = e.department
+        if "job_role" in included_metrics: row["Job Role"] = e.job_role
+        if "performance_group" in included_metrics: row["Performance Group"] = e.performance_group
+        if "monthly_income" in included_metrics: row["Monthly Income ($)"] = e.monthly_income
+        if "attendance_rate" in included_metrics: row["Attendance Rate (%)"] = e.attendance_rate
+        if "job_satisfaction" in included_metrics: row["Job Satisfaction"] = e.job_satisfaction
+        if "training_hours" in included_metrics: row["Training Hours"] = e.training_hours
+        if "projects_completed" in included_metrics: row["Projects Completed"] = e.projects_completed
+        if "employee_engagement" in included_metrics: row["Engagement Score"] = e.employee_engagement
+        data.append(row)
+
+    df = pd.DataFrame(data if data else [{"Message": "No employee records matched selected criteria."}])
+
+    # Add notification for generated HR report
+    notif = models.Notification(
+        title="Custom HR Report Generated",
+        message=f"Report '{report_title}' exported for {dept} ({group}) with {len(employees)} records."
+    )
+    db.add(notif)
+    db.commit()
+
+    stream = io.StringIO()
+    df.to_csv(stream, index=False)
+    
+    clean_filename = f"{report_title.replace(' ', '_')}.csv"
+    response = StreamingResponse(iter([stream.getvalue()]), media_type="text/csv")
+    response.headers["Content-Disposition"] = f"attachment; filename={clean_filename}"
+    return response
 
 @router.get("/reports/download/{report_type}")
 def download_csv_report(report_type: str, db: Session = Depends(get_db)):
