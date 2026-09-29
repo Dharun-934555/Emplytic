@@ -51,11 +51,19 @@ def update_employee(
         raise HTTPException(status_code=404, detail="Employee not found")
     return emp
 
+@router.delete("/clear-all", status_code=status.HTTP_200_OK)
+def clear_all_employees(
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(auth.get_current_user)
+):
+    count = employee_service.clear_all_employees(db)
+    return {"message": f"Successfully deleted {count} employee records."}
+
 @router.delete("/{employee_id}", status_code=status.HTTP_200_OK)
 def delete_employee(
     employee_id: str,
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.require_admin)
+    current_user: models.User = Depends(auth.get_current_user)
 ):
     success = employee_service.delete_employee(db, employee_id)
     if not success:

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Search,
   UserPlus,
   ChevronRight,
   X,
-  Building2,
-  Briefcase,
   AlertCircle,
-  CheckCircle2
+  CheckCircle2,
+  Trash2,
+  Edit3
 } from 'lucide-react';
 import { api, getErrorMessage } from '../services/api';
 
@@ -104,6 +105,29 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
     }
   };
 
+  const handleClearAll = async () => {
+    if (window.confirm('Are you sure you want to remove all employee records from the database? This action cannot be undone.')) {
+      try {
+        await api.clearAllEmployees();
+        fetchEmployees();
+      } catch (err) {
+        alert(getErrorMessage(err));
+      }
+    }
+  };
+
+  const handleDeleteSingleEmployee = async (empId, empName, e) => {
+    e.stopPropagation();
+    if (window.confirm(`Are you sure you want to remove ${empName} (${empId})?`)) {
+      try {
+        await api.deleteEmployee(empId);
+        fetchEmployees();
+      } catch (err) {
+        alert(getErrorMessage(err));
+      }
+    }
+  };
+
   const getPerformanceBadge = (group) => {
     if (group === 'High Performance') {
       return (
@@ -143,6 +167,17 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
         </div>
 
         <div className="flex items-center space-x-3">
+          {employees.length > 0 && (
+            <button
+              onClick={handleClearAll}
+              className="px-4 py-3 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-bold text-xs flex items-center space-x-2 transition-all cursor-pointer"
+              title="Clear all employee records from database"
+            >
+              <Trash2 className="w-4 h-4 text-rose-600" />
+              <span>Clear All Data</span>
+            </button>
+          )}
+
           <button
             onClick={() => {
               setModalError('');
@@ -295,15 +330,27 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
                     </td>
 
                     <td className="py-4 px-6 text-right">
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onSelectEmployee(emp.employee_id);
-                        }}
-                        className="p-2 rounded-xl text-slate-400 hover:text-amber-700 hover:bg-amber-100/60 transition-colors"
-                      >
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
+                      <div className="flex items-center justify-end space-x-1">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            onSelectEmployee(emp.employee_id);
+                          }}
+                          className="p-2 rounded-xl text-slate-500 hover:text-amber-700 hover:bg-amber-100/60 transition-colors"
+                          title="View Profile & Diagnostics"
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                        <button
+                          type="button"
+                          onClick={(e) => handleDeleteSingleEmployee(emp.employee_id, emp.name, e)}
+                          className="p-2 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-colors"
+                          title="Remove Employee"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}
@@ -313,40 +360,41 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
         )}
       </div>
 
-      {/* Add Employee Modal with High Z-Index & Clean Styling */}
-      {showAddModal && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md overflow-y-auto">
-          <div className="relative bg-white rounded-3xl p-8 max-w-2xl w-full shadow-2xl border border-slate-200 my-8 max-h-[85vh] overflow-y-auto animate-fade-in z-[201]">
+      {/* Add Employee Modal - Rendered at root level via Portal */}
+      {showAddModal && createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-slate-950/70 backdrop-blur-md overflow-y-auto">
+          <div className="relative bg-white rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl border border-slate-200 my-auto max-h-[90vh] flex flex-col z-[10000]">
             {/* Modal Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-slate-100 sticky top-0 bg-white z-10">
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 flex-shrink-0">
               <div>
-                <h3 className="text-xl font-extrabold text-slate-900">Add New Employee</h3>
-                <p className="text-xs text-slate-500">Fill in staff information for PostgreSQL storage & AI performance classification</p>
+                <h3 className="text-xl font-extrabold text-slate-900 font-sans">Add New Employee</h3>
+                <p className="text-xs text-slate-500 font-medium mt-0.5">Fill in staff information for PostgreSQL storage & performance classification</p>
               </div>
               <button
+                type="button"
                 onClick={() => setShowAddModal(false)}
-                className="p-2 rounded-xl text-slate-400 hover:bg-slate-100 transition-colors"
+                className="p-2 rounded-xl text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {modalError && (
-              <div className="mt-4 p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center space-x-2">
+              <div className="mb-4 p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center space-x-2 flex-shrink-0">
                 <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
                 <span>{modalError}</span>
               </div>
             )}
 
             {successMessage && (
-              <div className="mt-4 p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center space-x-2">
+              <div className="mb-4 p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center space-x-2 flex-shrink-0">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                 <span>{successMessage}</span>
               </div>
             )}
 
-            {/* Modal Form */}
-            <form onSubmit={handleAddEmployee} className="space-y-4 pt-4 text-xs">
+            {/* Scrollable Form Body */}
+            <form onSubmit={handleAddEmployee} className="space-y-4 text-xs overflow-y-auto pr-1.5 flex-1 custom-scrollbar">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Employee ID */}
                 <div>
@@ -355,7 +403,7 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
                     type="text"
                     value={formData.employee_id}
                     onChange={(e) => setFormData({ ...formData, employee_id: e.target.value })}
-                    placeholder="Auto-generated if blank (e.g. EMP-1653)"
+                    placeholder="Auto-generated if blank (e.g. EMP-1050)"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
@@ -426,6 +474,7 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
                     required
                     value={formData.job_role}
                     onChange={(e) => setFormData({ ...formData, job_role: e.target.value })}
+                    placeholder="e.g. Software Engineer"
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
@@ -503,10 +552,25 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
                   />
                 </div>
+
+                {/* Performance Group Override */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Performance Tier (Optional)</label>
+                  <select
+                    value={formData.performance_group || ''}
+                    onChange={(e) => setFormData({ ...formData, performance_group: e.target.value || null })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  >
+                    <option value="">Auto (AI ML Evaluation)</option>
+                    <option value="High Performance">High Performance</option>
+                    <option value="Medium Performance">Medium Performance</option>
+                    <option value="Low Performance">Low Performance</option>
+                  </select>
+                </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="pt-4 flex justify-end space-x-3 border-t border-slate-100 sticky bottom-0 bg-white py-2">
+              {/* Action Buttons Footer */}
+              <div className="pt-4 flex justify-end space-x-3 border-t border-slate-100 flex-shrink-0 mt-4">
                 <button
                   type="button"
                   onClick={() => setShowAddModal(false)}
@@ -524,7 +588,8 @@ export default function Employees({ onSelectEmployee, setCurrentTab }) {
               </div>
             </form>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

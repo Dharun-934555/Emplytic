@@ -28,8 +28,9 @@ def seed_database():
         db.commit()
         print("Seeded default Admin & HR Manager users.")
 
-    # 2. Seed Employees if not present
-    if db.query(models.Employee).count() == 0:
+    # 2. Seed Employees if requested via SEED_DUMMY_DATA env var
+    seed_dummy = os.getenv("SEED_DUMMY_DATA", "false").lower() in ("true", "1")
+    if seed_dummy and db.query(models.Employee).count() == 0:
         csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "employee_performance.csv"))
         if os.path.exists(csv_path):
             df = pd.read_csv(csv_path)

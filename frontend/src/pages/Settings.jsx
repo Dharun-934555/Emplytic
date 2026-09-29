@@ -99,17 +99,27 @@ export default function Settings() {
         <div className="p-7 rounded-3xl bg-white border border-slate-200/80 shadow-soft space-y-4">
           <h3 className="text-base font-bold text-slate-900 flex items-center space-x-2">
             <Database className="w-5 h-5 text-amber-600" />
-            <span>Database Status</span>
+            <span>Database Connection & Persistence Status</span>
           </h3>
 
           <div className="space-y-3 text-xs">
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between">
               <div>
-                <span className="font-bold text-slate-800 block">PostgreSQL / SQLAlchemy Database</span>
-                <span className="text-slate-500 font-mono text-[11px]">Tables: users, employees, predictions, notifications, model_metrics</span>
+                <span className="font-bold text-slate-800 block">SQL Database (PostgreSQL / SQLite)</span>
+                <span className="text-slate-500 font-mono text-[11px]">Tables: users, employees, predictions, notifications</span>
               </div>
               <span className="inline-flex items-center px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[11px]">
-                <Check className="w-3 h-3 mr-1" /> Connected
+                <Check className="w-3 h-3 mr-1" /> Active
+              </span>
+            </div>
+
+            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-between">
+              <div>
+                <span className="font-bold text-slate-800 block">MongoDB Atlas Cloud Database</span>
+                <span className="text-slate-500 font-mono text-[11px]">Collection: emplytic.employees (Synced on create, edit, delete)</span>
+              </div>
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-amber-100 text-amber-900 font-bold text-[11px]">
+                MongoDB Atlas Synced
               </span>
             </div>
           </div>

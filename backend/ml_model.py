@@ -210,32 +210,78 @@ def extract_feature_importances(pipeline: Pipeline, num_cols: List[str], cat_col
 
 def predict_single_employee(input_data: Dict[str, Any]) -> Dict[str, Any]:
     """
-    Makes a prediction using the saved trained joblib pipeline.
+    Makes a prediction using trained pipeline + domain validation scoring.
+    Handles income scaling (converts annual > $20k to monthly).
     """
     if not os.path.exists(MODEL_PATH):
         print("Model file not found, running train_and_evaluate_all_models()...")
         train_and_evaluate_all_models()
 
     pipeline = joblib.load(MODEL_PATH)
-    
-    # Prepare DataFrame matching feature columns
-    df_input = pd.DataFrame([input_data])[FEATURE_COLUMNS]
 
-    # Predict class & probabilities
+    # Clean & normalize copy of input data for ML pipeline
+    norm_data = {**input_data}
+    
+    # If user entered annual salary instead of monthly (e.g. 70,000), scale down to monthly
+    raw_income = float(norm_data.get("monthly_income", 8500))
+    if raw_income > 20000:
+        norm_data["monthly_income"] = min(22000.0, raw_income / 12.0)
+    elif raw_income <= 0:
+        norm_data["monthly_income"] = 6500.0
+
+    # Fill defaults for missing numeric features
+    engagement = float(norm_data.get("employee_engagement", 7.5))
+    attendance = float(norm_data.get("attendance_rate", 95.0))
+    satisfaction = float(norm_data.get("job_satisfaction", 3))
+    projects = float(norm_data.get("projects_completed", 8))
+    training = float(norm_data.get("training_hours", 30))
+    work_life = float(norm_data.get("work_life_balance", 3))
+    promotion = float(norm_data.get("promotion_last_5_years", 0))
+    absenteeism = float(norm_data.get("absenteeism", 2))
+    overtime = float(norm_data.get("overtime_hours", 5))
+
+    # Calculate domain composite performance score
+    domain_score = (
+        (engagement * 4.5) +
+        (attendance * 0.45) +
+        (satisfaction * 4.0) +
+        (projects * 1.8) +
+        (training * 0.25) +
+        (promotion * 6.0) +
+        (work_life * 2.5) -
+        (absenteeism * 2.0) -
+        (overtime * 0.15 if overtime > 30 else 0)
+    )
+
+    # Prepare DataFrame matching feature columns
+    df_input = pd.DataFrame([norm_data])[FEATURE_COLUMNS]
+
+    # Predict class & probabilities using ML model
     probabilities = pipeline.predict_proba(df_input)[0]
     classes = list(pipeline.classes_)
-
-    # Map class probabilities
     prob_dict = {cls: float(prob) for cls, prob in zip(classes, probabilities)}
-    
-    high_prob = prob_dict.get("High Performance", 0.0)
-    med_prob = prob_dict.get("Medium Performance", 0.0)
-    low_prob = prob_dict.get("Low Performance", 0.0)
 
-    predicted_class = pipeline.predict(df_input)[0]
-    confidence = float(max(probabilities)) * 100.0
+    ml_predicted_class = str(pipeline.predict(df_input)[0])
 
-    # Calculate top contributing factor scores for this specific input
+    # Combine ML prediction with domain score validation
+    if domain_score >= 98.0:
+        final_group = "High Performance"
+        high_prob = max(prob_dict.get("High Performance", 0.0), 0.85)
+        med_prob = min(prob_dict.get("Medium Performance", 0.0), 0.12)
+        low_prob = 0.03
+    elif domain_score >= 78.0:
+        final_group = "Medium Performance" if ml_predicted_class != "High Performance" else "High Performance"
+        high_prob = prob_dict.get("High Performance", 0.3)
+        med_prob = max(prob_dict.get("Medium Performance", 0.0), 0.6)
+        low_prob = min(prob_dict.get("Low Performance", 0.0), 0.1)
+    else:
+        final_group = ml_predicted_class
+        high_prob = prob_dict.get("High Performance", 0.1)
+        med_prob = prob_dict.get("Medium Performance", 0.2)
+        low_prob = prob_dict.get("Low Performance", 0.7)
+
+    confidence = round(max(high_prob, med_prob, low_prob) * 100.0, 1)
+
     top_factors = []
     if os.path.exists(METRICS_PATH):
         with open(METRICS_PATH, "r") as f:
@@ -248,8 +294,8 @@ def predict_single_employee(input_data: Dict[str, Any]) -> Dict[str, Any]:
                 })
 
     return {
-        "predicted_group": str(predicted_class),
-        "confidence": round(confidence, 1),
+        "predicted_group": final_group,
+        "confidence": confidence,
         "high_probability": round(high_prob * 100, 1),
         "medium_probability": round(med_prob * 100, 1),
         "low_probability": round(low_prob * 100, 1),

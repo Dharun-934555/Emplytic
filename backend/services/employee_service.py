@@ -4,6 +4,7 @@ from typing import List, Optional, Dict, Any
 import models
 import schemas
 from ml_model import predict_single_employee
+from services.mongodb_service import sync_employee_to_mongo, delete_employee_from_mongo, clear_all_mongo_employees
 
 def get_employees(
     db: Session,
@@ -85,6 +86,26 @@ def create_employee(db: Session, emp_data: schemas.EmployeeCreate, user_id: Opti
 
     db.commit()
     db.refresh(db_employee)
+
+    # MongoDB Atlas Sync
+    mongo_payload = {
+        "employee_id": db_employee.employee_id,
+        "name": db_employee.name,
+        "age": db_employee.age,
+        "gender": db_employee.gender,
+        "department": db_employee.department,
+        "job_role": db_employee.job_role,
+        "monthly_income": db_employee.monthly_income,
+        "performance_group": db_employee.performance_group,
+        "job_satisfaction": db_employee.job_satisfaction,
+        "attendance_rate": db_employee.attendance_rate,
+        "training_hours": db_employee.training_hours,
+        "projects_completed": db_employee.projects_completed,
+        "years_at_company": db_employee.years_at_company,
+        "created_at": db_employee.created_at.isoformat() if db_employee.created_at else None
+    }
+    sync_employee_to_mongo(mongo_payload)
+
     return db_employee
 
 def update_employee(db: Session, employee_id: str, emp_data: schemas.EmployeeUpdate) -> Optional[models.Employee]:
@@ -96,14 +117,70 @@ def update_employee(db: Session, employee_id: str, emp_data: schemas.EmployeeUpd
     for key, value in update_dict.items():
         setattr(emp, key, value)
 
+    # Re-evaluate ML classification if performance_group was not explicitly overridden
+    if "performance_group" not in update_dict:
+        full_dict = {
+            "name": emp.name,
+            "age": emp.age,
+            "gender": emp.gender,
+            "department": emp.department,
+            "job_role": emp.job_role,
+            "years_at_company": emp.years_at_company,
+            "years_in_current_role": emp.years_in_current_role,
+            "monthly_income": emp.monthly_income,
+            "job_level": emp.job_level,
+            "job_satisfaction": emp.job_satisfaction,
+            "environment_satisfaction": emp.environment_satisfaction,
+            "work_life_balance": emp.work_life_balance,
+            "training_hours": emp.training_hours,
+            "projects_completed": emp.projects_completed,
+            "attendance_rate": emp.attendance_rate,
+            "overtime_hours": emp.overtime_hours,
+            "previous_experience": emp.previous_experience,
+            "promotion_last_5_years": emp.promotion_last_5_years,
+            "employee_engagement": emp.employee_engagement,
+            "absenteeism": emp.absenteeism
+        }
+        prediction_result = predict_single_employee(full_dict)
+        emp.performance_group = prediction_result["predicted_group"]
+
     db.commit()
     db.refresh(emp)
+
+    # MongoDB Atlas Sync
+    mongo_payload = {
+        "employee_id": emp.employee_id,
+        "name": emp.name,
+        "age": emp.age,
+        "gender": emp.gender,
+        "department": emp.department,
+        "job_role": emp.job_role,
+        "monthly_income": emp.monthly_income,
+        "performance_group": emp.performance_group,
+        "job_satisfaction": emp.job_satisfaction,
+        "attendance_rate": emp.attendance_rate,
+        "training_hours": emp.training_hours,
+        "projects_completed": emp.projects_completed,
+        "years_at_company": emp.years_at_company
+    }
+    sync_employee_to_mongo(mongo_payload)
+
     return emp
 
 def delete_employee(db: Session, employee_id: str) -> bool:
     emp = get_employee_by_id(db, employee_id)
     if not emp:
         return False
+    emp_code = emp.employee_id
     db.delete(emp)
     db.commit()
+    delete_employee_from_mongo(emp_code)
     return True
+
+def clear_all_employees(db: Session) -> int:
+    count = db.query(models.Employee).count()
+    db.query(models.Employee).delete()
+    db.query(models.Prediction).delete()
+    db.commit()
+    clear_all_mongo_employees()
+    return count

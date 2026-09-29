@@ -164,12 +164,12 @@ export default function Sidebar({ currentTab, setCurrentTab, mobileOpen, setMobi
         <div className="p-4 border-t border-slate-200/60 bg-[#f4f1ea]/60">
           <div className="flex items-center justify-between p-2.5 rounded-2xl bg-white border border-slate-200/80 shadow-sm">
             <div className="flex items-center space-x-3 overflow-hidden">
-              <div className="w-9 h-9 rounded-xl bg-amber-500 text-white font-bold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
-                {user?.name ? user.name.charAt(0) : 'S'}
+              <div className="w-9 h-9 rounded-xl bg-amber-500 text-white font-extrabold flex items-center justify-center text-sm shadow-sm flex-shrink-0">
+                {user?.name ? user.name.charAt(0).toUpperCase() : 'D'}
               </div>
               <div className="overflow-hidden">
                 <h4 className="text-xs font-bold text-slate-800 truncate">
-                  {user?.name || 'Sarah Jenkins'}
+                  {user?.name || 'Dharunya Sri S'}
                 </h4>
                 <p className="text-[11px] font-medium text-slate-500 truncate flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3 text-amber-600 inline" />

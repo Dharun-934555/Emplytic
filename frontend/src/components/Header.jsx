@@ -165,9 +165,17 @@ export default function Header({ title, subtitle, setMobileOpen }) {
         </div>
 
         {/* User Badge */}
-        <div className="hidden sm:flex items-center space-x-2 pl-2">
-          <div className="w-9 h-9 rounded-2xl bg-slate-900 text-amber-400 font-bold flex items-center justify-center text-xs shadow-sm">
-            {user?.name ? user.name.charAt(0) : 'S'}
+        <div className="hidden sm:flex items-center space-x-3 pl-2 border-l border-slate-200/80">
+          <div className="w-9 h-9 rounded-2xl bg-slate-900 text-amber-400 font-extrabold flex items-center justify-center text-xs shadow-sm">
+            {user?.name ? user.name.charAt(0).toUpperCase() : 'D'}
+          </div>
+          <div className="text-left leading-tight hidden md:block">
+            <span className="text-xs font-bold text-slate-800 block truncate max-w-[130px]">
+              {user?.name || 'Dharunya Sri S'}
+            </span>
+            <span className="text-[10px] font-semibold text-slate-400 block truncate">
+              {user?.email || 'hr@emplytic.ai'}
+            </span>
           </div>
         </div>
       </div>

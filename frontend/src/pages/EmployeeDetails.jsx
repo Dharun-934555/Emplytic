@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   ArrowLeft,
   Award,
@@ -12,7 +13,11 @@ import {
   Sparkles,
   BookOpen,
   Zap,
-  Star
+  Star,
+  Edit3,
+  X,
+  AlertCircle,
+  Trash2
 } from 'lucide-react';
 import {
   RadarChart,
@@ -27,11 +32,16 @@ import {
   YAxis,
   Tooltip
 } from 'recharts';
-import { api } from '../services/api';
+import { api, getErrorMessage } from '../services/api';
 
 export default function EmployeeDetails({ employeeId, onBack, setCurrentTab }) {
   const [employee, setEmployee] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [editError, setEditError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const [editForm, setEditForm] = useState({});
 
   useEffect(() => {
     if (employeeId) {
@@ -44,10 +54,50 @@ export default function EmployeeDetails({ employeeId, onBack, setCurrentTab }) {
     try {
       const res = await api.getEmployeeById(employeeId);
       setEmployee(res);
+      setEditForm(res);
     } catch (err) {
       console.error('Failed to load employee details:', err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const openEditModal = () => {
+    setEditForm({ ...employee });
+    setEditError('');
+    setSuccessMessage('');
+    setShowEditModal(true);
+  };
+
+  const handleUpdateEmployee = async (e) => {
+    e.preventDefault();
+    setEditError('');
+    setSuccessMessage('');
+    setSaving(true);
+
+    try {
+      const updated = await api.updateEmployee(employee.employee_id, editForm);
+      setEmployee(updated);
+      setSuccessMessage(`Employee ${updated.name} updated successfully! Re-classified as ${updated.performance_group}.`);
+      setTimeout(() => {
+        setShowEditModal(false);
+        setSuccessMessage('');
+      }, 1400);
+    } catch (err) {
+      setEditError(getErrorMessage(err));
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDeleteEmployee = async () => {
+    if (window.confirm(`Are you sure you want to remove employee ${employee.name} (${employee.employee_id})?`)) {
+      try {
+        await api.deleteEmployee(employee.employee_id);
+        onBack();
+      } catch (err) {
+        alert(getErrorMessage(err));
+      }
     }
   };
 
@@ -160,8 +210,23 @@ export default function EmployeeDetails({ employeeId, onBack, setCurrentTab }) {
             </div>
           </div>
 
-          <div>
+          <div className="flex items-center space-x-3">
             {getBadge(employee.performance_group)}
+            <button
+              onClick={openEditModal}
+              className="px-4 py-2 rounded-2xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold text-xs tracking-wider uppercase flex items-center space-x-2 shadow-md transition-all hover:scale-105 cursor-pointer"
+            >
+              <Edit3 className="w-4 h-4 stroke-[2.5]" />
+              <span>Edit Employee</span>
+            </button>
+            <button
+              onClick={handleDeleteEmployee}
+              className="px-4 py-2 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 font-extrabold text-xs tracking-wider uppercase flex items-center space-x-1.5 transition-all hover:scale-105 cursor-pointer"
+              title="Remove employee record"
+            >
+              <Trash2 className="w-4 h-4 text-rose-600" />
+              <span>Remove</span>
+            </button>
           </div>
         </div>
       </div>
@@ -266,6 +331,236 @@ export default function EmployeeDetails({ employeeId, onBack, setCurrentTab }) {
           </div>
         </div>
       </div>
+
+      {/* Edit Employee Modal */}
+      {showEditModal && createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-slate-950/70 backdrop-blur-md overflow-y-auto">
+          <div className="relative bg-white rounded-3xl p-6 sm:p-8 max-w-2xl w-full shadow-2xl border border-slate-200 my-auto max-h-[90vh] flex flex-col z-[10000]">
+            {/* Modal Header */}
+            <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 flex-shrink-0">
+              <div>
+                <h3 className="text-xl font-extrabold text-slate-900 font-sans">Edit Employee Record</h3>
+                <p className="text-xs text-slate-500 font-medium mt-0.5">
+                  Update staff metrics for <span className="font-bold text-slate-800">{employee.employee_id}</span> (AI re-classifies tier automatically)
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowEditModal(false)}
+                className="p-2 rounded-xl text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {editError && (
+              <div className="mb-4 p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center space-x-2 flex-shrink-0">
+                <AlertCircle className="w-4 h-4 text-rose-600 flex-shrink-0" />
+                <span>{editError}</span>
+              </div>
+            )}
+
+            {successMessage && (
+              <div className="mb-4 p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center space-x-2 flex-shrink-0">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                <span>{successMessage}</span>
+              </div>
+            )}
+
+            {/* Scrollable Form Body */}
+            <form onSubmit={handleUpdateEmployee} className="space-y-4 text-xs overflow-y-auto pr-1.5 flex-1 custom-scrollbar">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Full Name */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Full Name *</label>
+                  <input
+                    type="text"
+                    required
+                    value={editForm.name || ''}
+                    onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Age */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Age *</label>
+                  <input
+                    type="number"
+                    required
+                    min="18"
+                    max="75"
+                    value={editForm.age || 18}
+                    onChange={(e) => setEditForm({ ...editForm, age: parseInt(e.target.value) || 18 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Gender */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Gender *</label>
+                  <select
+                    value={editForm.gender || 'Female'}
+                    onChange={(e) => setEditForm({ ...editForm, gender: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  >
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                    <option value="Non-Binary">Non-Binary</option>
+                  </select>
+                </div>
+
+                {/* Department */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Department *</label>
+                  <select
+                    value={editForm.department || 'Engineering'}
+                    onChange={(e) => setEditForm({ ...editForm, department: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  >
+                    <option value="Engineering">Engineering</option>
+                    <option value="HR">HR</option>
+                    <option value="Finance">Finance</option>
+                    <option value="Marketing">Marketing</option>
+                    <option value="Sales">Sales</option>
+                    <option value="Operations">Operations</option>
+                  </select>
+                </div>
+
+                {/* Job Role */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Job Role *</label>
+                  <input
+                    type="text"
+                    required
+                    value={editForm.job_role || ''}
+                    onChange={(e) => setEditForm({ ...editForm, job_role: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Monthly Income */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Monthly Income ($) *</label>
+                  <input
+                    type="number"
+                    required
+                    value={editForm.monthly_income || 0}
+                    onChange={(e) => setEditForm({ ...editForm, monthly_income: parseFloat(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Years at Company */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Years at Company *</label>
+                  <input
+                    type="number"
+                    required
+                    value={editForm.years_at_company || 0}
+                    onChange={(e) => setEditForm({ ...editForm, years_at_company: parseInt(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Years in Current Role */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Years in Current Role *</label>
+                  <input
+                    type="number"
+                    required
+                    value={editForm.years_in_current_role || 0}
+                    onChange={(e) => setEditForm({ ...editForm, years_in_current_role: parseInt(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Job Satisfaction */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Job Satisfaction (1-5) *</label>
+                  <input
+                    type="number"
+                    min="1"
+                    max="5"
+                    value={editForm.job_satisfaction || 1}
+                    onChange={(e) => setEditForm({ ...editForm, job_satisfaction: parseInt(e.target.value) || 1 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Attendance Rate */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Attendance Rate (%) *</label>
+                  <input
+                    type="number"
+                    step="0.1"
+                    min="0"
+                    max="100"
+                    value={editForm.attendance_rate || 0}
+                    onChange={(e) => setEditForm({ ...editForm, attendance_rate: parseFloat(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Training Hours */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Training Hours *</label>
+                  <input
+                    type="number"
+                    value={editForm.training_hours || 0}
+                    onChange={(e) => setEditForm({ ...editForm, training_hours: parseInt(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Projects Completed */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Projects Completed *</label>
+                  <input
+                    type="number"
+                    value={editForm.projects_completed || 0}
+                    onChange={(e) => setEditForm({ ...editForm, projects_completed: parseInt(e.target.value) || 0 })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  />
+                </div>
+
+                {/* Performance Group Override */}
+                <div>
+                  <label className="font-bold text-slate-700 block mb-1">Performance Tier</label>
+                  <select
+                    value={editForm.performance_group || 'High Performance'}
+                    onChange={(e) => setEditForm({ ...editForm, performance_group: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 font-semibold focus:outline-none focus:ring-2 focus:ring-amber-400"
+                  >
+                    <option value="High Performance">High Performance</option>
+                    <option value="Medium Performance">Medium Performance</option>
+                    <option value="Low Performance">Low Performance</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Action Buttons Footer */}
+              <div className="pt-4 flex justify-end space-x-3 border-t border-slate-100 flex-shrink-0 mt-4">
+                <button
+                  type="button"
+                  onClick={() => setShowEditModal(false)}
+                  className="px-5 py-2.5 rounded-xl text-slate-600 font-bold hover:bg-slate-100 transition-colors"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={saving}
+                  className="px-7 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold uppercase tracking-wider shadow-md transition-all hover:scale-105"
+                >
+                  {saving ? 'Updating Employee...' : 'Save & Re-Classify'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>,
+        document.body
+      )}
     </div>
   );
 }

@@ -145,6 +145,83 @@ def download_csv_report(report_type: str, db: Session = Depends(get_db)):
     response.headers["Content-Disposition"] = f"attachment; filename={filename}"
     return response
 
+@router.post("/settings/mongodb")
+def update_mongodb_setting(payload: Dict[str, Any] = Body(...), db: Session = Depends(get_db)):
+    mongo_url = payload.get("mongodb_url", "").strip()
+    password = payload.get("password", "").strip()
+    
+    if password and "<db_password>" in mongo_url:
+        mongo_url = mongo_url.replace("<db_password>", password)
+
+    if not mongo_url:
+        mongo_url = os.getenv("MONGODB_URL", "")
+
+    if password and "<db_password>" in mongo_url:
+        mongo_url = mongo_url.replace("<db_password>", password)
+
+    if not mongo_url or "<db_password>" in mongo_url:
+        raise HTTPException(status_code=400, detail="Please enter your MongoDB Atlas database password.")
+
+    # 1. Update .env file
+    env_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", ".env"))
+    if os.path.exists(env_path):
+        with open(env_path, "r") as f:
+            lines = f.readlines()
+        new_lines = []
+        found = False
+        for line in lines:
+            if line.startswith("MONGODB_URL="):
+                new_lines.append(f"MONGODB_URL={mongo_url}\n")
+                found = True
+            else:
+                new_lines.append(line)
+        if not found:
+            new_lines.append(f"MONGODB_URL={mongo_url}\n")
+        with open(env_path, "w") as f:
+            f.writelines(new_lines)
+
+    # 2. Update memory
+    os.environ["MONGODB_URL"] = mongo_url
+    import services.mongodb_service as m_service
+    m_service.MONGODB_URL = mongo_url
+
+    # 3. Test MongoDB Atlas Connection
+    mongo_db = m_service.get_mongo_db()
+    if mongo_db is None:
+        raise HTTPException(
+            status_code=400,
+            detail="Could not connect to MongoDB Atlas. Please check password and Network Access (IP Whitelist) in MongoDB Atlas."
+        )
+
+    # 4. Sync all current database records to MongoDB Atlas
+    employees = db.query(models.Employee).all()
+    synced_count = 0
+    for emp in employees:
+        mongo_payload = {
+            "employee_id": emp.employee_id,
+            "name": emp.name,
+            "age": emp.age,
+            "gender": emp.gender,
+            "department": emp.department,
+            "job_role": emp.job_role,
+            "monthly_income": emp.monthly_income,
+            "performance_group": emp.performance_group,
+            "job_satisfaction": emp.job_satisfaction,
+            "attendance_rate": emp.attendance_rate,
+            "training_hours": emp.training_hours,
+            "projects_completed": emp.projects_completed,
+            "years_at_company": emp.years_at_company,
+            "created_at": emp.created_at.isoformat() if emp.created_at else None
+        }
+        m_service.sync_employee_to_mongo(mongo_payload)
+        synced_count += 1
+
+    return {
+        "status": "connected",
+        "message": f"Successfully connected to MongoDB Atlas! Synced {synced_count} employee records (including Kavinila S) to collection 'emplytic.employees'.",
+        "synced_records": synced_count
+    }
+
 @router.get("/health")
 def health_check():
     return {"status": "healthy", "service": "EMPlytic AI Backend"}

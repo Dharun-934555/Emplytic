@@ -184,6 +184,14 @@ export const api = {
     return handleResponse(res);
   },
 
+  clearAllEmployees: async () => {
+    const res = await fetch(`${API_BASE}/employees/clear-all`, {
+      method: 'DELETE',
+      headers: { ...getAuthHeader() }
+    });
+    return handleResponse(res);
+  },
+
   // Machine Learning
   predictPerformance: async (inputData) => {
     const res = await fetch(`${API_BASE}/predict`, {
@@ -239,5 +247,14 @@ export const api = {
     document.body.appendChild(a);
     a.click();
     a.remove();
+  },
+
+  updateMongoSettings: async (payload) => {
+    const res = await fetch(`${API_BASE}/settings/mongodb`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', ...getAuthHeader() },
+      body: JSON.stringify(payload)
+    });
+    return handleResponse(res);
   }
 };
