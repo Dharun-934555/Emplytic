@@ -14,7 +14,7 @@ class UserRegister(BaseModel):
     role: Optional[str] = "HR Manager"
 
 class UserOut(BaseModel):
-    id: int
+    id: str
     name: str
     email: EmailStr
     role: str
@@ -30,8 +30,8 @@ class Token(BaseModel):
 
 # --- Notification Schemas ---
 class NotificationOut(BaseModel):
-    id: int
-    user_id: Optional[int] = None
+    id: str
+    user_id: Optional[str] = None
     title: str
     message: str
     is_read: bool
@@ -91,7 +91,7 @@ class EmployeeUpdate(BaseModel):
     performance_group: Optional[str] = None
 
 class EmployeeOut(EmployeeBase):
-    id: int
+    id: str
     employee_id: str
     performance_group: str
     created_at: datetime

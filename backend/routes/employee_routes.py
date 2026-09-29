@@ -1,8 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from sqlalchemy.orm import Session
 from typing import List, Optional
 from database import get_db
-import models
 import schemas
 from services import employee_service
 import auth
@@ -17,7 +15,7 @@ def list_employees(
     department: Optional[str] = None,
     performance_group: Optional[str] = None,
     job_role: Optional[str] = None,
-    db: Session = Depends(get_db)
+    db = Depends(get_db)
 ):
     return employee_service.get_employees(
         db, skip=skip, limit=limit, search=search,
@@ -25,7 +23,7 @@ def list_employees(
     )
 
 @router.get("/{employee_id}", response_model=schemas.EmployeeOut)
-def get_employee(employee_id: str, db: Session = Depends(get_db)):
+def get_employee(employee_id: str, db = Depends(get_db)):
     emp = employee_service.get_employee_by_id(db, employee_id)
     if not emp:
         raise HTTPException(status_code=404, detail="Employee not found")
@@ -34,17 +32,17 @@ def get_employee(employee_id: str, db: Session = Depends(get_db)):
 @router.post("", response_model=schemas.EmployeeOut, status_code=status.HTTP_201_CREATED)
 def create_employee(
     emp_data: schemas.EmployeeCreate,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.get_current_user)
+    db = Depends(get_db),
+    current_user = Depends(auth.get_current_user)
 ):
-    return employee_service.create_employee(db, emp_data)
+    return employee_service.create_employee(db, emp_data, current_user.get("id"))
 
 @router.put("/{employee_id}", response_model=schemas.EmployeeOut)
 def update_employee(
     employee_id: str,
     emp_data: schemas.EmployeeUpdate,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.get_current_user)
+    db = Depends(get_db),
+    current_user = Depends(auth.get_current_user)
 ):
     emp = employee_service.update_employee(db, employee_id, emp_data)
     if not emp:
@@ -53,8 +51,8 @@ def update_employee(
 
 @router.delete("/clear-all", status_code=status.HTTP_200_OK)
 def clear_all_employees(
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.get_current_user)
+    db = Depends(get_db),
+    current_user = Depends(auth.get_current_user)
 ):
     count = employee_service.clear_all_employees(db)
     return {"message": f"Successfully deleted {count} employee records."}
@@ -62,8 +60,8 @@ def clear_all_employees(
 @router.delete("/{employee_id}", status_code=status.HTTP_200_OK)
 def delete_employee(
     employee_id: str,
-    db: Session = Depends(get_db),
-    current_user: models.User = Depends(auth.get_current_user)
+    db = Depends(get_db),
+    current_user = Depends(auth.get_current_user)
 ):
     success = employee_service.delete_employee(db, employee_id)
     if not success:

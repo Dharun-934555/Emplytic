@@ -1,15 +1,13 @@
-from sqlalchemy.orm import Session
-from sqlalchemy import func
 from typing import Dict, Any, List, Optional
-import models
 import json
 import os
+from types import SimpleNamespace
 
 METRICS_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "models", "metrics.json"))
 
-def get_dashboard_summary(db: Session) -> Dict[str, Any]:
+def get_dashboard_summary(db) -> Dict[str, Any]:
     """Generates overall dashboard KPIs and chart data."""
-    employees = db.query(models.Employee).all()
+    employees = [SimpleNamespace(**e) for e in db.employees.find({})]
     total = len(employees)
 
     if total == 0:
@@ -37,7 +35,7 @@ def get_dashboard_summary(db: Session) -> Dict[str, Any]:
     # Department breakdown
     dept_map = {}
     for e in employees:
-        d = e.department
+        d = getattr(e, "department", "Unknown")
         if d not in dept_map:
             dept_map[d] = {"department": d, "High": 0, "Medium": 0, "Low": 0, "Total": 0}
         dept_map[d]["Total"] += 1
@@ -54,11 +52,12 @@ def get_dashboard_summary(db: Session) -> Dict[str, Any]:
     # Performance trend by tenure/years at company
     tenure_map = {}
     for e in employees:
-        t = f"Year {e.years_at_company}" if e.years_at_company <= 5 else "Year 5+"
+        yac = getattr(e, "years_at_company", 0)
+        t = f"Year {yac}" if yac <= 5 else "Year 5+"
         if t not in tenure_map:
             tenure_map[t] = {"tenure": t, "avg_engagement": 0.0, "avg_satisfaction": 0.0, "high_ratio": 0, "count": 0}
-        tenure_map[t]["avg_engagement"] += e.employee_engagement
-        tenure_map[t]["avg_satisfaction"] += e.job_satisfaction
+        tenure_map[t]["avg_engagement"] += getattr(e, "employee_engagement", 0)
+        tenure_map[t]["avg_satisfaction"] += getattr(e, "job_satisfaction", 0)
         if e.performance_group == "High Performance":
             tenure_map[t]["high_ratio"] += 1
         tenure_map[t]["count"] += 1
@@ -99,9 +98,9 @@ def get_dashboard_summary(db: Session) -> Dict[str, Any]:
         "high_performers": high_count,
         "medium_performers": med_count,
         "low_performers": low_count,
-        "high_percentage": round((high_count/total)*100, 1),
-        "medium_percentage": round((med_count/total)*100, 1),
-        "low_percentage": round((low_count/total)*100, 1),
+        "high_percentage": round((high_count/total)*100, 1) if total else 0,
+        "medium_percentage": round((med_count/total)*100, 1) if total else 0,
+        "low_percentage": round((low_count/total)*100, 1) if total else 0,
         "performance_distribution": perf_distribution,
         "department_performance": dept_performance,
         "performance_trend": trend_list,
@@ -109,21 +108,20 @@ def get_dashboard_summary(db: Session) -> Dict[str, Any]:
     }
 
 def get_detailed_analytics(
-    db: Session,
+    db,
     department: Optional[str] = None,
     job_role: Optional[str] = None,
     performance_group: Optional[str] = None
 ) -> Dict[str, Any]:
-    query = db.query(models.Employee)
-
+    query = {}
     if department and department != "All":
-        query = query.filter(models.Employee.department == department)
+        query["department"] = department
     if job_role and job_role != "All":
-        query = query.filter(models.Employee.job_role == job_role)
+        query["job_role"] = job_role
     if performance_group and performance_group != "All":
-        query = query.filter(models.Employee.performance_group == performance_group)
+        query["performance_group"] = performance_group
 
-    employees = query.all()
+    employees = [SimpleNamespace(**e) for e in db.employees.find(query)]
 
     # 1. Dept vs Performance
     dept_chart = {}
@@ -143,55 +141,56 @@ def get_detailed_analytics(
     overtime_bins = {"0 Hrs": [0,0,0], "1-15 Hrs": [0,0,0], "16-30 Hrs": [0,0,0], "30+ Hrs": [0,0,0]}
 
     for e in employees:
-        pg_idx = 0 if e.performance_group == "High Performance" else (1 if e.performance_group == "Medium Performance" else 2)
+        pg = getattr(e, "performance_group", "Medium Performance")
+        pg_idx = 0 if pg == "High Performance" else (1 if pg == "Medium Performance" else 2)
         pg_key = "High" if pg_idx == 0 else ("Medium" if pg_idx == 1 else "Low")
 
         # Dept
-        d = e.department
+        d = getattr(e, "department", "Unknown")
         if d not in dept_chart:
             dept_chart[d] = {"department": d, "High": 0, "Medium": 0, "Low": 0}
         dept_chart[d][pg_key] += 1
 
         # Role
-        r = e.job_role
+        r = getattr(e, "job_role", "Unknown")
         if r not in role_chart:
             role_chart[r] = {"role": r, "High": 0, "Medium": 0, "Low": 0}
         role_chart[r][pg_key] += 1
 
         # Exp
-        exp = e.years_at_company
+        exp = getattr(e, "years_at_company", 0)
         if exp <= 2: exp_bins["0-2 Yrs"][pg_idx] += 1
         elif exp <= 5: exp_bins["3-5 Yrs"][pg_idx] += 1
         elif exp <= 10: exp_bins["6-10 Yrs"][pg_idx] += 1
         else: exp_bins["10+ Yrs"][pg_idx] += 1
 
         # Training
-        tr = e.training_hours
+        tr = getattr(e, "training_hours", 0)
         if tr < 20: training_bins["<20 Hrs"][pg_idx] += 1
         elif tr <= 50: training_bins["20-50 Hrs"][pg_idx] += 1
         elif tr <= 80: training_bins["50-80 Hrs"][pg_idx] += 1
         else: training_bins["80+ Hrs"][pg_idx] += 1
 
         # Attendance
-        att = e.attendance_rate
+        att = getattr(e, "attendance_rate", 100.0)
         if att < 90.0: attendance_bins["<90%"][pg_idx] += 1
         elif att <= 95.0: attendance_bins["90-95%"][pg_idx] += 1
         elif att <= 98.0: attendance_bins["95-98%"][pg_idx] += 1
         else: attendance_bins["98%+"][pg_idx] += 1
 
         # Satisfaction
-        sat_key = str(min(5, max(1, e.job_satisfaction)))
+        sat_key = str(min(5, max(1, getattr(e, "job_satisfaction", 3))))
         satisfaction_chart[sat_key][pg_key] += 1
 
         # Income
-        inc = e.monthly_income
+        inc = getattr(e, "monthly_income", 0)
         if inc < 5000: income_bins["<$5k"][pg_idx] += 1
         elif inc <= 9000: income_bins["$5k-$9k"][pg_idx] += 1
         elif inc <= 14000: income_bins["$9k-$14k"][pg_idx] += 1
         else: income_bins["$14k+"][pg_idx] += 1
 
         # Overtime
-        ot = e.overtime_hours
+        ot = getattr(e, "overtime_hours", 0)
         if ot == 0: overtime_bins["0 Hrs"][pg_idx] += 1
         elif ot <= 15: overtime_bins["1-15 Hrs"][pg_idx] += 1
         elif ot <= 30: overtime_bins["16-30 Hrs"][pg_idx] += 1
@@ -214,9 +213,9 @@ def get_detailed_analytics(
         "overtime_vs_performance": format_bins(overtime_bins, "overtime")
     }
 
-def get_insights(db: Session) -> List[Dict[str, Any]]:
+def get_insights(db) -> List[Dict[str, Any]]:
     """Calculates ML & statistical insights from current employee data."""
-    employees = db.query(models.Employee).all()
+    employees = [SimpleNamespace(**e) for e in db.employees.find({})]
     total = len(employees)
     if total == 0:
         return []
@@ -224,33 +223,33 @@ def get_insights(db: Session) -> List[Dict[str, Any]]:
     # Dept high performer pct
     dept_map = {}
     for e in employees:
-        d = e.department
+        d = getattr(e, "department", "Unknown")
         if d not in dept_map: dept_map[d] = {"high": 0, "total": 0}
         dept_map[d]["total"] += 1
-        if e.performance_group == "High Performance":
+        if getattr(e, "performance_group", "") == "High Performance":
             dept_map[d]["high"] += 1
 
     best_dept = "Engineering"
     best_dept_pct = 0.0
     for d, data in dept_map.items():
-        pct = (data["high"] / data["total"]) * 100.0
+        pct = (data["high"] / data["total"]) * 100.0 if data["total"] else 0
         if pct > best_dept_pct:
             best_dept_pct = pct
             best_dept = d
 
     # Training hours relationship
-    high_tr = [e.training_hours for e in employees if e.performance_group == "High Performance"]
-    low_tr = [e.training_hours for e in employees if e.performance_group == "Low Performance"]
+    high_tr = [getattr(e, "training_hours", 0) for e in employees if getattr(e, "performance_group", "") == "High Performance"]
+    low_tr = [getattr(e, "training_hours", 0) for e in employees if getattr(e, "performance_group", "") == "Low Performance"]
     avg_high_tr = round(sum(high_tr) / max(1, len(high_tr)), 1)
     avg_low_tr = round(sum(low_tr) / max(1, len(low_tr)), 1)
 
     # Job satisfaction relationship
-    high_sat = [e.job_satisfaction for e in employees if e.performance_group == "High Performance"]
+    high_sat = [getattr(e, "job_satisfaction", 0) for e in employees if getattr(e, "performance_group", "") == "High Performance"]
     avg_high_sat = round(sum(high_sat) / max(1, len(high_sat)), 1)
 
     # Attendance patterns
-    high_att = [e.attendance_rate for e in employees if e.performance_group == "High Performance"]
-    low_att = [e.attendance_rate for e in employees if e.performance_group == "Low Performance"]
+    high_att = [getattr(e, "attendance_rate", 0) for e in employees if getattr(e, "performance_group", "") == "High Performance"]
+    low_att = [getattr(e, "attendance_rate", 0) for e in employees if getattr(e, "performance_group", "") == "Low Performance"]
     avg_high_att = round(sum(high_att) / max(1, len(high_att)), 1)
     avg_low_att = round(sum(low_att) / max(1, len(low_att)), 1)
 

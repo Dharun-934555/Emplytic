@@ -1,17 +1,18 @@
 from fastapi import APIRouter, Depends, Query, HTTPException, Body
 from fastapi.responses import StreamingResponse
-from sqlalchemy.orm import Session
 from typing import Optional, List, Dict, Any
+from types import SimpleNamespace
 import io
+import os
 import pandas as pd
+from datetime import datetime, timezone
 from database import get_db
-import models
 from services import analytics_service
 
 router = APIRouter(prefix="/api", tags=["Analytics & Reports"])
 
 @router.get("/dashboard")
-def get_dashboard_data(db: Session = Depends(get_db)):
+def get_dashboard_data(db = Depends(get_db)):
     return analytics_service.get_dashboard_summary(db)
 
 @router.get("/analytics")
@@ -19,57 +20,58 @@ def get_analytics_data(
     department: Optional[str] = Query("All"),
     job_role: Optional[str] = Query("All"),
     performance_group: Optional[str] = Query("All"),
-    db: Session = Depends(get_db)
+    db = Depends(get_db)
 ):
     return analytics_service.get_detailed_analytics(
         db, department=department, job_role=job_role, performance_group=performance_group
     )
 
 @router.get("/insights")
-def get_ai_insights(db: Session = Depends(get_db)):
+def get_ai_insights(db = Depends(get_db)):
     return analytics_service.get_insights(db)
 
 @router.post("/reports/generate")
-def generate_custom_report(payload: Dict[str, Any] = Body(...), db: Session = Depends(get_db)):
+def generate_custom_report(payload: Dict[str, Any] = Body(...), db = Depends(get_db)):
     report_title = payload.get("title", "Custom_HR_Report")
     dept = payload.get("department", "All")
     group = payload.get("performance_group", "All")
     included_metrics = payload.get("metrics", ["employee_id", "name", "department", "job_role", "performance_group", "monthly_income", "attendance_rate", "job_satisfaction"])
 
-    query = db.query(models.Employee)
-
+    query = {}
     if dept and dept != "All":
-        query = query.filter(models.Employee.department == dept)
+        query["department"] = dept
     if group and group != "All":
-        query = query.filter(models.Employee.performance_group == group)
+        query["performance_group"] = group
 
-    employees = query.all()
+    employees = [SimpleNamespace(**e) for e in db.employees.find(query)]
 
     data = []
     for e in employees:
         row = {}
-        if "employee_id" in included_metrics: row["Employee ID"] = e.employee_id
-        if "name" in included_metrics: row["Name"] = e.name
-        if "department" in included_metrics: row["Department"] = e.department
-        if "job_role" in included_metrics: row["Job Role"] = e.job_role
-        if "performance_group" in included_metrics: row["Performance Group"] = e.performance_group
-        if "monthly_income" in included_metrics: row["Monthly Income ($)"] = e.monthly_income
-        if "attendance_rate" in included_metrics: row["Attendance Rate (%)"] = e.attendance_rate
-        if "job_satisfaction" in included_metrics: row["Job Satisfaction"] = e.job_satisfaction
-        if "training_hours" in included_metrics: row["Training Hours"] = e.training_hours
-        if "projects_completed" in included_metrics: row["Projects Completed"] = e.projects_completed
-        if "employee_engagement" in included_metrics: row["Engagement Score"] = e.employee_engagement
+        if "employee_id" in included_metrics: row["Employee ID"] = getattr(e, "employee_id", "N/A")
+        if "name" in included_metrics: row["Name"] = getattr(e, "name", "N/A")
+        if "department" in included_metrics: row["Department"] = getattr(e, "department", "N/A")
+        if "job_role" in included_metrics: row["Job Role"] = getattr(e, "job_role", "N/A")
+        if "performance_group" in included_metrics: row["Performance Group"] = getattr(e, "performance_group", "N/A")
+        if "monthly_income" in included_metrics: row["Monthly Income ($)"] = getattr(e, "monthly_income", "N/A")
+        if "attendance_rate" in included_metrics: row["Attendance Rate (%)"] = getattr(e, "attendance_rate", "N/A")
+        if "job_satisfaction" in included_metrics: row["Job Satisfaction"] = getattr(e, "job_satisfaction", "N/A")
+        if "training_hours" in included_metrics: row["Training Hours"] = getattr(e, "training_hours", "N/A")
+        if "projects_completed" in included_metrics: row["Projects Completed"] = getattr(e, "projects_completed", "N/A")
+        if "employee_engagement" in included_metrics: row["Engagement Score"] = getattr(e, "employee_engagement", "N/A")
         data.append(row)
 
     df = pd.DataFrame(data if data else [{"Message": "No employee records matched selected criteria."}])
 
     # Add notification for generated HR report
-    notif = models.Notification(
-        title="Custom HR Report Generated",
-        message=f"Report '{report_title}' exported for {dept} ({group}) with {len(employees)} records."
-    )
-    db.add(notif)
-    db.commit()
+    notif = {
+        "user_id": None,
+        "title": "Custom HR Report Generated",
+        "message": f"Report '{report_title}' exported for {dept} ({group}) with {len(employees)} records.",
+        "is_read": False,
+        "created_at": datetime.now(timezone.utc)
+    }
+    db.notifications.insert_one(notif)
 
     stream = io.StringIO()
     df.to_csv(stream, index=False)
@@ -80,22 +82,22 @@ def generate_custom_report(payload: Dict[str, Any] = Body(...), db: Session = De
     return response
 
 @router.get("/reports/download/{report_type}")
-def download_csv_report(report_type: str, db: Session = Depends(get_db)):
+def download_csv_report(report_type: str, db = Depends(get_db)):
     stream = io.StringIO()
     filename = f"{report_type}_report.csv"
 
     if report_type == "employees":
-        employees = db.query(models.Employee).all()
+        employees = [SimpleNamespace(**e) for e in db.employees.find({})]
         data = [{
-            "Employee ID": e.employee_id,
-            "Name": e.name,
-            "Department": e.department,
-            "Job Role": e.job_role,
-            "Years at Company": e.years_at_company,
-            "Monthly Income": e.monthly_income,
-            "Job Satisfaction": e.job_satisfaction,
-            "Attendance Rate (%)": e.attendance_rate,
-            "Performance Group": e.performance_group
+            "Employee ID": getattr(e, "employee_id", "N/A"),
+            "Name": getattr(e, "name", "N/A"),
+            "Department": getattr(e, "department", "N/A"),
+            "Job Role": getattr(e, "job_role", "N/A"),
+            "Years at Company": getattr(e, "years_at_company", 0),
+            "Monthly Income": getattr(e, "monthly_income", 0),
+            "Job Satisfaction": getattr(e, "job_satisfaction", 0),
+            "Attendance Rate (%)": getattr(e, "attendance_rate", 0),
+            "Performance Group": getattr(e, "performance_group", "N/A")
         } for e in employees]
         df = pd.DataFrame(data)
 
@@ -113,27 +115,27 @@ def download_csv_report(report_type: str, db: Session = Depends(get_db)):
         df = pd.DataFrame(data)
 
     elif report_type == "predictions":
-        predictions = db.query(models.Prediction).all()
+        predictions = [SimpleNamespace(**p) for p in db.predictions.find({})]
         data = [{
-            "ID": p.id,
-            "Employee ID": p.employee_id or "N/A",
-            "Predicted Group": p.predicted_group,
-            "High Probability (%)": p.high_probability,
-            "Medium Probability (%)": p.medium_probability,
-            "Low Probability (%)": p.low_probability,
-            "Prediction Date": p.created_at
+            "ID": str(getattr(p, "_id", "N/A")),
+            "Employee ID": getattr(p, "employee_id", "N/A"),
+            "Predicted Group": getattr(p, "predicted_group", "N/A"),
+            "High Probability (%)": getattr(p, "high_probability", 0),
+            "Medium Probability (%)": getattr(p, "medium_probability", 0),
+            "Low Probability (%)": getattr(p, "low_probability", 0),
+            "Prediction Date": getattr(p, "created_at", "N/A")
         } for p in predictions]
         df = pd.DataFrame(data)
 
     elif report_type == "model-evaluation":
-        metrics = db.query(models.ModelMetrics).all()
+        metrics = [SimpleNamespace(**m) for m in db.model_metrics.find({})]
         data = [{
-            "Model Name": m.model_name,
-            "Accuracy": f"{m.accuracy*100:.2f}%",
-            "Precision": f"{m.precision*100:.2f}%",
-            "Recall": f"{m.recall*100:.2f}%",
-            "F1 Score": f"{m.f1_score*100:.2f}%",
-            "Evaluated Date": m.created_at
+            "Model Name": getattr(m, "model_name", "N/A"),
+            "Accuracy": f"{getattr(m, 'accuracy', 0)*100:.2f}%",
+            "Precision": f"{getattr(m, 'precision', 0)*100:.2f}%",
+            "Recall": f"{getattr(m, 'recall', 0)*100:.2f}%",
+            "F1 Score": f"{getattr(m, 'f1_score', 0)*100:.2f}%",
+            "Evaluated Date": getattr(m, "created_at", "N/A")
         } for m in metrics]
         df = pd.DataFrame(data)
 
@@ -146,7 +148,7 @@ def download_csv_report(report_type: str, db: Session = Depends(get_db)):
     return response
 
 @router.post("/settings/mongodb")
-def update_mongodb_setting(payload: Dict[str, Any] = Body(...), db: Session = Depends(get_db)):
+def update_mongodb_setting(payload: Dict[str, Any] = Body(...), db = Depends(get_db)):
     mongo_url = payload.get("mongodb_url", "").strip()
     password = payload.get("password", "").strip()
     
@@ -154,7 +156,7 @@ def update_mongodb_setting(payload: Dict[str, Any] = Body(...), db: Session = De
         mongo_url = mongo_url.replace("<db_password>", password)
 
     if not mongo_url:
-        mongo_url = os.getenv("MONGODB_URL", "")
+        mongo_url = os.getenv("MONGODB_URI", "")
 
     if password and "<db_password>" in mongo_url:
         mongo_url = mongo_url.replace("<db_password>", password)
@@ -170,56 +172,23 @@ def update_mongodb_setting(payload: Dict[str, Any] = Body(...), db: Session = De
         new_lines = []
         found = False
         for line in lines:
-            if line.startswith("MONGODB_URL="):
-                new_lines.append(f"MONGODB_URL={mongo_url}\n")
+            if line.startswith("MONGODB_URI="):
+                new_lines.append(f"MONGODB_URI={mongo_url}\n")
                 found = True
             else:
                 new_lines.append(line)
         if not found:
-            new_lines.append(f"MONGODB_URL={mongo_url}\n")
+            new_lines.append(f"MONGODB_URI={mongo_url}\n")
         with open(env_path, "w") as f:
             f.writelines(new_lines)
 
     # 2. Update memory
-    os.environ["MONGODB_URL"] = mongo_url
-    import services.mongodb_service as m_service
-    m_service.MONGODB_URL = mongo_url
-
-    # 3. Test MongoDB Atlas Connection
-    mongo_db = m_service.get_mongo_db()
-    if mongo_db is None:
-        raise HTTPException(
-            status_code=400,
-            detail="Could not connect to MongoDB Atlas. Please check password and Network Access (IP Whitelist) in MongoDB Atlas."
-        )
-
-    # 4. Sync all current database records to MongoDB Atlas
-    employees = db.query(models.Employee).all()
-    synced_count = 0
-    for emp in employees:
-        mongo_payload = {
-            "employee_id": emp.employee_id,
-            "name": emp.name,
-            "age": emp.age,
-            "gender": emp.gender,
-            "department": emp.department,
-            "job_role": emp.job_role,
-            "monthly_income": emp.monthly_income,
-            "performance_group": emp.performance_group,
-            "job_satisfaction": emp.job_satisfaction,
-            "attendance_rate": emp.attendance_rate,
-            "training_hours": emp.training_hours,
-            "projects_completed": emp.projects_completed,
-            "years_at_company": emp.years_at_company,
-            "created_at": emp.created_at.isoformat() if emp.created_at else None
-        }
-        m_service.sync_employee_to_mongo(mongo_payload)
-        synced_count += 1
+    os.environ["MONGODB_URI"] = mongo_url
 
     return {
         "status": "connected",
-        "message": f"Successfully connected to MongoDB Atlas! Synced {synced_count} employee records (including Kavinila S) to collection 'emplytic.employees'.",
-        "synced_records": synced_count
+        "message": "Successfully updated MongoDB Atlas Connection string.",
+        "synced_records": 0
     }
 
 @router.get("/health")

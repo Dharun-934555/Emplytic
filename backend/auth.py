@@ -5,9 +5,7 @@ from datetime import datetime, timedelta, timezone
 from typing import Optional
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from sqlalchemy.orm import Session
 from database import get_db
-import models
 
 SECRET_KEY = os.getenv("JWT_SECRET", "emplytic_secret_jwt_key_2026_super_secure")
 ALGORITHM = "HS256"
@@ -38,14 +36,15 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(get_db)):
+def get_current_user(token: str = Depends(oauth2_scheme), db = Depends(get_db)):
     if not token:
         # For seamless demo experience, return a default Admin user if token missing
-        admin = db.query(models.User).filter(models.User.role == "Admin").first()
+        admin = db.users.find_one({"role": "Admin"})
         if admin:
+            admin["id"] = str(admin.pop("_id"))
             return admin
         # Fallback dummy user if DB empty
-        return models.User(id=1, email="hr@emplytic.ai", full_name="Sarah Jenkins", role="Admin")
+        return {"id": "1", "email": "hr@emplytic.ai", "name": "Sarah Jenkins", "role": "Admin"}
     
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
@@ -60,13 +59,15 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     except jwt.PyJWTError:
         raise credentials_exception
 
-    user = db.query(models.User).filter(models.User.email == email).first()
+    user = db.users.find_one({"email": email})
     if user is None:
         raise credentials_exception
+    
+    user["id"] = str(user.pop("_id"))
     return user
 
-def require_admin(current_user: models.User = Depends(get_current_user)):
-    if current_user.role != "Admin":
+def require_admin(current_user = Depends(get_current_user)):
+    if current_user.get("role") != "Admin":
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail="Admin privileges required"

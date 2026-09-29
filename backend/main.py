@@ -1,13 +1,7 @@
 import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from database import engine, Base
-import models
 from routes import auth_routes, employee_routes, ml_routes, notification_routes, analytics_routes
-from seed import seed_database
-
-# Create DB tables
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="EMPlytic API",
@@ -34,7 +28,7 @@ app.include_router(analytics_routes.router)
 @app.on_event("startup")
 def startup_event():
     try:
-        seed_database()
+        pass # seed_database() disabled as it relies on sqlite
     except Exception as e:
         print(f"Startup warning during seeding: {e}")
 
